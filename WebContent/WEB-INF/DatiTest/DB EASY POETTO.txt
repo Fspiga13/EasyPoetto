@@ -1,3 +1,10 @@
+
+DROP SEQUENCE user_id_seq;
+DROP SEQUENCE client_id_seq;
+DROP SEQUENCE beach_resort_id_seq;
+DROP SEQUENCE reservation_id_seq;
+DROP SEQUENCE beach_package_id_seq;
+
 drop table RESERVATIONS_BEACH_PACKAGES;
 drop table beach_packages;
 drop table RESERVATIONS;
@@ -84,4 +91,13 @@ CONSTRAINT pk_res_beach_package_id PRIMARY KEY(reservations_id, beach_package_id
 CONSTRAINT fk_res_res_beach_package_id FOREIGN KEY (reservations_id) REFERENCES reservations(id),
 CONSTRAINT fk_res_beach_package_id FOREIGN KEY (beach_package_id) REFERENCES beach_packages(id)
 );
+
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'admin@poetto.it','poetto',0);
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'omar@tiscali.it','omar',1);
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'giulia@tiscali.it','giulia',1);
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'federico@tiscali.it','federico',2);
+
+INSERT INTO CLIENTS VALUES(client_id_seq.nextval,4,'Federico','Spiga',TO_DATE('10-01-1995', 'YYYY-MM-DD'));
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,2,'Il Lido','Scetti bello','http://www.lidocagliari.com/public/biz_editor/Image/slideshow/2.jpg','http://www.lidocagliari.com/public/biz_editor/custom/logo_illido.png','Viale Poetto n°1',500,1500,'Y','Y','Y','Y','Y','Y','Y','N');
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,3,'Le Palmette','Scetti sgabuzzo','https://www.bookyourbeach.net/album/768/2263/13433138-609097139266648-6982807008407385407-o.jpg','http://www.lepalmette.it/uploads/YJ7OJcFI/737x0_399x0/logo1.jpg','Viale Poetto n°2',50,150,'N','Y','N','N','Y','N','N','N');
 
