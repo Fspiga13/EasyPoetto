@@ -1,9 +1,11 @@
 package com.easypoetto.model;
 
-public class BeachResort extends User{
+public class BeachResort{
 
+	private String email;
 	private String name;
 	private String address;
+	private String telephone;
 	private String description;
 	private String image;
 	private String logo;
@@ -14,9 +16,56 @@ public class BeachResort extends User{
 	private boolean shower;
 	private boolean toilette;
 	private boolean restaurant;
-	private boolean disableFacilities;
+	private boolean disabledFacilities;
 	private boolean childrenArea;
 	private boolean dogArea;
+	
+	/**
+	 * @param name
+	 * @param address
+	 * @param description
+	 * @param image
+	 * @param logo
+	 * @param numUmbrellas
+	 * @param numBeachLoungers
+	 * @param parking
+	 * @param pedalo
+	 * @param shower
+	 * @param toilette
+	 * @param restaurant
+	 * @param disabledFacilities
+	 * @param childrenArea
+	 * @param dogArea
+	 */
+	public BeachResort(String email, String name, String address, String telephone, String description, String image, String logo, int numUmbrellas,
+			int numBeachLoungers, boolean parking, boolean pedalo, boolean shower, boolean toilette, boolean restaurant,
+			boolean disabledFacilities, boolean childrenArea, boolean dogArea) {
+		
+		this.email = email;
+		this.name = name;
+		this.address = address;
+		this.telephone = telephone;
+		this.description = description;
+		this.image = image;
+		this.logo = logo;
+		this.numUmbrellas = numUmbrellas;
+		this.numBeachLoungers = numBeachLoungers;
+		this.parking = parking;
+		this.pedalo = pedalo;
+		this.shower = shower;
+		this.toilette = toilette;
+		this.restaurant = restaurant;
+		this.disabledFacilities = disabledFacilities;
+		this.childrenArea = childrenArea;
+		this.dogArea = dogArea;
+	}
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
 	
 	/**
 	 * @return the name
@@ -32,6 +81,13 @@ public class BeachResort extends User{
 		return address;
 	}
 
+	/**
+	 * @return the telephone
+	 */
+	public String getTelephone() {
+		return telephone;
+	}
+	
 	/**
 	 * @return the description
 	 */
@@ -91,7 +147,7 @@ public class BeachResort extends User{
 	/**
 	 * @return the toilette
 	 */
-	public boolean isTiolette() {
+	public boolean isToilette() {
 		return toilette;
 	}
 
@@ -103,10 +159,10 @@ public class BeachResort extends User{
 	}
 
 	/**
-	 * @return the disableFacilities
+	 * @return the disabledFacilities
 	 */
-	public boolean isDisableFacilities() {
-		return disableFacilities;
+	public boolean isDisabledFacilities() {
+		return disabledFacilities;
 	}
 
 	/**
