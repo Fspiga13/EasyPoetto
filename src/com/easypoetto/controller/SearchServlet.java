@@ -8,16 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Home
+ * Servlet implementation class Search
  */
-@WebServlet("/home.html")
-public class Home extends HttpServlet {
+@WebServlet("/search.html")
+public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public Home() {
+    public SearchServlet() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -26,7 +27,7 @@ public class Home extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("WEB-INF/JSP/search.jsp").forward(request, response);
 	}
 
 	/**
@@ -34,7 +35,9 @@ public class Home extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		//Passare info stabilimento
+		request.getRequestDispatcher("WEB-INF/JSP/beachResort.jsp").forward(request, response);
 	}
 
 }
