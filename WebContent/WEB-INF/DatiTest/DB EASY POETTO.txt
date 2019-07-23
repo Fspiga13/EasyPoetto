@@ -1,0 +1,87 @@
+drop table RESERVATIONS_BEACH_PACKAGES;
+drop table beach_packages;
+drop table RESERVATIONS;
+drop table beach_resorts;
+drop table clients;
+DROP TABLE USERS;
+
+CREATE SEQUENCE user_id_seq;
+CREATE SEQUENCE client_id_seq;
+CREATE SEQUENCE beach_resort_id_seq;
+CREATE SEQUENCE reservation_id_seq;
+CREATE SEQUENCE beach_package_id_seq;
+
+CREATE TABLE USERS(
+id NUMBER(38,0),
+email VARCHAR2(320CHAR)NOT NULL UNIQUE,
+password VARCHAR2(2000CHAR)NOT NULL,
+role NUMBER(1,0) NOT NULL,
+CONSTRAINT pk_users_id PRIMARY KEY(id),
+CONSTRAINT role CHECK(role BETWEEN 0 AND 2)
+);
+
+CREATE TABLE CLIENTS(
+id NUMBER(38,0),
+user_id NUMBER (38,0),
+name VARCHAR2(50CHAR)NOT NULL,
+surname VARCHAR2(50CHAR) NOT NULL,
+birthday DATE NOT NULL,
+CONSTRAINT pk_clients_id PRIMARY KEY(id),
+CONSTRAINT fk_clients_users_id FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE BEACH_RESORTS(
+id NUMBER(38,0),
+user_id NUMBER (38,0),
+name VARCHAR2(200CHAR)NOT NULL,
+description VARCHAR2(2000CHAR)NOT NULL,
+image VARCHAR2(2000CHAR),
+logo VARCHAR2(2000CHAR),
+address VARCHAR2(200CHAR),
+num_umbrellas NUMBER(3,0),
+num_beach_loungers NUMBER(3,0),
+parking CHAR(1)CHECK (parking in ('Y','N')),
+pedalo CHAR(1)CHECK (pedalo in ('Y','N')),
+shower CHAR(1)CHECK (shower in ('Y','N')),
+toilette CHAR(1)CHECK (toilette in ('Y','N')),
+restaurant CHAR(1)CHECK (restaurant in ('Y','N')),
+disabled_facilities CHAR(1)CHECK (disabled_facilities in ('Y','N')),
+children_area CHAR(1)CHECK (children_area in ('Y','N')),
+dog_area CHAR(1)CHECK (dog_area in ('Y','N')),
+
+CONSTRAINT pk_beach_resorts_id PRIMARY KEY(id),
+CONSTRAINT fk_beach_resorts_user_id FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE RESERVATIONS(
+id NUMBER(38,0),
+user_id NUMBER (38,0),
+reservation_date DATE NOT NULL,
+
+CONSTRAINT pk_reservations_id PRIMARY KEY(id),
+CONSTRAINT fk_reservations_user_id FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE BEACH_PACKAGES(
+id NUMBER(38,0),
+beach_resort_id NUMBER (38,0),
+included_umbrellas NUMBER (1,0),
+included_beach_loungers NUMBER (2,0),
+price NUMBER(6,2),
+
+CONSTRAINT pk_beach_package_id PRIMARY KEY(id),
+CONSTRAINT fk_beach_packages_beach_resort FOREIGN KEY (beach_resort_id) REFERENCES beach_resorts(id),
+CONSTRAINT included_umbrellas CHECK(included_umbrellas BETWEEN 0 AND 5),
+CONSTRAINT included_beach_loungers CHECK(included_beach_loungers BETWEEN 0 AND 15)
+);
+
+CREATE TABLE RESERVATIONS_BEACH_PACKAGES(
+reservations_id NUMBER (38,0),
+beach_package_id NUMBER (38,0),
+quantity NUMBER(1,0),
+CONSTRAINT quantity CHECK(quantity BETWEEN 0 AND 5),
+CONSTRAINT pk_res_beach_package_id PRIMARY KEY(reservations_id, beach_package_id),
+CONSTRAINT fk_res_res_beach_package_id FOREIGN KEY (reservations_id) REFERENCES reservations(id),
+CONSTRAINT fk_res_beach_package_id FOREIGN KEY (beach_package_id) REFERENCES beach_packages(id)
+);
+
