@@ -47,14 +47,19 @@ public class HomeServlet extends HttpServlet {
 					!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
 					UserFactory.getInstance().login(email, password) == role){
 				
+				//risolvere problema logout
+				/*
 				String logout = request.getParameter("logout");
 				if (logout != null) {
 					session.invalidate();
 					request.setAttribute("logged", true);
 					request.getRequestDispatcher("WEB-INF/JSP/home.jsp").forward(request, response);
 				} else {
-					response.sendRedirect("login.html");
-				}
+					response.sendRedirect("login.html");*/
+				
+				request.setAttribute("logged", true);
+				request.getRequestDispatcher("WEB-INF/JSP/home.jsp").forward(request, response);
+				//}
 			}
 		}
 	}

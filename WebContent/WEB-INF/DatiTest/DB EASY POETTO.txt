@@ -96,8 +96,8 @@ CONSTRAINT fk_res_beach_package_id FOREIGN KEY (beach_package_id) REFERENCES bea
 INSERT INTO USERS VALUES(user_id_seq.nextval, 'admin@poetto.it','poetto',0);
 
 INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@lepalmette.it','palmette',1);
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@illido.it','daquila',1);
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@dacquila.it','lido',1);
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@illido.it','lido',1);
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@dacquila.it','daquila',1);
 INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@emerson.it','emerson',1);
 INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@palmbeach','palmbeach',1);
 
@@ -107,7 +107,7 @@ INSERT INTO USERS VALUES(user_id_seq.nextval, 'omar@tiscali.it','omar',2);
 
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,2,'Le Palmette Beach Club',
-'Inaugurato nel 2015, Le Palmette è l''unico stabilimento balneare della Prima fermata del Lungomare Poetto che offre una spiaggia attrezzata a Cagliari con ombrelloni, lettini e un servizio di noleggio di attrezzature per sport acquatici. La struttura comprende anche un bar moderno e luminoso dove ripararsi nelle ore più calde.',
+'Inaugurato nel 2015, Le Palmette ï¿½ l''unico stabilimento balneare della Prima fermata del Lungomare Poetto che offre una spiaggia attrezzata a Cagliari con ombrelloni, lettini e un servizio di noleggio di attrezzature per sport acquatici. La struttura comprende anche un bar moderno e luminoso dove ripararsi nelle ore piï¿½ calde.',
 'https://www.bookyourbeach.net/album/768/2263/13433138-609097139266648-6982807008407385407-o.jpg',
 'https://www.primiposti.it/blog/wp-content/uploads/2018/11/logo-le-palmette-blog.jpg',
 'Viale Lungo Mare Poetto, Prima Fermata, 09126 Cagliari CA, Italia',
@@ -116,7 +116,7 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,2,'Le Palmette Beac
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,3,
 'Stabilimento Balneare D''Aquila',
-'Nell''immensa e bellissima spiaggia cittadina del Poetto, nel 1913 è nato lo stabilimento balneare D''Aquila, 
+'Nell''immensa e bellissima spiaggia cittadina del Poetto, nel 1913 ï¿½ nato lo stabilimento balneare D''Aquila, 
 al servizio di Cagliari e hinterland per godere di sabbia soffice, mare azzurro, relax, divertimento e sport.',
 'https://i.pinimg.com/originals/cd/6e/45/cd6e45287a4af9e357624598f4547615.jpg',
 'https://lh3.googleusercontent.com/ZXe4-KqNqdjjGRxeymbJx7FcZbzQ9z4RG4Wzc5wTGuoFqX-daeV587gqsQBkde-c772D-28h=w768-h768-n-o-v1',
@@ -126,8 +126,8 @@ al servizio di Cagliari e hinterland per godere di sabbia soffice, mare azzurro,
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,4,
 'Il Lido',
-'Nel Golfo di Cagliari noto anche come Golfo degli Angeli, sorge lo stabilimento balneare “Il Lido” 
-dal 1914  al servizio dei Cagliaritani con più di 1000 cabine e numerosi servizi a disposizione a chi
+'Nel Golfo di Cagliari noto anche come Golfo degli Angeli, sorge lo stabilimento balneare ï¿½Il Lidoï¿½ 
+dal 1914  al servizio dei Cagliaritani con piï¿½ di 1000 cabine e numerosi servizi a disposizione a chi
 desidera trascorrere le vacanze in una spiaggia da sogno baciata da un mare cristallino.',
 'http://www.lidocagliari.com/public/biz_editor/Image/slideshow/2.jpg',
 'http://www.lidocagliari.com/public/biz_editor/custom/logo_illido.png',
@@ -137,9 +137,9 @@ desidera trascorrere le vacanze in una spiaggia da sogno baciata da un mare cris
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,5,
 'Emerson',
-'In un’ampia e accogliente spiaggia con una distesa di lettini crema, l’Emerson è un’elegante 
+'In unï¿½ampia e accogliente spiaggia con una distesa di lettini crema, lï¿½Emerson ï¿½ unï¿½elegante 
 struttura balneare con docce, servizi e spogliatoi. Due punti bar e servizi dal tocco giovane e sportivo 
-a questa realtà “made” in Cagliari.',
+a questa realtï¿½ ï¿½madeï¿½ in Cagliari.',
 'http://www.emersoncagliari.it/wp-content/uploads/2017/03/spiaggia5.jpg',
 'http://www.cagliariaccommodations.com/wp-content/uploads/2019/04/logo.png',
 'Viale Lungo Mare Poetto, Quarta Fermata, 09126 Cagliari CA, Italia', 
@@ -147,9 +147,9 @@ a questa realtà “made” in Cagliari.',
 
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,6,
-'Palm Beach','Elegante struttura balneare con docce, servizi e spogliatoi. Un’ottimo ristorante con eleganti
+'Palm Beach','Elegante struttura balneare con docce, servizi e spogliatoi. Unï¿½ottimo ristorante con eleganti
 piatti della nostra tradizione. Un ambiente accogliente dove rilassarsi e godersi un aperitivo al tramonto. 
-Un’Oasi anche per i più piccoli che possono godere di un baby parking esclusivo.',
+Unï¿½Oasi anche per i piï¿½ piccoli che possono godere di un baby parking esclusivo.',
 'https://cdn0.matrimonio.com/emp/fotos/5/4/5/0/19905281-2032043933698506-8482575641150889729-n.jpg',
 'https://image.freepik.com/free-vector/palm-beach-logo-design-inspiration_57043-208.jpg',
 'Viale Lungo Mare Poetto, Quinta Fermata, 09126 Cagliari CA, Italia',
