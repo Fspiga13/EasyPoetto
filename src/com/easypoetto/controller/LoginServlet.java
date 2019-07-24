@@ -82,12 +82,10 @@ public class LoginServlet extends HttpServlet {
 			!email.isEmpty() && !password.isEmpty()) {
 			
 			role = UserFactory.getInstance().login(email, password);
-			System.out.println(role);
 		}
 		
 		if(role != null) {
 			
-			System.out.println("ENTRO");
 			HttpSession session = request.getSession();
 			session.setAttribute("email", email);
 			session.setAttribute("password", password);

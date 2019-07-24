@@ -33,8 +33,10 @@ public class HomeServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 
-		if(session == null || session.getAttribute("email") == null || session.getAttribute("password") == null) {
+		if(session == null || session.getAttribute("email") == null || session.getAttribute("password") == null 
+				|| session.getAttribute("role") == null) {
 			
+			request.setAttribute("logged", false);
 			request.getRequestDispatcher("WEB-INF/JSP/home.jsp").forward(request, response);
 		}else {
 		
@@ -49,6 +51,7 @@ public class HomeServlet extends HttpServlet {
 				String logout = request.getParameter("logout");
 				if (logout != null) {
 					session.invalidate();
+					request.setAttribute("logged", true);
 					request.getRequestDispatcher("WEB-INF/JSP/home.jsp").forward(request, response);
 				} else {
 					response.sendRedirect("login.html");

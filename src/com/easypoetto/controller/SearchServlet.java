@@ -43,7 +43,7 @@ public class SearchServlet extends HttpServlet {
 		
 		request.setAttribute("beachResort", 
 				BeachResortFactory.getInstance().getBeachResort(Integer.parseInt(request.getParameter("beachResortId"))));
-		request.getRequestDispatcher("WEB-INF/JSP/beachResort.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/JSP/beach_resort.jsp").forward(request, response);
 	}
 
 }
