@@ -54,8 +54,7 @@ public class BeachResortFactory {
 						convertBoolean(result.getString("restaurant")), convertBoolean(result.getString("disabled_facilities")), 
 						convertBoolean(result.getString("children_area")), convertBoolean(result.getString("dog_area"))));
 			}
-
-			System.out.println("AAAA " + beachResorts.get(0).getName());
+			
 			return beachResorts;
 					
 		} catch (SQLException e) {

@@ -20,7 +20,6 @@
 			</div>
 			
 			<div class="col-lg-8 col-md-8 col-sm-8 align-middle">
-		
 	    
 				<c:forEach var="beachResort" items="${beachResorts}"> 
 		
@@ -28,14 +27,16 @@
 	        	<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow m-4">
 	        	
 	        	<div class="m-1">
-	        	<img src = "${beachResort.image}" height = "100" class="float-left">
-	        	<h4>${beachResort.name}</h4>
+	        		<img src = "${beachResort.image}" height="200" width="200" class="float-left">
+	        		<h4>${beachResort.name}</h4>
+	        		<p>
+	        			
+	        		</p>
 	        	</div>
 	        	
 	        	</button>	
 				</form>
 				</c:forEach>
-
 		
 			</div>
 			
