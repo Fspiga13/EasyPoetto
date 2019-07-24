@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="../../jQuery/jquery-3.4.1.min.js"></script>
-	<title>Easy Poetto - Profile</title>
+	<title>Easy Poetto - Profilo</title>
 </head>
 <body>
 				<%-- Imposto le variabili che servono alla navbar per essere visualizzata nel modo corretto --%>
@@ -51,34 +51,32 @@
 					<form action="profile.html" method="post">
 					
 						<div>
-					  	<label for="name">Name</label>
+					  	<label for="name">Nome</label>
 					  	<input type="text" class="form-control mb-4" id="name" name="name" required <c:if test= "${not empty client.name}">value="${client.name}"</c:if>/>
 					    </div>
 					    <div>
-					    <label for="surname">Surname</label>
+					    <label for="surname">Cognome</label>
 				  		<input type="text" class="form-control mb-4" id="surname" name="surname" required <c:if test= "${not empty client}">value="${client.surname}"</c:if>/> 
 				  		</div>
 					    <div>
-				  		<label for="email">Email</label>
+				  		<label for="email">E-mail</label>
 					  	<input type="email" class="form-control mb-4" id="email" name="email"  pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" <c:if test= "${not empty client}">value="${client.email}"</c:if>/> 
 					  	</div>
+					  	
+					  	<%--inserisci vecchia password, inserisci nuova password --%>
+					  	
 					    <div>
 					  	<label for="password">Password</label>
 					  	<input type="password" class="form-control mb-4" id="password" name="password" />
 					  	</div>
 					    <div>
-					  	<label for="urlImageProfile">URL Image Profile</label>
-						<input type="text" class="form-control mb-4" id="urlImageProfile" name="urlImageProfile" <c:if test= "${not empty client}">value="${client.urlImageProfile}"</c:if>/> 
-					  	</div>
-					    <div>
-					  	<label for="birthday">Birthday</label>
+					  	<label for="birthday">Data di nascita</label>
 					  	<input type="date" class="form-control mb-4" id="birthday" name="birthday" required <c:if test= "${not empty client}">value="${client.birthdayString}"</c:if>/> 
 						</div>
 					
 			 		
 					
-						<button type="submit" class="rounded btn-sample btn-block btn-lg"><c:choose><c:when test="${not empty client}">Modify</c:when><c:otherwise>Register</c:otherwise></c:choose></button>
-					
+						<button type="submit" class="rounded btn-sample btn-block btn-lg">Modifica</button>
 		 			</form>
 	 			</div>
 			</div>
