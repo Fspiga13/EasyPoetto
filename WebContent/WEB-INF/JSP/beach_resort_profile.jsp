@@ -146,6 +146,39 @@ CONSTRAINT fk_beach_resorts_user_id FOREIGN KEY (user_id) REFERENCES users(id)
 						</select>
 					</div>
 					
+								<div class="rounded border shadow p-3">
+								
+				<h3>Scegli le tue preferenze</h3>
+				
+				<form action="search.html" method="get">
+					<div class="row">
+						<div class=" px-4 py-2">
+							Parcheggio <input type="checkbox" name="service" value="parking" class="check">
+						</div><div class="px-4 py-2">
+							Pedalò <input type="checkbox" name="service" value="pedalo" class="check">
+						</div><div class="px-4 py-2">
+							Docce <input type="checkbox" name="service" value="shower" class="check">
+						</div><div class="px-4 py-2"> 
+							Toilette <input type="checkbox" name="service" value="toilette" class="check">
+						</div>
+					</div>
+					<div class="row">
+						<div class="px-4 py-2">
+							Punto ristoro <input type="checkbox" name="service"value="restaurant" class="check"> 
+						</div><div class="px-4 py-2">
+							Servizi per disabili <input type="checkbox" name="service" value="disabled_facilities" class="check">
+						</div><div class="px-4 py-2">
+							Area bambini <input type="checkbox" name="service"value="children_area" class="check"> 
+						</div><div class="px-4 py-2">
+							Dog area <input type="checkbox"name="service" value="dog_area" class="check">
+						</div>
+					</div>
+					<button type="submit"
+						class="btn btn-outline-info shadow m-4">Filtra
+					</button>					
+				</form>
+			</div>
+					
 					
 
 					<button type="submit" class="rounded btn-sample btn-block btn-lg">Modifica</button>
