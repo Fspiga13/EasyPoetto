@@ -96,7 +96,7 @@ public class BeachResortFactory {
 			
 	}
 	
-	// Resctituisce lista dei resort filtrati per servizi
+	// Restituisce lista dei resort filtrati per servizi
 	
 	public List<BeachResort> getFilteredBeachResorts(List<String> services) {
 		

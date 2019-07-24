@@ -59,7 +59,7 @@
 			</div>
 
 				<form action="search.html"  method="get">
-	        	<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-5 mb-5 ">Search Beach Resort</button>	
+	        	<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-5 mb-5 ">Trova Stabilimento</button>	
 				</form>
 
 		
