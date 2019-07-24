@@ -61,7 +61,7 @@
 						<li>Area bambini</li>
 					</c:if>
 					<c:if test="${beachResort.dogArea==true}">
-						<li>Dog Area</li>
+						<li>Dog area</li>
 					</c:if>
 				</ul>
 			</div>
