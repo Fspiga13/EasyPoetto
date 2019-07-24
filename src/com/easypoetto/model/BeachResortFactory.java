@@ -39,7 +39,9 @@ public class BeachResortFactory {
 		
 		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
 
-			String sql = "select * from beach_resorts";
+			String sql = "select email, name, description, image, logo, address, telephone, num_umbrellas, "
+					+ "num_beach_loungers, parking, pedalo, shower, toilette, restaurant, "
+					+ "disabled_facilities, children_area, dog_area from beach_resorts, users where user_id = users.id";
 
 			ResultSet result = stmt.executeQuery(sql);
 
@@ -53,6 +55,7 @@ public class BeachResortFactory {
 						convertBoolean(result.getString("children_area")), convertBoolean(result.getString("dog_area"))));
 			}
 
+			System.out.println("AAAA " + beachResorts.get(0).getName());
 			return beachResorts;
 					
 		} catch (SQLException e) {

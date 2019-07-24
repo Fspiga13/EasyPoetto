@@ -47,7 +47,7 @@ logo VARCHAR2(2000CHAR),
 address VARCHAR2(200CHAR),
 telephone VARCHAR2(15CHAR),
 num_umbrellas NUMBER(3,0),
-num_beach_loungers NUMBER(3,0),
+num_beach_loungers NUMBER(4,0),
 parking CHAR(1)CHECK (parking in ('Y','N')),
 pedalo CHAR(1)CHECK (pedalo in ('Y','N')),
 shower CHAR(1)CHECK (shower in ('Y','N')),
@@ -98,6 +98,6 @@ INSERT INTO USERS VALUES(user_id_seq.nextval, 'omar@tiscali.it','omar',1);
 INSERT INTO USERS VALUES(user_id_seq.nextval, 'giulia@tiscali.it','giulia',1);
 INSERT INTO USERS VALUES(user_id_seq.nextval, 'federico@tiscali.it','federico',2);
 
-INSERT INTO CLIENTS VALUES(client_id_seq.nextval,4,'Federico','Spiga',TO_DATE('10-01-1995', 'YYYY-MM-DD'));
-INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,2,'Il Lido','Scetti bello','http://www.lidocagliari.com/public/biz_editor/Image/slideshow/2.jpg','http://www.lidocagliari.com/public/biz_editor/custom/logo_illido.png','Viale Poetto n°1','070123123',500,1500,'Y','Y','Y','Y','Y','Y','Y','N');
-INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,3,'Le Palmette','Scetti sgabuzzo','https://www.bookyourbeach.net/album/768/2263/13433138-609097139266648-6982807008407385407-o.jpg','http://www.lepalmette.it/uploads/YJ7OJcFI/737x0_399x0/logo1.jpg','Viale Poetto n°2', '3331231234',50,150,'N','Y','N','N','Y','N','N','N');
+INSERT INTO CLIENTS VALUES(client_id_seq.nextval,4,'Federico','Spiga',TO_DATE('1995-10-01', 'YYYY-MM-DD'));
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,2,'Il Lido','Scetti bello','http://www.lidocagliari.com/public/biz_editor/Image/slideshow/2.jpg','http://www.lidocagliari.com/public/biz_editor/custom/logo_illido.png','Viale Poetto n1','070123123',500,1500,'Y','Y','Y','Y','Y','Y','Y','N');
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,3,'Le Palmette','Scetti sgabuzzo','https://www.bookyourbeach.net/album/768/2263/13433138-609097139266648-6982807008407385407-o.jpg','http://www.lepalmette.it/uploads/YJ7OJcFI/737x0_399x0/logo1.jpg','Viale Poetto n2', '3331231234',50,150,'N','Y','N','N','Y','N','N','N');
