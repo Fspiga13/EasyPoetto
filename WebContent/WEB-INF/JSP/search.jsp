@@ -44,11 +44,11 @@
 						<div class="px-4 py-2">
 							Punto ristoro <input type="checkbox" name="service"value="restaurant" class="check"> 
 						</div><div class="px-4 py-2">
-							Servizi per disabili <input type="checkbox" name="service" value="disabledFacilities" class="check">
+							Servizi per disabili <input type="checkbox" name="service" value="disabled_facilities" class="check">
 						</div><div class="px-4 py-2">
-							Area bambini <input type="checkbox" name="service"value="childrenArea" class="check"> 
+							Area bambini <input type="checkbox" name="service"value="children_area" class="check"> 
 						</div><div class="px-4 py-2">
-							Dog area <input type="checkbox"name="service" value="restaurant" class="check">
+							Dog area <input type="checkbox"name="service" value="dog_area" class="check">
 						</div>
 					</div>
 					<button type="submit"

@@ -26,14 +26,21 @@ public class ProfileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		//Verificare se loggato
 		//Verificare il ruolo e mostrare la jsp corretta
-		
+		int role = -1;
 		switch(role) {
 		
 		case 0:
-			
-		
+			request.getRequestDispatcher("WEB-INF/JSP/admin_profile.jsp").forward(request, response);
+			break;
+		case 1:
+			request.getRequestDispatcher("WEB-INF/JSP/beach_resort_profile.jsp").forward(request, response);
+			break;
+		case 2:
+			request.getRequestDispatcher("WEB-INF/JSP/client_profile.jsp").forward(request, response);
+			break;
 		}
 	}
 
@@ -42,6 +49,7 @@ public class ProfileServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// EFFETTUARE LE MODIFICHE AI DATI
 	}
 
 }

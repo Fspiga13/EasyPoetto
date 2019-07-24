@@ -33,7 +33,7 @@ public class BeachResortFactory {
 		
 	}
 	
-	public BeachResort getBeachResort(int id) {
+	public BeachResort getBeachResortById(int id) {
 		
 		
 		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
@@ -56,7 +56,7 @@ public class BeachResortFactory {
 					
 		} catch (SQLException e) {
 			Logger.getLogger(BeachResortFactory.class.getName()).log(Level.SEVERE, null, e);
-			System.out.println("errore in getBeachResorts dentro BeachResortFactory");
+			System.out.println("errore in getBeachResortById dentro BeachResortFactory");
 		}	
 		
 		return null;
@@ -90,6 +90,45 @@ public class BeachResortFactory {
 		} catch (SQLException e) {
 			Logger.getLogger(BeachResortFactory.class.getName()).log(Level.SEVERE, null, e);
 			System.out.println("errore in getBeachResorts dentro BeachResortFactory");
+		}	
+		
+		return null;
+			
+	}
+	
+	// Resctituisce lista dei resort filtrati per servizi
+	
+	public List<BeachResort> getFilteredBeachResorts(List<String> services) {
+		
+		List<BeachResort> beachResorts = new ArrayList<BeachResort>();
+			
+		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
+
+			String sql = "select id, name, description, image, "
+					+ "parking, pedalo, shower, toilette, restaurant, "
+					+ "disabled_facilities, children_area, dog_area from beach_resorts where ";
+			
+			for (String service : services) {
+				sql += service + "= 'Y' and ";
+			}
+			
+			sql = sql.substring(0, sql.length() - 4);
+
+			ResultSet result = stmt.executeQuery(sql);
+
+			while (result.next()) {
+				
+				beachResorts.add(new BeachResort(result.getInt("id"), result.getString("name"),result.getString("description"), result.getString("image"),
+						convertBoolean(result.getString("parking")), convertBoolean(result.getString("pedalo")), convertBoolean(result.getString("shower")), convertBoolean(result.getString("toilette")),
+						convertBoolean(result.getString("restaurant")), convertBoolean(result.getString("disabled_facilities")), 
+						convertBoolean(result.getString("children_area")), convertBoolean(result.getString("dog_area"))));
+			}
+			
+			return beachResorts;
+					
+		} catch (SQLException e) {
+			Logger.getLogger(BeachResortFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("errore in getFilteredBeachResorts dentro BeachResortFactory");
 		}	
 		
 		return null;

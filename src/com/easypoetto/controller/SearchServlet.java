@@ -1,13 +1,16 @@
 package com.easypoetto.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.easypoetto.model.BeachResort;
 import com.easypoetto.model.BeachResortFactory;
 
 /**
@@ -31,8 +34,19 @@ public class SearchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		request.setAttribute("beachResorts", BeachResortFactory.getInstance().getBeachResorts());
+		String[] servicesStrings = request.getParameterValues("service");
+		
+		if(servicesStrings != null) {
+		
+			List<String> services = new ArrayList<String>(Arrays.asList(servicesStrings));	
+			request.setAttribute("beachResorts", BeachResortFactory.getInstance().getFilteredBeachResorts(services));
+			
+		}else {			
+			request.setAttribute("beachResorts", BeachResortFactory.getInstance().getBeachResorts());
+		}
+		
 		request.getRequestDispatcher("WEB-INF/JSP/search.jsp").forward(request, response);
+
 	}
 
 	/**
@@ -42,7 +56,7 @@ public class SearchServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		request.setAttribute("beachResort", 
-				BeachResortFactory.getInstance().getBeachResort(Integer.parseInt(request.getParameter("beachResortId"))));
+				BeachResortFactory.getInstance().getBeachResortById(Integer.parseInt(request.getParameter("beachResortId"))));
 		request.getRequestDispatcher("WEB-INF/JSP/beach_resort.jsp").forward(request, response);
 	}
 
