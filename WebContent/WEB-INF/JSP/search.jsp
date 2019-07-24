@@ -25,9 +25,9 @@
 
 		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div>
 
-		<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle">
+		<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 mb-5">
 
-			<div>
+			<div class="rounded border shadow p-3">
 				<h3>Scegli le tue preferenze</h3>
 				<form action="search.html" method="get">
 					<div class="row">
@@ -59,52 +59,53 @@
 			</div>
 
 			<c:forEach var="beachResort" items="${beachResorts}">
-
-				<form action="search.html" method="post">
-					<button type="submit"
-						class="btn btn-outline-info btn-lg btn-block shadow m-4">
-
-						<div class="m-1 p-2">
-							<div >
-							<img src="${beachResort.image}" height="200" width="200" class="float-left">
-							</div>	
-							
-							<div class="p-2">
-								<h4>${beachResort.name}</h4>
-								<p class=" border-bottom">${beachResort.description}</p>
+				<div class="pt-4 px-4">
+					<form action="search.html" method="post">
+						<button type="submit"
+							class="btn btn-outline-info btn-lg btn-block shadow">
+	
+							<div class="m-1 p-2">
+								<div >
+								<img src="${beachResort.image}" height="200" width="200" class="float-left">
+								</div>	
 								
-								<p class="text-dark">
-									<c:if test="${beachResort.parking==true}">
-										Parcheggio
-									</c:if>
-									<c:if test="${beachResort.pedalo==true}">
-										Pedalò
-									</c:if>
-									<c:if test="${beachResort.shower==true}">
-										Docce
-									</c:if>
-									<c:if test="${beachResort.toilette==true}">
-										Toilette
-									</c:if>
-									<c:if test="${beachResort.restaurant==true}">
-										Punto ristoro
-									</c:if>
-									<c:if test="${beachResort.disabledFacilities==true}">
-										Servizi per disabili
-									</c:if>
-									<c:if test="${beachResort.childrenArea==true}">
-										Area bambini
-									</c:if>
-									<c:if test="${beachResort.dogArea==true}">
-										Dog area
-									</c:if>
-								</p>
+								<div class="p-2">
+									<h4>${beachResort.name}</h4>
+									<p class=" border-bottom">${beachResort.description}</p>
+									
+									<p class="text-dark">
+										<c:if test="${beachResort.parking==true}">
+											Parcheggio
+										</c:if>
+										<c:if test="${beachResort.pedalo==true}">
+											Pedalò
+										</c:if>
+										<c:if test="${beachResort.shower==true}">
+											Docce
+										</c:if>
+										<c:if test="${beachResort.toilette==true}">
+											Toilette
+										</c:if>
+										<c:if test="${beachResort.restaurant==true}">
+											Punto ristoro
+										</c:if>
+										<c:if test="${beachResort.disabledFacilities==true}">
+											Servizi per disabili
+										</c:if>
+										<c:if test="${beachResort.childrenArea==true}">
+											Area bambini
+										</c:if>
+										<c:if test="${beachResort.dogArea==true}">
+											Dog area
+										</c:if>
+									</p>
+								</div>
 							</div>
-						</div>
-						
-					</button>
-					 <input type="hidden" name="beachResortId" value="${beachResort.id}"/>
-				</form>
+							
+						</button>
+						 <input type="hidden" name="beachResortId" value="${beachResort.id}"/>
+					</form>
+				</div>
 			</c:forEach>
 
 		</div>

@@ -34,14 +34,14 @@
 	<%--INSERIRE IL LOGO A SINISTRA DELLA NAVBAR --%>
 		<ul class="nav navbar-right row" id="mylinks">
 		<li>
-			<a href="home.html" class="mynavlink ">Home</a>
+			<a href="home.html" class="mynavlink">Home</a>
 		</li>
 		<li>
-			<a href="profile.html" class="mynavlink "> 
-																<c:choose> 
-																<c:when test="${logged==true}">  My Profile</c:when>
-																<c:otherwise> Sign Up</c:otherwise>
-																</c:choose>
+			<a href="profile.html" class="mynavlink"> 
+				<c:choose> 
+				<c:when test="${logged==true}">  My Profile</c:when>
+				<c:otherwise> Sign Up</c:otherwise>
+				</c:choose>
 			</a>
 		</li>
 		<li class="mynavlink" >

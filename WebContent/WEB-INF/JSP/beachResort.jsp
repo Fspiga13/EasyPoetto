@@ -20,11 +20,11 @@
 <body>
 	<%-- <c:set var="logged" scope="request" value="${true}"/> Se siamo nella pagina di Home, siamo già loggati quindi per forza true --%>
 	<jsp:include page="nav_bar.jsp"></jsp:include>
-	<div class="row col-lg-12 col-md-12 col-sm-12">
+	<div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
 
-		<div class="col-lg-2 col-md-2 col-sm-2"></div>
+		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div>
 
-		<div class="col-lg-8 col-md-8 col-sm-8 align-middle">
+		<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle">
 
 			<img src="${beachResort.image}" class="img-fluid py-5">
 			<h1>
@@ -85,7 +85,7 @@
 
 		</div>
 
-		<div class="col-lg-2 col-md-2 col-sm-2"></div>
+		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div>
 	</div>
 
 

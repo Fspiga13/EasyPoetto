@@ -29,21 +29,31 @@ public class HomeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		HttpSession session = request.getSession(false);
 
-		String email = (String) session.getAttribute("email");
-		String password = (String) session.getAttribute("password");
-		Integer role = (Integer) session.getAttribute("role");
-
-		
-		if (email!= null && password != null && role != null &&
-				!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
-				UserFactory.getInstance().login(email, password) == role){
+		if(session == null || session.getAttribute("email") == null || session.getAttribute("password") == null) {
 			
 			request.getRequestDispatcher("WEB-INF/JSP/home.jsp").forward(request, response);
-
-		} else {
-			request.getRequestDispatcher("WEB-INF/JSP/home.jsp").forward(request, response);
+		}else {
+		
+			String email = (String) session.getAttribute("email");
+			String password = (String) session.getAttribute("password");
+			Integer role = (Integer) session.getAttribute("role");
+			
+			if (email!= null && password != null && role != null &&
+					!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
+					UserFactory.getInstance().login(email, password) == role){
+				
+				String logout = request.getParameter("logout");
+				if (logout != null) {
+					session.invalidate();
+					request.getRequestDispatcher("WEB-INF/JSP/home.jsp").forward(request, response);
+				} else {
+					response.sendRedirect("login.html");
+				}
+			}
 		}
 	}
 
