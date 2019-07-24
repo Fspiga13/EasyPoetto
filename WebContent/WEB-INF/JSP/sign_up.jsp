@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="../../jQuery/jquery-3.4.1.min.js"></script>
-	<title>Easy Poetto - Registrazione </title>
+	<title>Easy Poetto - Registrati </title>
 </head>
 <body>
 		<%-- Imposto le variabili che servono alla navbar per essere visualizzata nel modo corretto --%>
@@ -24,7 +24,7 @@
 				
 
 	 			<div id="form"  class="shadow-lg border border-light p-5 rounded" >
-	 				 			<h1>Login</h1>
+	 				 			<h1>Registrati</h1>
 		 			<c:if test="${not empty error}">
 		 				<div  class="alert alert-danger" role="alert">
 		 					${error}
@@ -36,19 +36,23 @@
 		 				</div>
  					</c:if>
 		 			
-					<form action="login.html" method="post"style="display:inline">
-					<div>
-				  		<label for="email">Email</label>
-				  		<input type="email" id="email" name="email" class="form-control mb-4"/> 
-				  	</div>
-				  	<div>
-				  		<label for="password">Password</label>
-				  		<input type="password" id="password" name="password" class="form-control mb-4"/>
-				  	</div>
-					<button type="submit" class="rounded btn-sample sign" formaction="login.html">Registrati come cliente</button>
-					</form>
-					<form action="signup.html" method="get" style="display:inline">
-		 				<button type="submit"class="rounded btn-sample sign">Registrati come stabilimento</button>
+					<form action="signup.html" method="post"style="display:inline">
+						<div>
+					  		<label for="email">Email</label>
+					  		<input type="email" id="email" name="email" class="form-control mb-4"/> 
+					  	</div>
+					  	<div>
+					  		<label for="password">Password</label>
+					  		<input type="password" id="password" name="password" class="form-control mb-4"/>
+					  	</div>
+					  	<div>
+					  		<label for="confirm_password">Conferma Password</label>
+					  		<input type="password" id="confirm_password" name="confirm_password" class="form-control mb-4"/>
+					  	</div>
+					  	<div>
+							<button type="submit" class="rounded btn-sample sign" formaction="signup.html">Registrati come cliente</button>
+			 				<button type="submit"class="rounded btn-sample sign"formaction="signup.html">Registrati come stabilimento</button>
+			 			</div>
 					</form>	 			
 	 			</div>
 			</div>
