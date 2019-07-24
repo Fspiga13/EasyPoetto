@@ -94,10 +94,68 @@ CONSTRAINT fk_res_beach_package_id FOREIGN KEY (beach_package_id) REFERENCES bea
 );
 
 INSERT INTO USERS VALUES(user_id_seq.nextval, 'admin@poetto.it','poetto',0);
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'omar@tiscali.it','omar',1);
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'giulia@tiscali.it','giulia',1);
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'federico@tiscali.it','federico',2);
 
-INSERT INTO CLIENTS VALUES(client_id_seq.nextval,4,'Federico','Spiga',TO_DATE('1995-10-01', 'YYYY-MM-DD'));
-INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,2,'Il Lido','Scetti bello','http://www.lidocagliari.com/public/biz_editor/Image/slideshow/2.jpg','http://www.lidocagliari.com/public/biz_editor/custom/logo_illido.png','Viale Poetto n1','070123123',500,1500,'Y','Y','Y','Y','Y','Y','Y','N');
-INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,3,'Le Palmette','Scetti sgabuzzo','https://www.bookyourbeach.net/album/768/2263/13433138-609097139266648-6982807008407385407-o.jpg','http://www.lepalmette.it/uploads/YJ7OJcFI/737x0_399x0/logo1.jpg','Viale Poetto n2', '3331231234',50,150,'N','Y','N','N','Y','N','N','N');
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@lepalmette.it','palmette',1);
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@illido.it','daquila',1);
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@dacquila.it','lido',1);
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@emerson.it','emerson',1);
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@palmbeach','palmbeach',1);
+
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'federico@tiscali.it','federico',2);
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'giulia@tiscali.it','giulia',2);
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'omar@tiscali.it','omar',2);
+
+
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,2,'Le Palmette Beach Club',
+'Inaugurato nel 2015, Le Palmette è l''unico stabilimento balneare della Prima fermata del Lungomare Poetto che offre una spiaggia attrezzata a Cagliari con ombrelloni, lettini e un servizio di noleggio di attrezzature per sport acquatici. La struttura comprende anche un bar moderno e luminoso dove ripararsi nelle ore più calde.',
+'https://www.bookyourbeach.net/album/768/2263/13433138-609097139266648-6982807008407385407-o.jpg',
+'https://www.primiposti.it/blog/wp-content/uploads/2018/11/logo-le-palmette-blog.jpg',
+'Viale Lungo Mare Poetto, Prima Fermata, 09126 Cagliari CA, Italia',
+'338 104 1979',500,1500,'Y','Y','Y','Y','Y','Y','Y','N');
+
+
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,3,
+'Stabilimento Balneare D''Aquila',
+'Nell''immensa e bellissima spiaggia cittadina del Poetto, nel 1913 è nato lo stabilimento balneare D''Aquila, 
+al servizio di Cagliari e hinterland per godere di sabbia soffice, mare azzurro, relax, divertimento e sport.',
+'https://i.pinimg.com/originals/cd/6e/45/cd6e45287a4af9e357624598f4547615.jpg',
+'https://lh3.googleusercontent.com/ZXe4-KqNqdjjGRxeymbJx7FcZbzQ9z4RG4Wzc5wTGuoFqX-daeV587gqsQBkde-c772D-28h=w768-h768-n-o-v1',
+'Viale Lungo Mare Poetto, Seconda Fermata, 09126 Cagliari CA, Italia', 
+'070 371698',50,150,'N','Y','N','N','Y','N','N','N');
+
+
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,4,
+'Il Lido',
+'Nel Golfo di Cagliari noto anche come Golfo degli Angeli, sorge lo stabilimento balneare “Il Lido” 
+dal 1914  al servizio dei Cagliaritani con più di 1000 cabine e numerosi servizi a disposizione a chi
+desidera trascorrere le vacanze in una spiaggia da sogno baciata da un mare cristallino.',
+'http://www.lidocagliari.com/public/biz_editor/Image/slideshow/2.jpg',
+'http://www.lidocagliari.com/public/biz_editor/custom/logo_illido.png',
+'Viale Lungo Mare Poetto, Terza Fermata, 09126 Cagliari CA, Italia',
+'070 3891698',500,1500,'Y','Y','Y','Y','Y','Y','Y','N');
+
+
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,5,
+'Emerson',
+'In un’ampia e accogliente spiaggia con una distesa di lettini crema, l’Emerson è un’elegante 
+struttura balneare con docce, servizi e spogliatoi. Due punti bar e servizi dal tocco giovane e sportivo 
+a questa realtà “made” in Cagliari.',
+'http://www.emersoncagliari.it/wp-content/uploads/2017/03/spiaggia5.jpg',
+'https://cdn.dribbble.com/users/195122/screenshots/3637821/emerson_main_logo.jpg',
+'Viale Lungo Mare Poetto, Quarta Fermata, 09126 Cagliari CA, Italia', 
+'348 629 3969',50,150,'N','Y','N','N','Y','N','N','N');
+
+
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,6,
+'Palm Beach','Elegante struttura balneare con docce, servizi e spogliatoi. Un’ottimo ristorante con eleganti
+piatti della nostra tradizione. Un ambiente accogliente dove rilassarsi e godersi un aperitivo al tramonto. 
+Un’Oasi anche per i più piccoli che possono godere di un baby parking esclusivo.',
+'https://cdn0.matrimonio.com/emp/fotos/5/4/5/0/19905281-2032043933698506-8482575641150889729-n.jpg',
+'https://image.freepik.com/free-vector/palm-beach-logo-design-inspiration_57043-208.jpg',
+'Viale Lungo Mare Poetto, Quinta Fermata, 09126 Cagliari CA, Italia',
+'327 359 1280',500,1500,'Y','Y','Y','Y','Y','Y','Y','N');
+
+
+INSERT INTO CLIENTS VALUES(client_id_seq.nextval,7,'Federico','Spiga',TO_DATE('1995-01-10', 'YYYY-MM-DD'));
+INSERT INTO CLIENTS VALUES(client_id_seq.nextval,8,'Giulia','Pisano',TO_DATE('1991-04-22', 'YYYY-MM-DD'));
+INSERT INTO CLIENTS VALUES(client_id_seq.nextval,9,'Omar Stefano','Corda',TO_DATE('1990-01-05', 'YYYY-MM-DD'));
