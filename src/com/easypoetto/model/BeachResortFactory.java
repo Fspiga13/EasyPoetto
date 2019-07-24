@@ -33,24 +33,54 @@ public class BeachResortFactory {
 		
 	}
 	
-	public List<BeachResort> getBeachResorts() {
+	public BeachResort getBeachResort(int id) {
 		
-		List<BeachResort> beachResorts = new ArrayList<BeachResort>();
 		
 		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
 
 			String sql = "select email, name, description, image, logo, address, telephone, num_umbrellas, "
 					+ "num_beach_loungers, parking, pedalo, shower, toilette, restaurant, "
-					+ "disabled_facilities, children_area, dog_area from beach_resorts, users where user_id = users.id";
+					+ "disabled_facilities, children_area, dog_area from beach_resorts, users where user_id = users.id and beach_resorts.id= " + id;
 
 			ResultSet result = stmt.executeQuery(sql);
 
 			while (result.next()) {
 				
-				beachResorts.add(new BeachResort(result.getString("email"), result.getString("name"), result.getString("address"), 
-						result.getString("telephone"), result.getString("description"), result.getString("image"), result.getString("logo"), 
-						result.getInt("num_umbrellas"), result.getInt("num_beach_loungers"), convertBoolean(result.getString("parking")), 
-						convertBoolean(result.getString("pedalo")), convertBoolean(result.getString("shower")), convertBoolean(result.getString("toilette")),
+				return new BeachResort(result.getString("email"), result.getString("name"),result.getString("description"), result.getString("image"),
+						result.getString("logo"), result.getString("address"), result.getString("telephone"), result.getInt("num_umbrellas"),
+						result.getInt("num_beach_loungers"), 
+						 convertBoolean(result.getString("parking")), convertBoolean(result.getString("pedalo")), convertBoolean(result.getString("shower")), convertBoolean(result.getString("toilette")),
+						convertBoolean(result.getString("restaurant")), convertBoolean(result.getString("disabled_facilities")), 
+						convertBoolean(result.getString("children_area")), convertBoolean(result.getString("dog_area")));
+			}
+					
+		} catch (SQLException e) {
+			Logger.getLogger(BeachResortFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("errore in getBeachResorts dentro BeachResortFactory");
+		}	
+		
+		return null;
+		
+	}
+
+	// Restituisce lista con informazioni essenziali dei resort
+	
+	public List<BeachResort> getBeachResorts() {
+		
+		List<BeachResort> beachResorts = new ArrayList<BeachResort>();
+			
+		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
+
+			String sql = "select id, name, description, image, "
+					+ "parking, pedalo, shower, toilette, restaurant, "
+					+ "disabled_facilities, children_area, dog_area from beach_resorts";
+
+			ResultSet result = stmt.executeQuery(sql);
+
+			while (result.next()) {
+				
+				beachResorts.add(new BeachResort(result.getInt("id"), result.getString("name"),result.getString("description"), result.getString("image"),
+						convertBoolean(result.getString("parking")), convertBoolean(result.getString("pedalo")), convertBoolean(result.getString("shower")), convertBoolean(result.getString("toilette")),
 						convertBoolean(result.getString("restaurant")), convertBoolean(result.getString("disabled_facilities")), 
 						convertBoolean(result.getString("children_area")), convertBoolean(result.getString("dog_area"))));
 			}
@@ -63,7 +93,8 @@ public class BeachResortFactory {
 		}	
 		
 		return null;
-		
+			
 	}
 
+	 
 }

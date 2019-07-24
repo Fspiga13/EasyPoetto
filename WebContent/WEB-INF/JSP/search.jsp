@@ -45,7 +45,7 @@
 
 			<c:forEach var="beachResort" items="${beachResorts}">
 
-				<form action="search.html" method="get">
+				<form action="search.html" method="post">
 					<button type="submit"
 						class="btn btn-outline-info btn-lg btn-block shadow m-4">
 
@@ -55,8 +55,9 @@
 							<h4>${beachResort.name}</h4>
 							<p></p>
 						</div>
-
+						
 					</button>
+					 <input type="hidden" name="beachResortId" value="${beachResort.id}"/>
 				</form>
 			</c:forEach>
 

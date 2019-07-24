@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.easypoetto.model.BeachResort;
 import com.easypoetto.model.BeachResortFactory;
 
 /**
@@ -40,7 +41,8 @@ public class SearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//Passare info stabilimento
+		request.setAttribute("beachResort", 
+				BeachResortFactory.getInstance().getBeachResort(Integer.parseInt(request.getParameter("beachResortId"))));
 		request.getRequestDispatcher("WEB-INF/JSP/beachResort.jsp").forward(request, response);
 	}
 

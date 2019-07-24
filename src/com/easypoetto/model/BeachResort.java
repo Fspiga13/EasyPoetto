@@ -2,6 +2,7 @@ package com.easypoetto.model;
 
 public class BeachResort{
 
+	private int id;
 	private String email;
 	private String name;
 	private String address;
@@ -21,8 +22,42 @@ public class BeachResort{
 	private boolean dogArea;
 	
 	/**
+	 * @param id
+	 * @param name
+	 * @param description
+	 * @param image
+	 * @param parking
+	 * @param pedalo
+	 * @param shower
+	 * @param toilette
+	 * @param restaurant
+	 * @param disabledFacilities
+	 * @param childrenArea
+	 * @param dogArea
+	 */
+	public BeachResort(int id, String name, String description, String image, boolean parking, boolean pedalo, boolean shower, boolean toilette, boolean restaurant,
+			boolean disabledFacilities, boolean childrenArea, boolean dogArea) {
+		
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.image = image;
+		this.parking = parking;
+		this.pedalo = pedalo;
+		this.shower = shower;
+		this.toilette = toilette;
+		this.restaurant = restaurant;
+		this.disabledFacilities = disabledFacilities;
+		this.childrenArea = childrenArea;
+		this.dogArea = dogArea;
+	}
+	
+	
+	/**
+	 * @param email
 	 * @param name
 	 * @param address
+	 * @param telephone
 	 * @param description
 	 * @param image
 	 * @param logo
@@ -37,7 +72,7 @@ public class BeachResort{
 	 * @param childrenArea
 	 * @param dogArea
 	 */
-	public BeachResort(String email, String name, String address, String telephone, String description, String image, String logo, int numUmbrellas,
+	public BeachResort(String email, String name, String description, String image, String logo, String address, String telephone, int numUmbrellas,
 			int numBeachLoungers, boolean parking, boolean pedalo, boolean shower, boolean toilette, boolean restaurant,
 			boolean disabledFacilities, boolean childrenArea, boolean dogArea) {
 		
@@ -177,6 +212,13 @@ public class BeachResort{
 	 */
 	public boolean isDogArea() {
 		return dogArea;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
 	}
 	
 }
