@@ -141,7 +141,7 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,5,
 struttura balneare con docce, servizi e spogliatoi. Due punti bar e servizi dal tocco giovane e sportivo 
 a questa realtà “made” in Cagliari.',
 'http://www.emersoncagliari.it/wp-content/uploads/2017/03/spiaggia5.jpg',
-'https://cdn.dribbble.com/users/195122/screenshots/3637821/emerson_main_logo.jpg',
+'http://www.cagliariaccommodations.com/wp-content/uploads/2019/04/logo.png',
 'Viale Lungo Mare Poetto, Quarta Fermata, 09126 Cagliari CA, Italia', 
 '348 629 3969',50,150,'N','Y','N','N','Y','N','N','N');
 
