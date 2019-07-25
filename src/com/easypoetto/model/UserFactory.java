@@ -7,9 +7,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.easypoetto.model.DbManager;
-import com.easypoetto.model.UserFactory;
-
 public class UserFactory {
 	
 	private static UserFactory singleton;
@@ -71,6 +68,53 @@ public class UserFactory {
 			
 		return false;
 		
+	}
+
+	public boolean addUser(String email, String password, Integer role) {
+		
+		if (getUser(email) == null) { // se l'Utente non c'e' lo aggiungo, altrimenti return false;
+		
+			String sqlNewUser = " insert into users values (user_id_seq.nextval, ?, ?, ?) ";
+			try (Connection conn = DbManager.getInstance().getDbConnection();
+					PreparedStatement stmt = conn.prepareStatement(sqlNewUser)) {
+				
+
+				stmt.setString(1, email);
+				stmt.setString(2, password);
+				stmt.setInt(3, role);
+	
+				stmt.executeUpdate();
+				return true;
+			} catch (SQLException e) {
+				Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE, null, e);
+				System.out.println("Errore in addUser esecuzione query di aggiunta");
+			}
+
+		}
+		return false;
+	}
+
+	private User getUser(String email) {
+		
+		String sql = "select email, role from users where email= ?";
+
+		try (Connection conn = DbManager.getInstance().getDbConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setString(1, email);
+			ResultSet result = stmt.executeQuery();
+
+			while (result.next()) {
+				Integer role = result.getInt("role");
+				User user = new User(email, role);
+				return user;
+			}
+
+		} catch (SQLException e) {
+			Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("errore in getUser dentro UserFactory");
+
+		}
+		return null;
 	}
 
 }

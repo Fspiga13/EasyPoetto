@@ -39,7 +39,7 @@
 					<form action="signup.html" method="post"style="display:inline">
 						<div>
 					  		<label for="email">Email</label>
-					  		<input type="email" id="email" name="email" class="form-control mb-4"/> 
+					  		<input type="email" id="email" name="email" class="form-control mb-4" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" /> 
 					  	</div>
 					  	<div>
 					  		<label for="password">Password</label>
@@ -50,8 +50,15 @@
 					  		<input type="password" id="confirm_password" name="confirm_password" class="form-control mb-4"/>
 					  	</div>
 					  	<div>
-							<button type="submit" class="rounded btn-sample sign" formaction="signup.html">Registrati come cliente</button>
-			 				<button type="submit"class="rounded btn-sample sign"formaction="signup.html">Registrati come stabilimento</button>
+					  		<label for="client">Cliente</label>
+							<input type="radio" name="role" id="client" value="client">
+							<label for="beach_resort">Stabilimento</label>
+							<input type="radio" name="role" id="beach_resort" value="beach_resort">
+					  	</div>
+					  	
+					  	
+					  	<div>
+							<button type="submit" class="rounded btn-sample sign" formaction="signup.html">Registrati</button>
 			 			</div>
 					</form>	 			
 	 			</div>

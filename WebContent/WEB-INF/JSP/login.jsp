@@ -39,7 +39,7 @@
 					<form action="login.html" method="post"style="display:inline">
 					<div>
 				  		<label for="email">Email</label>
-				  		<input type="email" id="email" name="email" class="form-control mb-4"/> 
+				  		<input type="email" id="email" name="email" class="form-control mb-4" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" /> 
 				  	</div>
 				  	<div>
 				  		<label for="password">Password</label>
@@ -47,7 +47,7 @@
 				  	</div>
 					<button type="submit" class="rounded btn-sample sign" formaction="login.html">Accedi</button>
 					</form>
-					<form action="usermanager.html" method="get" style="display:inline">
+					<form action="signup.html" method="get" style="display:inline">
 		 				<button type="submit"class="rounded btn-sample sign">Iscriviti</button>
 					</form>	 			
 	 			</div>
