@@ -52,7 +52,7 @@
 					
 						<div>
 					  	<label for="name">Nome</label>
-					  	<input type="text" class="form-control mb-4" id="name" name="name" required <c:if test= "${not empty client.name}">value="${client.name}"</c:if>/>
+					  	<input type="text" class="form-control mb-4" id="name" name="name" required <c:if test= "${not empty client}">value="${client.name}"</c:if>/>
 					    </div>
 					    <div>
 					    <label for="surname">Cognome</label>
@@ -76,7 +76,7 @@
 					
 			 		
 					
-						<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-5">Salva</button>
+						<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-5"><c:choose> <c:when test= "${not empty client}">Modifica</c:when><c:otherwise>Salva</c:otherwise></c:choose></button>
 		 			</form>
 	 			</div>
 			</div>

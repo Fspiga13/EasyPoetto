@@ -46,4 +46,31 @@ public class UserFactory {
 		return null;
 	}
 
+	public boolean editDetails(int idUser, String newEmail, String newPassword) {
+		
+		try (Connection conn = DbManager.getInstance().getDbConnection()) {
+		
+			String sqlUpdateUserDetails = " update users set email = ?, password= ? where id = ? ";
+			try (PreparedStatement stmt = conn.prepareStatement(sqlUpdateUserDetails)) {
+				stmt.setString(1, newEmail);
+				stmt.setString(2, newPassword);
+				stmt.setInt(3, idUser);
+				stmt.executeUpdate();
+				conn.commit(); //committo le modifiche, tutto � andato a buon fine
+				return true;//operazione conclusa con successo
+			} catch (SQLException e) {
+				conn.rollback();//elimino le modifiche effettuate in transazione
+				Logger.getLogger(ClientFactory.class.getName()).log(Level.SEVERE, null, e);
+				System.out.println("Errore in editDetails di UserFactory");
+			}	
+			
+		} catch (SQLException e) {
+			Logger.getLogger(ClientFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("Errore in editDetails di UserFactory");
+		}
+			
+		return false;
+		
+	}
+
 }
