@@ -1,113 +1,101 @@
+	
+DROP SEQUENCE user_id_seq; 
+DROP SEQUENCE client_id_seq; 
+DROP SEQUENCE beach_resort_id_seq; 
+DROP SEQUENCE reservation_id_seq; 
+DROP SEQUENCE beach_package_id_seq; 
 
-DROP SEQUENCE user_id_seq;
-DROP SEQUENCE client_id_seq;
-DROP SEQUENCE beach_resort_id_seq;
-DROP SEQUENCE reservation_id_seq;
-DROP SEQUENCE beach_package_id_seq;
+drop table RESERVATIONS_BEACH_PACKAGES; 
+drop table beach_packages; drop table RESERVATIONS; 
+drop table beach_resorts; drop table clients; 
+DROP TABLE USERS; 
 
-drop table RESERVATIONS_BEACH_PACKAGES;
-drop table beach_packages;
-drop table RESERVATIONS;
-drop table beach_resorts;
-drop table clients;
-DROP TABLE USERS;
+CREATE SEQUENCE user_id_seq; 
+CREATE SEQUENCE client_id_seq; 
+CREATE SEQUENCE beach_resort_id_seq; 
+CREATE SEQUENCE reservation_id_seq; 
+CREATE SEQUENCE beach_package_id_seq; 
 
-CREATE SEQUENCE user_id_seq;
-CREATE SEQUENCE client_id_seq;
-CREATE SEQUENCE beach_resort_id_seq;
-CREATE SEQUENCE reservation_id_seq;
-CREATE SEQUENCE beach_package_id_seq;
+CREATE TABLE USERS( 
+id NUMBER(38,0), 
+email VARCHAR2(320CHAR)NOT NULL UNIQUE, 
+password VARCHAR2(2000CHAR)NOT NULL, 
+role NUMBER(1,0) NOT NULL, 
+CONSTRAINT pk_users_id PRIMARY KEY(id), 
+CONSTRAINT role CHECK(role BETWEEN 0 AND 2) 
+); 
 
-CREATE TABLE USERS(
-id NUMBER(38,0),
-email VARCHAR2(320CHAR)NOT NULL UNIQUE,
-password VARCHAR2(2000CHAR)NOT NULL,
-role NUMBER(1,0) NOT NULL,
-CONSTRAINT pk_users_id PRIMARY KEY(id),
-CONSTRAINT role CHECK(role BETWEEN 0 AND 2)
+CREATE TABLE CLIENTS( 
+id NUMBER(38,0), 
+user_id NUMBER (38,0), 
+name VARCHAR2(50CHAR)NOT NULL, 
+surname VARCHAR2(50CHAR) NOT NULL, 
+birthday DATE NOT NULL, 
+CONSTRAINT pk_clients_id PRIMARY KEY(id), 
+CONSTRAINT fk_clients_users_id FOREIGN KEY (user_id) REFERENCES users(id) 
+);
+	
+CREATE TABLE BEACH_RESORTS( 
+id NUMBER(38,0), 
+user_id NUMBER (38,0), 
+name VARCHAR2(200CHAR)NOT NULL, 
+description VARCHAR2(2000CHAR)NOT NULL, 
+image VARCHAR2(2000CHAR), 
+logo VARCHAR2(2000CHAR), 
+address VARCHAR2(200CHAR), 
+telephone VARCHAR2(15CHAR), 
+num_umbrellas NUMBER(3,0), 
+num_beach_loungers NUMBER(4,0), 
+parking CHAR(1)CHECK (parking in ('Y','N')), 
+pedalo CHAR(1)CHECK (pedalo in ('Y','N')), 
+shower CHAR(1)CHECK (shower in ('Y','N')), 
+toilette CHAR(1)CHECK (toilette in ('Y','N')), 
+restaurant CHAR(1)CHECK (restaurant in ('Y','N')), 
+disabled_facilities CHAR(1)CHECK (disabled_facilities in ('Y','N')), 
+children_area CHAR(1)CHECK (children_area in ('Y','N')), 
+dog_area CHAR(1)CHECK (dog_area in ('Y','N')), 
+CONSTRAINT pk_beach_resorts_id PRIMARY KEY(id), 
+CONSTRAINT fk_beach_resorts_user_id FOREIGN KEY (user_id) REFERENCES users(id) ); 
+CREATE TABLE RESERVATIONS( id NUMBER(38,0), user_id NUMBER (38,0), 
+reservation_date DATE NOT NULL, CONSTRAINT pk_reservations_id PRIMARY KEY(id), 
+CONSTRAINT fk_reservations_user_id FOREIGN KEY (user_id) REFERENCES users(id) 
 );
 
-CREATE TABLE CLIENTS(
-id NUMBER(38,0),
-user_id NUMBER (38,0),
-name VARCHAR2(50CHAR)NOT NULL,
-surname VARCHAR2(50CHAR) NOT NULL,
-birthday DATE NOT NULL,
-CONSTRAINT pk_clients_id PRIMARY KEY(id),
-CONSTRAINT fk_clients_users_id FOREIGN KEY (user_id) REFERENCES users(id)
-);
+CREATE TABLE BEACH_PACKAGES( 
+id NUMBER(38,0), 
+beach_resort_id NUMBER (38,0), 
+included_umbrellas NUMBER (1,0), 
+included_beach_loungers NUMBER (2,0), 
+price NUMBER(6,2), 
+CONSTRAINT pk_beach_package_id PRIMARY KEY(id), 
+CONSTRAINT fk_beach_packages_beach_resort FOREIGN KEY (beach_resort_id) REFERENCES beach_resorts(id), 
+CONSTRAINT included_umbrellas CHECK(included_umbrellas BETWEEN 0 AND 5), 
+CONSTRAINT included_beach_loungers CHECK(included_beach_loungers BETWEEN 0 AND 15) 
+); 
 
-CREATE TABLE BEACH_RESORTS(
-id NUMBER(38,0),
-user_id NUMBER (38,0),
-name VARCHAR2(200CHAR)NOT NULL,
-description VARCHAR2(2000CHAR)NOT NULL,
-image VARCHAR2(2000CHAR),
-logo VARCHAR2(2000CHAR),
-address VARCHAR2(200CHAR),
-telephone VARCHAR2(15CHAR),
-num_umbrellas NUMBER(3,0),
-num_beach_loungers NUMBER(4,0),
-parking CHAR(1)CHECK (parking in ('Y','N')),
-pedalo CHAR(1)CHECK (pedalo in ('Y','N')),
-shower CHAR(1)CHECK (shower in ('Y','N')),
-toilette CHAR(1)CHECK (toilette in ('Y','N')),
-restaurant CHAR(1)CHECK (restaurant in ('Y','N')),
-disabled_facilities CHAR(1)CHECK (disabled_facilities in ('Y','N')),
-children_area CHAR(1)CHECK (children_area in ('Y','N')),
-dog_area CHAR(1)CHECK (dog_area in ('Y','N')),
+CREATE TABLE RESERVATIONS_BEACH_PACKAGES( 
+reservations_id NUMBER (38,0), 
+beach_package_id NUMBER (38,0), 
+quantity NUMBER(1,0), 
+CONSTRAINT quantity CHECK(quantity BETWEEN 0 AND 5), 
+CONSTRAINT pk_res_beach_package_id PRIMARY KEY(reservations_id, beach_package_id), 
+CONSTRAINT fk_res_res_beach_package_id FOREIGN KEY (reservations_id) REFERENCES reservations(id), 
+CONSTRAINT fk_res_beach_package_id FOREIGN KEY (beach_package_id) REFERENCES beach_packages(id) 
+); 
 
-CONSTRAINT pk_beach_resorts_id PRIMARY KEY(id),
-CONSTRAINT fk_beach_resorts_user_id FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
-CREATE TABLE RESERVATIONS(
-id NUMBER(38,0),
-user_id NUMBER (38,0),
-reservation_date DATE NOT NULL,
-
-CONSTRAINT pk_reservations_id PRIMARY KEY(id),
-CONSTRAINT fk_reservations_user_id FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
-CREATE TABLE BEACH_PACKAGES(
-id NUMBER(38,0),
-beach_resort_id NUMBER (38,0),
-included_umbrellas NUMBER (1,0),
-included_beach_loungers NUMBER (2,0),
-price NUMBER(6,2),
-
-CONSTRAINT pk_beach_package_id PRIMARY KEY(id),
-CONSTRAINT fk_beach_packages_beach_resort FOREIGN KEY (beach_resort_id) REFERENCES beach_resorts(id),
-CONSTRAINT included_umbrellas CHECK(included_umbrellas BETWEEN 0 AND 5),
-CONSTRAINT included_beach_loungers CHECK(included_beach_loungers BETWEEN 0 AND 15)
-);
-
-CREATE TABLE RESERVATIONS_BEACH_PACKAGES(
-reservations_id NUMBER (38,0),
-beach_package_id NUMBER (38,0),
-quantity NUMBER(1,0),
-CONSTRAINT quantity CHECK(quantity BETWEEN 0 AND 5),
-CONSTRAINT pk_res_beach_package_id PRIMARY KEY(reservations_id, beach_package_id),
-CONSTRAINT fk_res_res_beach_package_id FOREIGN KEY (reservations_id) REFERENCES reservations(id),
-CONSTRAINT fk_res_beach_package_id FOREIGN KEY (beach_package_id) REFERENCES beach_packages(id)
-);
-
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'admin@poetto.it','poetto',0);
-
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@lepalmette.it','palmette',1);
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@illido.it','lido',1);
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@dacquila.it','daquila',1);
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@emerson.it','emerson',1);
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@palmbeach','palmbeach',1);
-
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'federico@tiscali.it','federico',2);
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'giulia@tiscali.it','giulia',2);
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'admin@poetto.it','poetto',0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@lepalmette.it','palmette',1); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@illido.it','lido',1); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@dacquila.it','daquila',1); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@emerson.it','emerson',1); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@palmbeach','palmbeach',1); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'federico@tiscali.it','federico',2); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'giulia@tiscali.it','giulia',2); 
 INSERT INTO USERS VALUES(user_id_seq.nextval, 'omar@tiscali.it','omar',2);
 
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,2,'Le Palmette Beach Club',
-'Inaugurato nel 2015, Le Palmette � l''unico stabilimento balneare della Prima fermata del Lungomare Poetto che offre una spiaggia attrezzata a Cagliari con ombrelloni, lettini e un servizio di noleggio di attrezzature per sport acquatici. La struttura comprende anche un bar moderno e luminoso dove ripararsi nelle ore pi� calde.',
+'Inaugurato nel 2015, Le Palmette è l''unico stabilimento balneare della Prima fermata del Lungomare Poetto che offre una spiaggia attrezzata a Cagliari con ombrelloni, lettini e un servizio di noleggio di attrezzature per sport acquatici. La struttura comprende anche un bar moderno e luminoso dove ripararsi nelle ore più calde.',
 'https://www.bookyourbeach.net/album/768/2263/13433138-609097139266648-6982807008407385407-o.jpg',
 'https://www.primiposti.it/blog/wp-content/uploads/2018/11/logo-le-palmette-blog.jpg',
 'Viale Lungo Mare Poetto, Prima Fermata, 09126 Cagliari CA, Italia',
@@ -116,7 +104,7 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,2,'Le Palmette Beac
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,4,
 'Stabilimento Balneare D''Aquila',
-'Nell''immensa e bellissima spiaggia cittadina del Poetto, nel 1913 � nato lo stabilimento balneare D''Aquila, 
+'Nell''immensa e bellissima spiaggia cittadina del Poetto, nel 1913 è nato lo stabilimento balneare D''Aquila, 
 al servizio di Cagliari e hinterland per godere di sabbia soffice, mare azzurro, relax, divertimento e sport.',
 'https://i.pinimg.com/originals/cd/6e/45/cd6e45287a4af9e357624598f4547615.jpg',
 'https://lh3.googleusercontent.com/ZXe4-KqNqdjjGRxeymbJx7FcZbzQ9z4RG4Wzc5wTGuoFqX-daeV587gqsQBkde-c772D-28h=w768-h768-n-o-v1',
@@ -126,8 +114,8 @@ al servizio di Cagliari e hinterland per godere di sabbia soffice, mare azzurro,
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,3,
 'Il Lido',
-'Nel Golfo di Cagliari noto anche come Golfo degli Angeli, sorge lo stabilimento balneare �Il Lido� 
-dal 1914  al servizio dei Cagliaritani con pi� di 1000 cabine e numerosi servizi a disposizione a chi
+'Nel Golfo di Cagliari noto anche come Golfo degli Angeli, sorge lo stabilimento balneare Il Lido 
+dal 1914  al servizio dei Cagliaritani con più di 1000 cabine e numerosi servizi a disposizione a chi
 desidera trascorrere le vacanze in una spiaggia da sogno baciata da un mare cristallino.',
 'http://www.lidocagliari.com/public/biz_editor/Image/slideshow/2.jpg',
 'http://www.lidocagliari.com/public/biz_editor/custom/logo_illido.png',
@@ -137,9 +125,9 @@ desidera trascorrere le vacanze in una spiaggia da sogno baciata da un mare cris
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,5,
 'Emerson',
-'In un�ampia e accogliente spiaggia con una distesa di lettini crema, l�Emerson � un�elegante 
+'In un''ampia e accogliente spiaggia con una distesa di lettini crema, l''Emerson è un''elegante 
 struttura balneare con docce, servizi e spogliatoi. Due punti bar e servizi dal tocco giovane e sportivo 
-a questa realt� �made� in Cagliari.',
+a questa realtà made in Cagliari.',
 'http://www.emersoncagliari.it/wp-content/uploads/2017/03/spiaggia5.jpg',
 'http://www.cagliariaccommodations.com/wp-content/uploads/2019/04/logo.png',
 'Viale Lungo Mare Poetto, Quarta Fermata, 09126 Cagliari CA, Italia', 
@@ -147,9 +135,9 @@ a questa realt� �made� in Cagliari.',
 
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,6,
-'Palm Beach','Elegante struttura balneare con docce, servizi e spogliatoi. Un�ottimo ristorante con eleganti
+'Palm Beach','Elegante struttura balneare con docce, servizi e spogliatoi. Un''ottimo ristorante con eleganti
 piatti della nostra tradizione. Un ambiente accogliente dove rilassarsi e godersi un aperitivo al tramonto. 
-Un�Oasi anche per i pi� piccoli che possono godere di un baby parking esclusivo.',
+Un''Oasi anche per i più piccoli che possono godere di un baby parking esclusivo.',
 'https://cdn0.matrimonio.com/emp/fotos/5/4/5/0/19905281-2032043933698506-8482575641150889729-n.jpg',
 'https://image.freepik.com/free-vector/palm-beach-logo-design-inspiration_57043-208.jpg',
 'Viale Lungo Mare Poetto, Quinta Fermata, 09126 Cagliari CA, Italia',
