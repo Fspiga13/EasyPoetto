@@ -141,7 +141,7 @@ Un''Oasi anche per i più piccoli che possono godere di un baby parking esclusiv
 'https://cdn0.matrimonio.com/emp/fotos/5/4/5/0/19905281-2032043933698506-8482575641150889729-n.jpg',
 'https://image.freepik.com/free-vector/palm-beach-logo-design-inspiration_57043-208.jpg',
 'Viale Lungo Mare Poetto, Quinta Fermata, 09126 Cagliari CA, Italia',
-'327 359 1280',500,1500,'Y','Y','Y','Y','Y','Y','Y','N');
+'327 359 1280',500,1500,'Y','Y','Y','Y','Y','Y','Y','Y');
 
 
 INSERT INTO CLIENTS VALUES(client_id_seq.nextval,7,'Federico','Spiga',TO_DATE('1995-01-10', 'YYYY-MM-DD'));
