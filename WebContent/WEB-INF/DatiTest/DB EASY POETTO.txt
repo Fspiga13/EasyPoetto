@@ -114,7 +114,7 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,2,'Le Palmette Beac
 '338 104 1979',500,1500,'Y','Y','Y','Y','Y','Y','Y','N');
 
 
-INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,3,
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,4,
 'Stabilimento Balneare D''Aquila',
 'Nell''immensa e bellissima spiaggia cittadina del Poetto, nel 1913 � nato lo stabilimento balneare D''Aquila, 
 al servizio di Cagliari e hinterland per godere di sabbia soffice, mare azzurro, relax, divertimento e sport.',
@@ -124,7 +124,7 @@ al servizio di Cagliari e hinterland per godere di sabbia soffice, mare azzurro,
 '070 371698',50,150,'N','Y','N','N','Y','N','N','N');
 
 
-INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,4,
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,3,
 'Il Lido',
 'Nel Golfo di Cagliari noto anche come Golfo degli Angeli, sorge lo stabilimento balneare �Il Lido� 
 dal 1914  al servizio dei Cagliaritani con pi� di 1000 cabine e numerosi servizi a disposizione a chi
