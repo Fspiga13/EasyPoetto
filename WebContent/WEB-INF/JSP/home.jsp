@@ -30,21 +30,7 @@
 				fino al Margine Rosso (in territorio di Quartu Sant'Elena) separano il mare dall'area umida delle Saline e 
 				degli stagni di Molentargius.
 			</p>
-			<p>
-				Fino alla fine del XIX secolo la spiaggia del Poetto non era frequentata dagli abitanti di Cagliari, 
-				che preferivano andare al mare nella zona di Giorgino (sud-ovest dell'abitato), piu' vicina ai quartieri 
-				storici e facilmente raggiungibile anche a piedi. Agli inizi del '900, con la costruzione della linea 
-				tramviaria e dei primi stabilimenti balneari (il D'Aquila e il Lido, aperti rispettivamente nel 1913 e nel 1914), 
-				la sabbia candida e le acque cristalline del Poetto iniziarono invece ad esercitare un fascino irresistibile 
-				sui cagliaritani.
-			</p>
-			<p>	
-				Tra le bianche dune allora esistenti furono edificati i famosi casotti, sorta di palafitte 
-				realizzate con legni policromi: queste caratteristiche costruzioni divennero parte del paesaggio 
-				del Poetto e nei mesi estivi ospitavano numerose famiglie di Cagliari e dell'hinterland che spesso 
-				le utilizzavano come vere e proprie seconde case; tutto cio' ebbe fine nel 1985, quando la Capitaneria 
-				di Porto decreto' tra le polemiche l'abbattimento dei casotti del Poetto per problemi di natura igienico-sanitaria.
-			</p>
+			
 			<p>
 				Oltre che per un bagno di sole e per una nuotata, il Poetto e' una location ideale anche per praticare un po' di sport 
 				all'aria aperta: un'isola pedonale va dalla prima fermata fino alla quarta ed e' possibile, unendo anche la passeggiata 

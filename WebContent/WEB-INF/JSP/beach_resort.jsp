@@ -72,7 +72,7 @@
 				<p>Indirizzo: ${beachResort.address}</p>
 			</div>
 
-<%--Se l'utente è loggato vede il bottone e sceglie la sua offerta --%>
+      <%--Se l'utente è loggato vede il bottone e sceglie la sua offerta --%>
 			<c:if test="Se l'utente è loggato">
 				<form action="reservation.html" method="get">
 					<button type="submit"
@@ -80,6 +80,10 @@
 						la tua offerta!</button>
 				</form>
 			</c:if>
+			
+			
+			
+			
 
 
 		</div>
