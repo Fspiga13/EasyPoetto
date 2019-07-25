@@ -46,7 +46,7 @@
 		 					${success}
 		 				</div>
 		 				</c:if>
-		 			<h1>My Profile</h1>
+		 			<h1 class="pb-3">Profilo</h1>
 		 			
 					<form action="profile.html" method="post">
 					

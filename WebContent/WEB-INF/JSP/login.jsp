@@ -23,8 +23,10 @@
 			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 ">
 				
 
-	 			<div id="form"  class="shadow-lg border border-light p-5 rounded" >
-	 				 			<h1>Login</h1>
+	 			<div  class="shadow-lg border border-light p-5 rounded" >
+	 				 			
+	 				<h1 class="pb-3">Login</h1>
+		 			
 		 			<c:if test="${not empty error}">
 		 				<div  class="alert alert-danger" role="alert">
 		 					${error}
@@ -45,10 +47,10 @@
 				  		<label for="password">Password</label>
 				  		<input type="password" id="password" name="password" class="form-control mb-4"/>
 				  	</div>
-					<button type="submit" class="rounded btn-sample sign" formaction="login.html">Accedi</button>
+					<button type="submit" class="btn btn-outline-info btn-lg mt-3 mr-4" formaction="login.html">Accedi</button>
 					</form>
 					<form action="signup.html" method="get" style="display:inline">
-		 				<button type="submit"class="rounded btn-sample sign">Iscriviti</button>
+		 				<button type="submit"class="btn btn-outline-info btn-lg mt-3 ml-4">Iscriviti</button>
 					</form>	 			
 	 			</div>
 			</div>

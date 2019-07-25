@@ -47,7 +47,7 @@
 		 				</div>
 		 				</c:if>
 		 				
-		 			<h1>Amministra account</h1>
+		 			<h1 class="pb-3">Amministra account</h1>
 		 			<div class="p-3">
 		 			   <h3>Stabilimenti</h3>
 		 			       <div class="rounded border shadow p-3">
