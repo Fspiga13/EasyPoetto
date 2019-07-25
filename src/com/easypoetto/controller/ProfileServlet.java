@@ -132,16 +132,79 @@ public class ProfileServlet extends HttpServlet {
 		}
 		
 	}
+	
+	/*
+	 * <div>
+						<label for="image">Immagine</label> <input type="text"
+							class="form-control mb-4" id="image" name="image"
+							<c:if test= "${not empty beachResort}">value="${beachResort.image}"</c:if> />
+					</div>
+
+					<div>
+						<label for="logo">Logo</label> <input type="text"
+							class="form-control mb-4" id="logo" name="logo"
+							<c:if test= "${not empty beachResort}">value="${beachResort.logo}"</c:if> />
+					</div>
+
+					<div>
+						<label for="address">Indirizzo</label> <input type="text"
+							class="form-control mb-4" id="address" name="address"
+							<c:if test= "${not empty client}">value="${beachResort.address}"</c:if> />
+					</div>
+
+					<div>
+						<label for="telephone">Numero di telefono</label> <input
+							type="text" class="form-control mb-4" id="telephone"
+							name="telephone"
+							<c:if test= "${not empty beachResort}">value="${beachResort.telephone}"</c:if> />
+					</div>
+	 */
 
 	private void beachResortChanges(String email, String password, HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) throws ServletException, IOException{
-		// TODO Auto-generated method stub
+		
+		// Recuperiamo i parametri 
+				String newName = request.getParameter("name");
+				String newDescription = request.getParameter("description");
+				String newEmail = request.getParameter("email");
+				String newPassword = request.getParameter("password");
+				String newImage = request.getParameter("image");
+				String newLogo = request.getParameter("logo");
+				String newAddress = request.getParameter("address");
+				
+				if (newPassword == null || newPassword.isEmpty()) {
+					newPassword = password;
+				}
+				
+				// Aggiorno i dettagli dello stabilimento 
+				
+				// Se la modifica non va a buon fine
+				if (!ClientFactory.getInstance().editDetails(newName, newDescription, newEmail, newPassword,
+						newImage, newLogo, newAddress, email)) {
+					// Mando l'errore al jsp
+					session.setAttribute("error", "Email non disponibile");
+					response.sendRedirect("profile.html");
+				} else {
+					
+					// Modifche a buon fine: reimposto email e password nella sessione
+					session.removeAttribute("email");
+					session.removeAttribute("password");
+
+					session.setAttribute("email", newEmail);
+					session.setAttribute("password", newPassword);
+					
+					session.setAttribute("success", "Modifica avvenuta con successo!");
+
+					response.sendRedirect("profile.html");
+				}	
+		
 		
 	}
 
 	private void adminChanges(String email, String password, HttpServletRequest request, HttpServletResponse response,
 			HttpSession session) throws ServletException, IOException{
 		// TODO Auto-generated method stub
+		
 		
 	}
 
