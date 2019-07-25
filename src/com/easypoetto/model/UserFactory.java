@@ -94,7 +94,7 @@ public class UserFactory {
 		return false;
 	}
 
-	private User getUser(String email) {
+	public User getUser(String email) {
 		
 		String sql = "select email, role from users where email= ?";
 
@@ -115,6 +115,29 @@ public class UserFactory {
 
 		}
 		return null;
+	}
+	
+	public int getUserIdFromEmail(String email) {
+		
+		int idUser = 0; //inizializzo la variabile che conterr� l'id dell'utente
+		
+		String sqlGetId = "select id from users where email = ? "; //cerco l'id dell'utente tramite la sua mail
+		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sqlGetId)) {
+			stmt.setString(1, email);
+			ResultSet result = stmt.executeQuery();
+			if (result.next()) {
+				idUser = result.getInt("id"); //a questo punto � impossibile che non trovi corrispondenza perch� altrimenti l'utente non potrebbe essere loggato
+
+			}
+			
+			return idUser;
+
+		} catch (SQLException e) {
+			Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("Errore in getUserIdFromEmail");
+		}
+		
+		return 0;
 	}
 
 }

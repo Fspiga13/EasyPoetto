@@ -60,13 +60,13 @@ public class ClientFactory {
 			}
 			
 			int idClient = -1; //inizializzo la variabile che conterr� l'id del client
-			int idUser = -1; //inizializzo la variabile che conterr� l'id dell'utente
-			String sqlGetId = "select clients.id as client_id, users.id as user_id from users,clients where clients.user_id = users.id and email = ? "; //cerco l'id dell'utente tramite la sua mail
+			int idUser = UserFactory.getInstance().getUserIdFromEmail(email);
+			
+			String sqlGetId = "select clients.id as client_id from users,clients where clients.user_id = users.id and email = ? "; //cerco l'id del client tramite la sua mail
 			try (PreparedStatement stmt = conn.prepareStatement(sqlGetId)) {
 				stmt.setString(1, email);
 				ResultSet result = stmt.executeQuery();
 				if (result.next()) {
-					idUser = result.getInt("user_id"); //a questo punto � impossibile che non trovi corrispondenza perch� altrimenti l'utente non potrebbe essere loggato
 					idClient = result.getInt("client_id");
 				}
 
@@ -94,6 +94,7 @@ public class ClientFactory {
 					System.out.println("Errore in editDetails");
 				}
 			}else {
+				
 				//INSERT in Clients
 				
 				String sqlInsertClientDetails = "INSERT INTO CLIENTS VALUES(client_id_seq.nextval, ?, ?, ?,TO_DATE(?, 'YYYY-MM-DD'))";
