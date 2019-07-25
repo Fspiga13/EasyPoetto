@@ -127,7 +127,8 @@ CONSTRAINT fk_beach_resorts_user_id FOREIGN KEY (user_id) REFERENCES users(id)
 					</div>
 
 					<div>
-						<select name = "num_umbrellas" size = "5" multiple>
+					<label for="num_umbrellas">Scegli il numero di ombrelloni </label>
+						<select name = "num_umbrellas">
 							
 							<c:forEach begin = "${10}" end="${500}" step="10" var="index">
 							
@@ -136,21 +137,25 @@ CONSTRAINT fk_beach_resorts_user_id FOREIGN KEY (user_id) REFERENCES users(id)
 						</select>
 					</div>
 					
-					<div>
-						<select name = "num_beach_loungers" size = "5" multiple>
-							
-							<c:forEach begin = "${10}" end="${1500}" step="50" var="index">
-							
-								<option value="${index}">${index}</option>
-							</c:forEach>
-						</select>
-					</div>
+					
+						
+						<div class = "row">
+						<label for="num_beach_loungers">Scegli il numero di lettini </label>
+							<select name = "num_beach_loungers">
+								
+								<c:forEach begin = "${30}" end="${1500}" step="30" var="index">
+								
+									<option value="${index}">${index}</option>
+								</c:forEach>
+							</select>
+						</div>
+					
 					
 								<div class="rounded border shadow p-3">
 								
-				<h3>Scegli le tue preferenze</h3>
+				<h3>Seleziona i servizi del tuo stabilimento</h3>
 				
-				<form action="search.html" method="get">
+				
 					<div class="row">
 						<div class=" px-4 py-2">
 							Parcheggio <input type="checkbox" name="service" value="parking" class="check">
@@ -173,10 +178,8 @@ CONSTRAINT fk_beach_resorts_user_id FOREIGN KEY (user_id) REFERENCES users(id)
 							Dog area <input type="checkbox"name="service" value="dog_area" class="check">
 						</div>
 					</div>
-					<button type="submit"
-						class="btn btn-outline-info shadow m-4">Filtra
-					</button>					
-				</form>
+								
+				
 			</div>
 					
 					
