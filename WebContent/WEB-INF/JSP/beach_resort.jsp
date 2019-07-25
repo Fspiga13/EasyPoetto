@@ -73,13 +73,14 @@
 			</div>
 
       <%--Se l'utente è loggato vede il bottone e sceglie la sua offerta --%>
-			<c:if test="Se l'utente è loggato">
+      
+	
 				<form action="reservation.html" method="get">
 					<button type="submit"
 						class="btn btn-outline-info btn-lg btn-block shadow">Scegli
 						la tua offerta!</button>
 				</form>
-			</c:if>
+		
 			
 			
 			
