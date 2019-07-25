@@ -38,7 +38,7 @@
 
 		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div>
 
-		<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+		<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5">
 
 
 			<div id="form" class="shadow-lg border border-light p-5 rounded">
@@ -126,32 +126,10 @@ CONSTRAINT fk_beach_resorts_user_id FOREIGN KEY (user_id) REFERENCES users(id)
 							<c:if test= "${not empty client}">value="${client.telephone}"</c:if> />
 					</div>
 
-					<div>
-					<label for="num_umbrellas">Scegli il numero di ombrelloni </label>
-						<select name = "num_umbrellas">
-							
-							<c:forEach begin = "${10}" end="${500}" step="10" var="index">
-							
-								<option value="${index}">${index}</option>
-							</c:forEach>
-						</select>
-					</div>
+
 					
 					
-						
-						<div class = "row">
-						<label for="num_beach_loungers">Scegli il numero di lettini </label>
-							<select name = "num_beach_loungers">
-								
-								<c:forEach begin = "${30}" end="${1500}" step="30" var="index">
-								
-									<option value="${index}">${index}</option>
-								</c:forEach>
-							</select>
-						</div>
-					
-					
-								<div class="rounded border shadow p-3">
+				<div class="rounded border shadow p-3">
 								
 				<h3>Seleziona i servizi del tuo stabilimento</h3>
 				
@@ -178,13 +156,37 @@ CONSTRAINT fk_beach_resorts_user_id FOREIGN KEY (user_id) REFERENCES users(id)
 							Dog area <input type="checkbox"name="service" value="dog_area" class="check">
 						</div>
 					</div>
+					
+										<div class = "row align-middle mb-5">
+					<label for="num_umbrellas">Scegli il numero di ombrelloni </label>
+						<select name = "num_umbrellas">
+							
+							<c:forEach begin = "${10}" end="${500}" step="10" var="index">
+							
+								<option value="${index}">${index}</option>
+							</c:forEach>
+						</select>
+					</div>
+					
+					
+						
+						<div class = "row align-middle mb-5">
+						<label for="num_beach_loungers">Scegli il numero di lettini </label>
+							<select name = "num_beach_loungers">
 								
-				
+								<c:forEach begin = "${30}" end="${1500}" step="30" var="index">
+								
+									<option value="${index}">${index}</option>
+								</c:forEach>
+							</select>
+						</div>
+								
+				<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-5">Crea i tuoi pacchetti</button>
 			</div>
 					
 					
 
-					<button type="submit" class="rounded btn-sample btn-block btn-lg">Modifica</button>
+					<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-5">Modifica</button>
 				</form>
 			</div>
 		</div>
