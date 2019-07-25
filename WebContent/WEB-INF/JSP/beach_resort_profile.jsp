@@ -21,17 +21,6 @@
 <body>
 	<%-- Imposto le variabili che servono alla navbar per essere visualizzata nel modo corretto --%>
 	<c:set var="logged" scope="request" value="${true}" />
-	<c:choose>
-		<c:when test="${not empty client}">
-			<c:set var="logged" scope="request" value="${true}" />
-			<%-- Se esiste un utente imposto la variabile logged a true --%>
-		</c:when>
-		<c:otherwise>
-			<c:set var="logged" scope="request" value="${false}" />
-			<%-- Se non esiste un utente imposto la variabile logged a false --%>
-		</c:otherwise>
-	</c:choose>
-
 
 	<jsp:include page="nav_bar.jsp"></jsp:include>
 	<div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -57,7 +46,7 @@
 					<div>
 						<label for="name">Nome Stabilimento</label> <input type="text"
 							class="form-control mb-4" id="name" name="name" required
-							<c:if test= "${not empty beachResort.name}">value="${beachResort.name}"</c:if> />
+							<c:if test= "${not empty beachResort}">value="${beachResort.name}"</c:if> />
 					</div>
 					<div>
 						<label for="description">Descrizione</label> <input type="text"
@@ -93,7 +82,7 @@
 					<div>
 						<label for="address">Indirizzo</label> <input type="text"
 							class="form-control mb-4" id="address" name="address"
-							<c:if test= "${not empty client}">value="${beachResort.address}"</c:if> />
+							<c:if test= "${not empty beachResort}">value="${beachResort.address}"</c:if> />
 					</div>
 
 					<div>
@@ -130,12 +119,18 @@
 						</div><div class="px-4 py-2">
 							Area bambini <input type="checkbox" name="service"value="children_area" class="check"> 
 						</div><div class="px-4 py-2">
-							Dog area <input type="checkbox"name="service" value="dog_area" class="check">
+							Area cani <input type="checkbox"name="service" value="dog_area" class="check">
 						</div>
 					</div>
 					
 										<div class = "row align-middle mb-5">
-					<label for="num_umbrellas">Scegli il numero di ombrelloni </label>
+					<label for="num_umbrellas">Numero di ombrelloni </label>
+						<c:choose>
+						<c:when test="${not empty beachResort}">
+							<p> ${beachResort.numUmbrellas}
+							</p>
+						</c:when>
+						<c:otherwise>
 						<select name = "num_umbrellas">
 							
 							<c:forEach begin = "${10}" end="${500}" step="10" var="index">
@@ -143,12 +138,20 @@
 								<option value="${index}">${index}</option>
 							</c:forEach>
 						</select>
+						</c:otherwise>
+						</c:choose>
 					</div>
 					
 					
 						
 						<div class = "row align-middle mb-5">
-						<label for="num_beach_loungers">Scegli il numero di lettini </label>
+						<label for="num_beach_loungers">Numero di lettini </label>
+							<c:choose>
+							<c:when test="${not empty beachResort}">
+								<p> ${beachResort.numBeachLoungers}
+								</p>
+							</c:when>
+							<c:otherwise>
 							<select name = "num_beach_loungers">
 								
 								<c:forEach begin = "${30}" end="${1500}" step="30" var="index">
@@ -156,6 +159,8 @@
 									<option value="${index}">${index}</option>
 								</c:forEach>
 							</select>
+							</c:otherwise>
+							</c:choose>
 						</div>
 								
 				<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-5">Crea i tuoi pacchetti</button>

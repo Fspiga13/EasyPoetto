@@ -1,6 +1,10 @@
 package com.easypoetto.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.easypoetto.model.User;
+import com.easypoetto.model.BeachResort;
+import com.easypoetto.model.BeachResortFactory;
 import com.easypoetto.model.Client;
 import com.easypoetto.model.ClientFactory;
 import com.easypoetto.model.UserFactory;
@@ -68,6 +74,8 @@ public class ProfileServlet extends HttpServlet {
 						request.getRequestDispatcher("WEB-INF/JSP/admin_profile.jsp").forward(request, response);
 						break;
 					case 1:
+						BeachResort beachResort = BeachResortFactory.getInstance().getBeachResort(email);
+						request.setAttribute("beachResort", beachResort);
 						request.getRequestDispatcher("WEB-INF/JSP/beach_resort_profile.jsp").forward(request, response);
 						break;
 					case 2:
@@ -132,33 +140,6 @@ public class ProfileServlet extends HttpServlet {
 		}
 		
 	}
-	
-	/*
-	 * <div>
-						<label for="image">Immagine</label> <input type="text"
-							class="form-control mb-4" id="image" name="image"
-							<c:if test= "${not empty beachResort}">value="${beachResort.image}"</c:if> />
-					</div>
-
-					<div>
-						<label for="logo">Logo</label> <input type="text"
-							class="form-control mb-4" id="logo" name="logo"
-							<c:if test= "${not empty beachResort}">value="${beachResort.logo}"</c:if> />
-					</div>
-
-					<div>
-						<label for="address">Indirizzo</label> <input type="text"
-							class="form-control mb-4" id="address" name="address"
-							<c:if test= "${not empty client}">value="${beachResort.address}"</c:if> />
-					</div>
-
-					<div>
-						<label for="telephone">Numero di telefono</label> <input
-							type="text" class="form-control mb-4" id="telephone"
-							name="telephone"
-							<c:if test= "${not empty beachResort}">value="${beachResort.telephone}"</c:if> />
-					</div>
-	 */
 
 	private void beachResortChanges(String email, String password, HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) throws ServletException, IOException{
@@ -171,6 +152,13 @@ public class ProfileServlet extends HttpServlet {
 				String newImage = request.getParameter("image");
 				String newLogo = request.getParameter("logo");
 				String newAddress = request.getParameter("address");
+				String newTelephone = request.getParameter("telephone");
+				String[] servicesStrings = request.getParameterValues("service");
+				List<String> services = null;
+				
+				if(servicesStrings != null) {
+					 services = new ArrayList<String>(Arrays.asList(servicesStrings));	
+				}
 				
 				if (newPassword == null || newPassword.isEmpty()) {
 					newPassword = password;
@@ -180,7 +168,7 @@ public class ProfileServlet extends HttpServlet {
 				
 				// Se la modifica non va a buon fine
 				if (!ClientFactory.getInstance().editDetails(newName, newDescription, newEmail, newPassword,
-						newImage, newLogo, newAddress, email)) {
+						newImage, newLogo, newAddress, newTelephone, services, email)) {
 					// Mando l'errore al jsp
 					session.setAttribute("error", "Email non disponibile");
 					response.sendRedirect("profile.html");

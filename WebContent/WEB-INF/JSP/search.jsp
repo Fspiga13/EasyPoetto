@@ -48,7 +48,7 @@
 						</div><div class="px-4 py-2">
 							Area bambini <input type="checkbox" name="service"value="children_area" class="check"> 
 						</div><div class="px-4 py-2">
-							Dog area <input type="checkbox"name="service" value="dog_area" class="check">
+							Area cani <input type="checkbox"name="service" value="dog_area" class="check">
 						</div>
 					</div>
 					<button type="submit"
