@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="../../jQuery/jquery-3.4.1.min.js"></script>
 		<title>EasyPoetto - Home</title>
 	</head>
+	
 	<body>
 		<%-- <c:set var="logged" scope="request" value="${true}"/> Se siamo nella pagina di Home, siamo già loggati quindi per forza true --%>
 		<jsp:include page="nav_bar.jsp"></jsp:include>
@@ -18,9 +19,9 @@
 			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
 			</div>
 			
-			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5">
+			<div id="main" class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">
 		
-	    	<img id="homePoetto" src="view/Resources/HomePoetto.jpg" class="img-fluid py-5"> 
+	    	<img id="homePoetto" src="view/Resources/HomePoetto.jpg" class="img-fluid pb-5"> 
 
 			<div class="text-justify">
 			<p>	Situata nella costa centro-meridionale della Sardegna, la spiaggia del Poetto ancora oggi e' considerata 
