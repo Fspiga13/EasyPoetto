@@ -35,10 +35,14 @@ public class HomeServlet extends HttpServlet {
 		if(session == null || session.getAttribute("email") == null || session.getAttribute("password") == null 
 				|| session.getAttribute("role") == null) {
 			
+			//System.out.println("sessione non valida");
+			
 			request.setAttribute("logged", false);
 			request.getRequestDispatcher("WEB-INF/JSP/home.jsp").forward(request, response);
 		}else {
 		
+			//System.out.println("esiste sessione");
+			
 			String email = (String) session.getAttribute("email");
 			String password = (String) session.getAttribute("password");
 			Integer role = (Integer) session.getAttribute("role");
@@ -47,19 +51,25 @@ public class HomeServlet extends HttpServlet {
 					!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
 					UserFactory.getInstance().login(email, password) == role){
 				
+				//System.out.println("utente loggato correttamente");
+				
 				//risolvere problema logout
-				/*
+				
 				String logout = request.getParameter("logout");
 				if (logout != null) {
+					
+					//System.out.println("utente richiede logout");
+					
 					session.invalidate();
-					request.setAttribute("logged", true);
+					request.setAttribute("logged", false);
 					request.getRequestDispatcher("WEB-INF/JSP/home.jsp").forward(request, response);
 				} else {
-					response.sendRedirect("login.html");*/
+				
+				//System.out.println("utente loggato accede a home");
 				
 				request.setAttribute("logged", true);
 				request.getRequestDispatcher("WEB-INF/JSP/home.jsp").forward(request, response);
-				//}
+				}
 			}
 		}
 	}

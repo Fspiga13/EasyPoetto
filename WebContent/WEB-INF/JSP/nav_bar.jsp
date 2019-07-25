@@ -51,7 +51,12 @@
 		</c:choose>
 
 		<li class="mynavlink pr-4" >
-			<form action="login.html" method="get">
+			<form 
+					<c:choose>
+					<c:when test="${logged==false}">action="login.html"</c:when>
+					<c:otherwise>action="home.html"</c:otherwise>
+					</c:choose> 
+			method="get">
 				<input type="hidden" name="logout" value="yes">
 				<button type="submit" class="btn btn-outline-info rounded" id="loginButton"> 
 					<c:choose>

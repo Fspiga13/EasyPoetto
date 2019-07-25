@@ -15,14 +15,7 @@
 <body>
 				<%-- Imposto le variabili che servono alla navbar per essere visualizzata nel modo corretto --%>
 		<c:set var="logged" scope="request" value="${true}"/>
-		<c:choose>
-			<c:when test= "${not empty client}"> 
-				<c:set var="logged" scope="request" value="${true}"/><%-- Se esiste un utente imposto la variabile logged a true --%>
-			</c:when>
-			<c:otherwise>
-				<c:set var="logged" scope="request" value="${false}"/><%-- Se non esiste un utente imposto la variabile logged a false --%>
-			</c:otherwise>
-		</c:choose>
+
 				
 		
 		<jsp:include page="nav_bar.jsp"></jsp:include>

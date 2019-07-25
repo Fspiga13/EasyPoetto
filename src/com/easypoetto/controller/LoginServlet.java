@@ -82,9 +82,13 @@ public class LoginServlet extends HttpServlet {
 			!email.isEmpty() && !password.isEmpty()) {
 			
 			role = UserFactory.getInstance().login(email, password);
+			
+			//System.out.println("ruolo: " + role);
 		}
 		
 		if(role != null) {
+			
+			//System.out.println("login con successo");
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("email", email);
@@ -93,6 +97,9 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("home.html");
 
 		} else {
+			
+			//System.out.println("login senza successo");
+
 			System.out.println("Errate");
 			request.setAttribute("error", "Wrong credentials");
 			request.setAttribute("logged", false);

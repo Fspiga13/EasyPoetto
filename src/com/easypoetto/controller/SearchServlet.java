@@ -10,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.easypoetto.model.BeachResortFactory;
+import com.easypoetto.model.UserFactory;
 
 /**
  * Servlet implementation class Search
@@ -45,7 +47,32 @@ public class SearchServlet extends HttpServlet {
 			request.setAttribute("beachResorts", BeachResortFactory.getInstance().getBeachResorts());
 		}
 		
-		request.getRequestDispatcher("WEB-INF/JSP/search.jsp").forward(request, response);
+		HttpSession session = request.getSession(false);
+		
+		if(session == null || session.getAttribute("email") == null || session.getAttribute("password") == null 
+				|| session.getAttribute("role") == null) {
+			
+			request.setAttribute("logged", false);
+			request.getRequestDispatcher("WEB-INF/JSP/search.jsp").forward(request, response);
+		}else{
+			
+			//System.out.println("esiste sessione");
+			
+			String email = (String) session.getAttribute("email");
+			String password = (String) session.getAttribute("password");
+			Integer role = (Integer) session.getAttribute("role");
+			
+			if (email!= null && password != null && role != null &&
+					!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
+					UserFactory.getInstance().login(email, password) == role){
+				
+				request.setAttribute("logged", true);
+			}else {
+				request.setAttribute("logged", false);
+			}
+			
+			request.getRequestDispatcher("WEB-INF/JSP/search.jsp").forward(request, response);
+		}
 
 	}
 
