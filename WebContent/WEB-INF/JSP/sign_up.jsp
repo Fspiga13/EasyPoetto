@@ -59,7 +59,7 @@
 					  	
 					  	
 					  	<div>
-							<button type="submit" class="rounded btn-outline-info btn-lg btn-block mt-3" formaction="signup.html">Registrati</button>
+							<button type="submit" class="btn btn-outline-info btn-lg btn-block mt-3" formaction="signup.html">Registrati</button>
 			 			</div>
 					</form>	 			
 	 			</div>

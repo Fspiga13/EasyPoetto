@@ -52,7 +52,7 @@
 						</div>
 					</div>
 					<button type="submit"
-						class="btn btn-outline-info shadow m-4">Filtra
+						class="btn btn-outline-info m-4">Filtra
 					</button>					
 				</form>
 			</div>
