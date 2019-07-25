@@ -53,45 +53,22 @@
 
 				<form action="profile.html" method="post">
 
-					<%--CREATE TABLE BEACH_RESORTS( 
-id NUMBER(38,0),
-user_id NUMBER (38,0),
-name VARCHAR2(200CHAR)NOT NULL,
-description VARCHAR2(2000CHAR)NOT NULL,
-image VARCHAR2(2000CHAR),
-logo VARCHAR2(2000CHAR),
-address VARCHAR2(200CHAR),
-telephone VARCHAR2(15CHAR),
-num_umbrellas NUMBER(3,0),
-num_beach_loungers NUMBER(4,0),
-parking CHAR(1)CHECK (parking in ('Y','N')),
-pedalo CHAR(1)CHECK (pedalo in ('Y','N')),
-shower CHAR(1)CHECK (shower in ('Y','N')),
-toilette CHAR(1)CHECK (toilette in ('Y','N')),
-restaurant CHAR(1)CHECK (restaurant in ('Y','N')),
-disabled_facilities CHAR(1)CHECK (disabled_facilities in ('Y','N')),
-children_area CHAR(1)CHECK (children_area in ('Y','N')),
-dog_area CHAR(1)CHECK (dog_area in ('Y','N')),
-
-CONSTRAINT pk_beach_resorts_id PRIMARY KEY(id),
-CONSTRAINT fk_beach_resorts_user_id FOREIGN KEY (user_id) REFERENCES users(id)
-); --%>
-
+	
 					<div>
 						<label for="name">Nome Stabilimento</label> <input type="text"
 							class="form-control mb-4" id="name" name="name" required
-							<c:if test= "${not empty client.name}">value="${client.name}"</c:if> />
+							<c:if test= "${not empty beachResort.name}">value="${beachResort.name}"</c:if> />
 					</div>
 					<div>
-						<label for="surname">Descrizione</label> <input type="text"
-							class="form-control mb-4" id="surname" name="surname" required
-							<c:if test= "${not empty client}">value="${client.surname}"</c:if> />
+						<label for="description">Descrizione</label> <input type="text"
+							class="form-control mb-4" id="description" name="description" required
+							<c:if test= "${not empty beachResort}">value="${beachResort.description}"</c:if> />
 					</div>
 					<div>
 						<label for="email">E-mail</label> <input type="email"
 							class="form-control mb-4" id="email" name="email"
 							pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
-							<c:if test= "${not empty client}">value="${client.email}"</c:if> />
+							<c:if test= "${not empty beachResort}">value="${beachResort.email}"</c:if> />
 					</div>
 
 					<%--inserisci vecchia password, inserisci nuova password --%>
@@ -104,26 +81,26 @@ CONSTRAINT fk_beach_resorts_user_id FOREIGN KEY (user_id) REFERENCES users(id)
 					<div>
 						<label for="image">Immagine</label> <input type="text"
 							class="form-control mb-4" id="image" name="image"
-							<c:if test= "${not empty client}">value="${client.image}"</c:if> />
+							<c:if test= "${not empty beachResort}">value="${beachResort.image}"</c:if> />
 					</div>
 
 					<div>
 						<label for="logo">Logo</label> <input type="text"
 							class="form-control mb-4" id="logo" name="logo"
-							<c:if test= "${not empty client}">value="${client.logo}"</c:if> />
+							<c:if test= "${not empty beachResort}">value="${beachResort.logo}"</c:if> />
 					</div>
 
 					<div>
 						<label for="address">Indirizzo</label> <input type="text"
 							class="form-control mb-4" id="address" name="address"
-							<c:if test= "${not empty client}">value="${client.address}"</c:if> />
+							<c:if test= "${not empty client}">value="${beachResort.address}"</c:if> />
 					</div>
 
 					<div>
 						<label for="telephone">Numero di telefono</label> <input
 							type="text" class="form-control mb-4" id="telephone"
 							name="telephone"
-							<c:if test= "${not empty client}">value="${client.telephone}"</c:if> />
+							<c:if test= "${not empty beachResort}">value="${beachResort.telephone}"</c:if> />
 					</div>
 
 
