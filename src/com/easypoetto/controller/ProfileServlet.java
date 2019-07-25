@@ -70,7 +70,10 @@ public class ProfileServlet extends HttpServlet {
 				switch(role) {
 				
 					case 0:
-						
+						List<String> clientEmailList = ClientFactory.getInstance().getClientEmails();
+						List<String> beachResortEmailList = BeachResortFactory.getInstance().getBeachResortEmails();
+						request.setAttribute("beachResortEmailList", beachResortEmailList);
+						request.setAttribute("clientEmailList", clientEmailList);
 						request.getRequestDispatcher("WEB-INF/JSP/admin_profile.jsp").forward(request, response);
 						break;
 					case 1:
@@ -122,7 +125,7 @@ public class ProfileServlet extends HttpServlet {
 				switch(role) {
 				
 					case 0:
-						adminChanges(email, password, request, response, session);
+						adminChanges(request, response, session);
 						break;
 					case 1:
 						beachResortChanges(email, password, request, response, session);
@@ -167,7 +170,7 @@ public class ProfileServlet extends HttpServlet {
 				// Aggiorno i dettagli dello stabilimento 
 				
 				// Se la modifica non va a buon fine
-				if (!ClientFactory.getInstance().editDetails(newName, newDescription, newEmail, newPassword,
+				if (!BeachResortFactory.getInstance().editDetails(newName, newDescription, newEmail, newPassword,
 						newImage, newLogo, newAddress, newTelephone, services, email)) {
 					// Mando l'errore al jsp
 					session.setAttribute("error", "Email non disponibile");
@@ -189,10 +192,29 @@ public class ProfileServlet extends HttpServlet {
 		
 	}
 
-	private void adminChanges(String email, String password, HttpServletRequest request, HttpServletResponse response,
-			HttpSession session) throws ServletException, IOException{
-		// TODO Auto-generated method stub
+	private void adminChanges(HttpServletRequest request, HttpServletResponse response, HttpSession session) 
+			throws ServletException, IOException{
 		
+		String email = request.getParameter("emailBeachResort");
+		
+		if(email == null) {
+			email = request.getParameter("emailClient");
+		}
+		
+		// se è riuscito ad arrivare a quesro punto in qualche modo lo reindirizzo qui
+		if(email == null) {
+			response.sendRedirect("profile.html");
+		}
+		
+		if(!UserFactory.getInstance().deleteUser(email)) {
+			
+			session.setAttribute("error", "Eliminazione account non riuscita");
+			response.sendRedirect("profile.html");
+		}else {
+			
+			session.setAttribute("success", "Eliminazione account avvenuta con successo!");
+			response.sendRedirect("profile.html");
+		}
 		
 	}
 

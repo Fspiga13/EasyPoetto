@@ -4,10 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -160,6 +163,31 @@ public class ClientFactory {
 			e.printStackTrace();
 			System.out.println("Il formatter sta facendo cose sbagliate, errore in clientBithdayManager");
 		}
+		return null;
+	}
+
+	public List<String> getClientEmails() {
+		
+		List<String> clientEmails = new ArrayList<String>();
+		
+		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
+
+			String sql = "select email from users where role=2";
+
+			ResultSet result = stmt.executeQuery(sql);
+
+			while (result.next()) {
+				
+				clientEmails.add(result.getString("email"));
+			}
+			
+			return clientEmails;
+					
+		} catch (SQLException e) {
+			Logger.getLogger(ClientFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("errore in getClientEmails dentro ClientFactory");
+		}	
+		
 		return null;
 	}
 	

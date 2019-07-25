@@ -140,4 +140,23 @@ public class UserFactory {
 		return 0;
 	}
 
+	public boolean deleteUser(String email) {
+		
+		// prima di cancellare dalla tabella user
+		
+		// se client cancellare prima:
+		// righe prenotazioni_pacchetti
+		// righe prenotazione
+		// riga client
+		// riga user
+		
+		// se beach resort cancellare prima:
+		// righe prenotazioni_pacchetti
+		// righe pacchetti
+		// riga beach resort
+		// riga user
+		
+		return false;
+	}
+
 }

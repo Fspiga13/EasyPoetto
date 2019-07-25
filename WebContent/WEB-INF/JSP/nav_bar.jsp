@@ -53,7 +53,7 @@
 		<li class="mynavlink pr-4" >
 			<form action="login.html" method="get">
 				<input type="hidden" name="logout" value="yes">
-				<button type="submit" class="btn-sample rounded" id="loginButton"> 
+				<button type="submit" class="btn-outline-info rounded" id="loginButton"> 
 					<c:choose>
 					<c:when test="${logged==false}">Login</c:when>
 					<c:otherwise>Logout</c:otherwise>

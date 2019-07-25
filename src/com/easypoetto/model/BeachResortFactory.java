@@ -33,6 +33,37 @@ public class BeachResortFactory {
 		
 	}
 	
+	public BeachResort getBeachResort(String email) {
+		
+		
+		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
+
+			String sql = "select email, name, description, image, logo, address, telephone, num_umbrellas, "
+					+ "num_beach_loungers, parking, pedalo, shower, toilette, restaurant, "
+					+ "disabled_facilities, children_area, dog_area from beach_resorts, users where user_id = users.id and email= " + email;
+
+			ResultSet result = stmt.executeQuery(sql);
+
+			while (result.next()) {
+				
+				return new BeachResort(result.getString("email"), result.getString("name"),result.getString("description"), result.getString("image"),
+						result.getString("logo"), result.getString("address"), result.getString("telephone"), result.getInt("num_umbrellas"),
+						result.getInt("num_beach_loungers"), 
+						 convertBoolean(result.getString("parking")), convertBoolean(result.getString("pedalo")), convertBoolean(result.getString("shower")), convertBoolean(result.getString("toilette")),
+						convertBoolean(result.getString("restaurant")), convertBoolean(result.getString("disabled_facilities")), 
+						convertBoolean(result.getString("children_area")), convertBoolean(result.getString("dog_area")));
+			}
+					
+		} catch (SQLException e) {
+			Logger.getLogger(BeachResortFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("errore in getBeachResort dentro BeachResortFactory");
+		}	
+		
+		return null;
+		
+	}
+	
+	
 	public BeachResort getBeachResortById(int id) {
 		
 		
@@ -133,6 +164,38 @@ public class BeachResortFactory {
 		
 		return null;
 			
+	}
+
+	public List<String> getBeachResortEmails() {
+		
+		List<String> beachResortEmails = new ArrayList<String>();
+		
+		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
+
+			String sql = "select email from users where role=1";
+
+			ResultSet result = stmt.executeQuery(sql);
+
+			while (result.next()) {
+				
+				beachResortEmails.add(result.getString("email"));
+			}
+			
+			return beachResortEmails;
+					
+		} catch (SQLException e) {
+			Logger.getLogger(BeachResortFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("errore in getBeachResortEmails dentro BeachResortFactory");
+		}	
+		
+		return null;
+	}
+
+	public boolean editDetails(String newName, String newDescription, String newEmail, String newPassword,
+			String newImage, String newLogo, String newAddress, String newTelephone, List<String> services,
+			String email) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	 

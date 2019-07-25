@@ -19,7 +19,7 @@ body{
 }
 
 .mynavlink{
-	color:white;
+	color:black;
 	font-size: 20px;
 	flex-direction:row;
 	padding-left:15px;
@@ -29,7 +29,7 @@ body{
 .mynavlink:focus, 
 .mynavlink:active, 
 .mynavlink.active { 
-  color: #49247A; 
+  color: #17a2b8; 
 } 
 
 #loginButton{

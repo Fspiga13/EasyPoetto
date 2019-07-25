@@ -49,16 +49,17 @@
 					  		<label for="confirm_password">Conferma Password</label>
 					  		<input type="password" id="confirm_password" name="confirm_password" class="form-control mb-4"/>
 					  	</div>
-					  	<div>
+					  	<div class="text-center">
+					  		
 					  		<label for="client">Cliente</label>
-							<input type="radio" name="role" id="client" value="client">
-							<label for="beach_resort">Stabilimento</label>
+							<input type="radio" name="role" id="client" value="client" checked="checked" >
+							<label for="beach_resort" class="ml-5" >Stabilimento</label>
 							<input type="radio" name="role" id="beach_resort" value="beach_resort">
 					  	</div>
 					  	
 					  	
 					  	<div>
-							<button type="submit" class="rounded btn-sample sign" formaction="signup.html">Registrati</button>
+							<button type="submit" class="rounded btn-outline-info btn-lg btn-block mt-3" formaction="signup.html">Registrati</button>
 			 			</div>
 					</form>	 			
 	 			</div>

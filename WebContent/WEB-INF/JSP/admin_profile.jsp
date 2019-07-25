@@ -48,28 +48,32 @@
 		 				</c:if>
 		 				
 		 			<h1>Amministra account</h1>
-		 			<div>
-		 			   <label for="beach_resort">Stabilimenti</label>
+		 			<div class="p-3">
+		 			   <h3>Stabilimenti</h3>
 		 			       <div class="rounded border shadow p-3">
-		 			           <c:forEach var="beachResort" items="${beachResortEmailList}">
+		 			           <c:forEach var="beachResortEmail" items="${beachResortEmailList}">
+		 			           <div class="row mx-3">
 			 			           <form action="profile.html" method="post">
-			 			           		<label for="email">${beachResort}</label>
-			 			           		<input type="hidden" name="emailBeachResort" value="${beachResort }">
-			 			           		<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-5">Cancella</button> 	
-			 			           </form>		           		 			           
+			 			           		<label for="email">${beachResortEmail}</label>
+			 			           		<input type="hidden" name="emailBeachResort" value="${beachResortEmail}">
+			 			           		<button type="submit" class="btn btn-outline-info btn-sm shadow mt-5">Cancella</button> 	
+			 			           </form>	
+		 			           </div>	           		 			           
 		 			           </c:forEach>	 			
 		 			       </div>
 		 			</div>
 		 			
-		 			<div>
-		 			   <label for="client">Clienti</label>
+		 			<div class="p-3">
+		 			   <h3>Clienti</h3>
 		 			       <div class="rounded border shadow p-3">
-		 			           <c:forEach var="client" items="${clientEmailList}">
+		 			           <c:forEach var="clientEmail" items="${clientEmailList}">
+		 			           <div class="row mx-3">
 			 			           <form action="profile.html" method="post">
-			 			           		<label for="email">${client}</label>
-			 			           		<input type="hidden" name="emailClient" value="${client}">
-			 			           		<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-5">Cancella</button> 	
-			 			           	</form>		           		 			           
+			 			           		<label for="email">${clientEmail}</label>
+			 			           		<input type="hidden" name="emailClient" value="${clientEmail}">
+			 			           		<button type="submit" class="btn btn-outline-info btn-sm shadow mt-5">Cancella</button> 	
+			 			           	</form>	
+		 			           	</div>	           		 			           
 		 			           </c:forEach>	 			
 		 			       </div>
 		 			</div>
