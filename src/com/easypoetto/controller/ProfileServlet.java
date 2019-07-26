@@ -160,6 +160,12 @@ public class ProfileServlet extends HttpServlet {
 				String[] servicesStrings = request.getParameterValues("service");
 				List<String> services = null;
 				
+				if(newLogo.equals(""))
+					newLogo="view/Resources/default-logo.png";
+				
+				if(newImage.equals(""))
+					newImage="view/Resources/default-image.png";
+				
 				if(servicesStrings != null) {
 					 services = new ArrayList<String>(Arrays.asList(servicesStrings));	
 				}
