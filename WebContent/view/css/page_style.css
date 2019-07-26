@@ -11,3 +11,51 @@ body{
 	padding-bottom:50px;
 	margin-bottom: 10%;
 }
+
+
+
+
+
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+.pbs, .pvs {
+  padding-bottom: .25em;
+}
+
+.glyph {
+  font-size: 16px;
+  margin-right: 1.5em;
+  float: left;
+  width: 17em;
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.icon-child {
+  width: 0.7138671875em;
+}
+
+.icon-wheelchair {
+  width: 0.9091796875em;
+}
+
+.icon-shower {
+  width: 1.0712890625em;
+}
+
+.icon-paw {
+  width: 0.9287109375em;
+}

@@ -17,10 +17,10 @@
 		<jsp:include page="nav_bar.jsp"></jsp:include>
 		<div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
 			
-			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
 			</div>
 			
-			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 ">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
 				
 
 	 			<div id="main" class="shadow-lg border border-light p-5 rounded" >
@@ -67,7 +67,7 @@
 	 			</div>
 			</div>
 			
-			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
 			</div>
 		</div>
 </body>
