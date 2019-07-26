@@ -33,6 +33,7 @@
 						<div class=" px-4 py-2">
 							Parcheggio <input type="checkbox" name="service" value="parking" class="check">
 						</div><div class="px-4 py-2">
+						 	<img src="https://www.ombrellove.com/utilities/img/services/pedalò.svg" title="Pedalò" width="20" class="icon">
 							Pedalò <input type="checkbox" name="service" value="pedalo" class="check">
 						</div><div class="px-4 py-2">
 							Docce <input type="checkbox" name="service" value="shower" class="check">
@@ -48,6 +49,7 @@
 						</div><div class="px-4 py-2">
 							Area bambini <input type="checkbox" name="service"value="children_area" class="check"> 
 						</div><div class="px-4 py-2">
+						<div class="item"></div>				
 							Area cani <input type="checkbox"name="service" value="dog_area" class="check">
 						</div>
 					</div>
