@@ -48,9 +48,17 @@ public class BeachResortFactory {
 			ResultSet result = stmt.executeQuery();
 
 			while (result.next()) {
+				String logo = result.getString("logo");
+				String image = result.getString("image");
+				if(logo.equals("view/Resources/default-logo.png")) {
+					logo = "";
+					}
+				if(image.equals("view/Resources/default-image.png")) {
+					image = "";
+					}
 				
-				return new BeachResort(result.getString("email"), result.getString("name"),result.getString("description"), result.getString("image"),
-						result.getString("logo"), result.getString("address"), result.getString("telephone"), result.getInt("num_umbrellas"),
+				return new BeachResort(result.getString("email"), result.getString("name"),result.getString("description"), image,
+						logo, result.getString("address"), result.getString("telephone"), result.getInt("num_umbrellas"),
 						result.getInt("num_beach_loungers"), 
 						 convertBoolean(result.getString("parking")), convertBoolean(result.getString("pedalo")), convertBoolean(result.getString("shower")), convertBoolean(result.getString("toilette")),
 						convertBoolean(result.getString("restaurant")), convertBoolean(result.getString("disabled_facilities")), 
