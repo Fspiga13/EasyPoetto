@@ -4,6 +4,19 @@ public class User {
 	
 	private String email;
 	private int role;
+	private int status;
+	
+	/**
+	 * @param email
+	 * @param role
+	 * @param status
+	 */
+	public User(String email, int role, int status) {
+		
+		this.email = email;
+		this.role = role;
+		this.status = status;
+	}
 	
 	/**
 	 * @param email
@@ -12,7 +25,7 @@ public class User {
 	public User(String email, int role) {
 		
 		this.email = email;
-		this.role = role;	
+		this.role = role;
 	}
 	
 	/**
@@ -28,6 +41,12 @@ public class User {
 	public int getRole() {
 		return role;
 	}
-	
+
+	/**
+	 * @return the status
+	 */
+	public int getStatus() {
+		return status;
+	}
 
 }
