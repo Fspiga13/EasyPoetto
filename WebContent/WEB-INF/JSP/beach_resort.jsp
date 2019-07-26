@@ -23,20 +23,29 @@
 
 		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div>
 
-		<div id="main" class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle">
-
-			<img src="${beachResort.image}" class="img-fluid py-5">
+		<div id="main" class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">
+			
 			<h1>
 				<u>${beachResort.name}</u>
 			</h1>
-			<img src="${beachResort.logo}" height="200" width="200"
-				class="float-left">
+			
+			<div class="row">
+				<img src="${beachResort.logo}" height="130" width="130" class="float-left m-3">
+				<div class="float-left m-3" >
+					<p>Indirizzo: ${beachResort.address}</p>
+					<p>Telefono: ${beachResort.telephone}</p>
+					<p>E-mail: ${beachResort.email}</p>
+				</div>
+			</div>
 
+			<img src="${beachResort.image}" class="img-fluid py-3">
+			
 			<div class="text-justify">
 				<p>${beachResort.description}</p>
 			</div>
 
-			<div>
+			<div class="row ml-3">
+
 				<ul>
 					<c:if test="${beachResort.parking==true}">
 						<li>Parcheggio</li>
@@ -65,19 +74,14 @@
 				</ul>
 			</div>
 
-			<div>
-				<h3>Per info e contatti:</h3>
-				<p>Telefono: ${beachResort.telephone}</p>
-				<p>E-mail: ${beachResort.email}</p>
-				<p>Indirizzo: ${beachResort.address}</p>
-			</div>
+
 
       <%--Se l'utente è loggato vede il bottone e sceglie la sua offerta --%>
       
 	
 				<form action="reservation.html" method="get">
 					<button type="submit"
-						class="btn btn-outline-info btn-lg btn-block shadow">Scegli
+						class="btn btn-outline-info btn-lg btn-block shadow mt-2 ">Scegli
 						la tua offerta!</button>
 				</form>
 		
