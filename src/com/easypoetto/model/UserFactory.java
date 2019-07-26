@@ -89,7 +89,7 @@ public class UserFactory {
 		
 		if (getUser(email) == null) { // se l'Utente non c'e' lo aggiungo, altrimenti return false;
 		
-			String sqlNewUser = " insert into users values (user_id_seq.nextval, ?, ?, ?) ";
+			String sqlNewUser = " insert into users values (user_id_seq.nextval, ?, ?, ?, 0) ";
 			try (Connection conn = DbManager.getInstance().getDbConnection();
 					PreparedStatement stmt = conn.prepareStatement(sqlNewUser)) {
 				
