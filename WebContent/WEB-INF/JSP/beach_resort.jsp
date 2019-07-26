@@ -49,7 +49,7 @@
 				<u>${beachResort.name}</u>
 			</h1>
 			
-			<div class="row">
+			<div class="row" >
 				<img src="${beachResort.logo}" height="130" width="130" class="float-left m-3">
 				<div class="float-left m-3" >
 					<div class="row" >
