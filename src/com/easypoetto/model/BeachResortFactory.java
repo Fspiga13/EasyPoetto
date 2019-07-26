@@ -113,9 +113,9 @@ public class BeachResortFactory {
 			
 		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
 
-			String sql = "select id, name, description, image, "
+			String sql = "select beach_resorts.id, name, description, image, "
 					+ "parking, pedalo, shower, toilette, restaurant, "
-					+ "disabled_facilities, children_area, dog_area from beach_resorts";
+					+ "disabled_facilities, children_area, dog_area from beach_resorts, users where user_id=users.id and status=0";
 
 			ResultSet result = stmt.executeQuery(sql);
 
