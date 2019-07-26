@@ -42,12 +42,6 @@ public class ProfileServlet extends HttpServlet {
 		//Verificare se loggato
 		HttpSession session = request.getSession(false);
 		
-		String error = (String) session.getAttribute("error");
-		session.removeAttribute("error");
-		
-		String success = (String) session.getAttribute("success");
-		session.removeAttribute("success");
-
 		if(session == null || session.getAttribute("email") == null || session.getAttribute("password") == null 
 				|| session.getAttribute("role") == null) {	
 			
@@ -55,6 +49,12 @@ public class ProfileServlet extends HttpServlet {
 			
 		}else {
 		
+			String error = (String) session.getAttribute("error");
+			session.removeAttribute("error");
+			
+			String success = (String) session.getAttribute("success");
+			session.removeAttribute("success");
+			
 			String email = (String) session.getAttribute("email");
 			String password = (String) session.getAttribute("password");
 			Integer role = (Integer) session.getAttribute("role");
@@ -77,6 +77,7 @@ public class ProfileServlet extends HttpServlet {
 						request.getRequestDispatcher("WEB-INF/JSP/admin_profile.jsp").forward(request, response);
 						break;
 					case 1:
+						System.out.println(email);
 						BeachResort beachResort = BeachResortFactory.getInstance().getBeachResort(email);
 						request.setAttribute("beachResort", beachResort);
 						request.getRequestDispatcher("WEB-INF/JSP/beach_resort_profile.jsp").forward(request, response);

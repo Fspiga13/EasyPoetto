@@ -24,7 +24,7 @@
 
 		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div>
 
-		<div id="main" class="col-xl-8 col-lg-8 col-md-8 col-sm-8 mb-5">
+		<div id="main" class="col-xl-8 col-lg-8 col-md-8 col-sm-8 mb-5 rounded">
 
 			<div class="rounded border shadow p-3">
 				<h3>Scegli le tue preferenze</h3>
@@ -33,7 +33,7 @@
 						<div class=" px-4 py-2">
 							Parcheggio <input type="checkbox" name="service" value="parking" class="check">
 						</div><div class="px-4 py-2">
-						 	<img src="https://www.ombrellove.com/utilities/img/services/pedalò.svg" title="Pedalò" width="20" class="icon">
+						 	<img src="https://www.ombrellove.com/utilities/img/services/pedalò.svg" title="pedalo" width="20" class="icon">
 							Pedalò <input type="checkbox" name="service" value="pedalo" class="check">
 						</div><div class="px-4 py-2">
 							Docce <input type="checkbox" name="service" value="shower" class="check">

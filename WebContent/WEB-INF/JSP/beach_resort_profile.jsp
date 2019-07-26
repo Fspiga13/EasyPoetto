@@ -27,10 +27,10 @@
 
 		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div>
 
-		<div id="main" class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5">
+		<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle">
 
 
-			<div id="form" class="shadow-lg border border-light p-5 rounded">
+			<div id="main" class="shadow-lg border border-light p-5 rounded">
 				<c:if test="${not empty error}">
 					<div class="alert alert-danger" role="alert">${error}</div>
 				</c:if>
@@ -38,7 +38,11 @@
 				<c:if test="${not empty success}">
 					<div class="alert alert-success" role="alert">${success}</div>
 				</c:if>
+				<div>
 				<h1 class="pb-3">Profilo</h1>
+				
+				<button type="submit" class="btn btn-outline-info btn-lg" >Crea i tuoi pacchetti</button>
+				</div>
 
 				<form action="profile.html" method="post">
 
@@ -47,11 +51,6 @@
 						<label for="name">Nome Stabilimento</label> <input type="text"
 							class="form-control mb-4" id="name" name="name" required
 							<c:if test= "${not empty beachResort}">value="${beachResort.name}"</c:if> />
-					</div>
-					<div>
-						<label for="description">Descrizione</label> <input type="text"
-							class="form-control mb-4" id="description" name="description" required
-							<c:if test= "${not empty beachResort}">value="${beachResort.description}"</c:if> />
 					</div>
 					<div>
 						<label for="email">E-mail</label> <input type="email"
@@ -65,6 +64,14 @@
 					<div>
 						<label for="password">Password</label> <input type="password"
 							class="form-control mb-4" id="password" name="password" />
+					</div>
+					
+					<div>
+						<label for="description">Descrizione</label> 
+						<textarea name="description" id="description" rows="5" cols="50" class="form-control mb-4" maxlength="2000" style="resize:none">
+							<c:if test= "${not empty beachResort}">${beachResort.description}</c:if>
+						</textarea> 
+		
 					</div>
 
 					<div>
@@ -93,38 +100,45 @@
 					</div>
 
 
+				<label>Servizi del tuo stabilimento</label>
 					
-					
-				<div class="rounded border shadow p-3">
-								
-				<h3>Seleziona i servizi del tuo stabilimento</h3>
-				
+				<div class="rounded border p-3">
 				
 					<div class="row">
 						<div class=" px-4 py-2">
-							Parcheggio <input type="checkbox" name="service" value="parking" class="check">
+							Parcheggio <input type="checkbox" name="service" value="parking" class="check"
+							<c:if test= "${beachResort.parking == true}">checked</c:if> />
 						</div><div class="px-4 py-2">
-							Pedalò <input type="checkbox" name="service" value="pedalo" class="check">
+							Pedalò <input type="checkbox" name="service" value="pedalo" class="check"
+							<c:if test= "${beachResort.pedalo == true}">checked</c:if> />
 						</div><div class="px-4 py-2">
-							Docce <input type="checkbox" name="service" value="shower" class="check">
+							Docce <input type="checkbox" name="service" value="shower" class="check"
+							<c:if test= "${beachResort.shower == true}">checked</c:if> />
 						</div><div class="px-4 py-2"> 
-							Toilette <input type="checkbox" name="service" value="toilette" class="check">
+							Toilette <input type="checkbox" name="service" value="toilette" class="check"
+							<c:if test= "${beachResort.toilette == true}">checked</c:if> />
 						</div>
 					</div>
 					<div class="row">
 						<div class="px-4 py-2">
-							Punto ristoro <input type="checkbox" name="service"value="restaurant" class="check"> 
+							Punto ristoro <input type="checkbox" name="service"value="restaurant" class="check"
+							<c:if test= "${beachResort.restaurant == true}">checked</c:if> />
 						</div><div class="px-4 py-2">
-							Servizi per disabili <input type="checkbox" name="service" value="disabled_facilities" class="check">
+							Servizi per disabili <input type="checkbox" name="service" value="disabled_facilities" class="check"
+							<c:if test= "${beachResort.disabledFacilities == true}">checked</c:if> />
 						</div><div class="px-4 py-2">
-							Area bambini <input type="checkbox" name="service"value="children_area" class="check"> 
+							Area bambini <input type="checkbox" name="service"value="children_area" class="check"
+							<c:if test= "${beachResort.childrenArea == true}">checked</c:if> /> 
 						</div><div class="px-4 py-2">
-							Area cani <input type="checkbox"name="service" value="dog_area" class="check">
+							Area cani <input type="checkbox"name="service" value="dog_area" class="check"
+							<c:if test= "${beachResort.dogArea == true}">checked</c:if> />
 						</div>
 					</div>
+						
+			</div>
 					
-										<div class = "row align-middle mb-5">
-					<label for="num_umbrellas">Numero di ombrelloni </label>
+					<div class = "row align-middle px-3 mt-3">
+					<label for="num_umbrellas">Numero di ombrelloni: </label>
 						<c:choose>
 						<c:when test="${not empty beachResort}">
 							<p> ${beachResort.numUmbrellas}
@@ -142,33 +156,27 @@
 						</c:choose>
 					</div>
 					
-					
-						
-						<div class = "row align-middle mb-5">
-						<label for="num_beach_loungers">Numero di lettini </label>
-							<c:choose>
-							<c:when test="${not empty beachResort}">
-								<p> ${beachResort.numBeachLoungers}
-								</p>
-							</c:when>
-							<c:otherwise>
-							<select name = "num_beach_loungers">
-								
-								<c:forEach begin = "${30}" end="${1500}" step="30" var="index">
-								
-									<option value="${index}">${index}</option>
-								</c:forEach>
-							</select>
-							</c:otherwise>
-							</c:choose>
-						</div>
-								
-				<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-5">Crea i tuoi pacchetti</button>
-			</div>
-					
+					<div class = "row align-middle px-3">
+					<label for="num_beach_loungers">Numero di lettini: </label>
+						<c:choose>
+						<c:when test="${not empty beachResort}">
+							<p> ${beachResort.numBeachLoungers}
+							</p>
+						</c:when>
+						<c:otherwise>
+						<select name = "num_beach_loungers">
+							
+							<c:forEach begin = "${30}" end="${1500}" step="30" var="index">
+							
+								<option value="${index}">${index}</option>
+							</c:forEach>
+						</select>
+						</c:otherwise>
+						</c:choose>
+					</div>
 					
 
-					<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-5">Modifica</button>
+					<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-2">Modifica</button>
 				</form>
 			</div>
 		</div>

@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.cinguetter.model.DbManager;
+
 public class BeachResortFactory {
 	
 	private static BeachResortFactory singleton;
@@ -35,15 +37,15 @@ public class BeachResortFactory {
 	}
 	
 	public BeachResort getBeachResort(String email) {
-		
-		
-		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
 
-			String sql = "select email, name, description, image, logo, address, telephone, num_umbrellas, "
-					+ "num_beach_loungers, parking, pedalo, shower, toilette, restaurant, "
-					+ "disabled_facilities, children_area, dog_area from beach_resorts, users where user_id = users.id and email= " + email;
-
-			ResultSet result = stmt.executeQuery(sql);
+		String sql = "select email, name, description, image, logo, address, telephone, num_umbrellas, "
+				+ "num_beach_loungers, parking, pedalo, shower, toilette, restaurant, "
+				+ "disabled_facilities, children_area, dog_area from beach_resorts, users where user_id = users.id and email=?";
+		
+		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+				
+			stmt.setString(1, email);
+			ResultSet result = stmt.executeQuery();
 
 			while (result.next()) {
 				

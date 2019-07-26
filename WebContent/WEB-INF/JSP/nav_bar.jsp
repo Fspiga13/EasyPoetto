@@ -14,7 +14,7 @@
 			font-family: 'Amatic SC', cursive;
 			font-size: 35px;
 			font-weight: bold;
-			color:black!important;
+			color:white!important;
 		}
 	</style>
 	
