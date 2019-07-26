@@ -86,25 +86,46 @@ public class LoginServlet extends HttpServlet {
 			//System.out.println("ruolo: " + role);
 		}
 		
-		if(role != null) {
-			
-			//System.out.println("login con successo");
-			
-			HttpSession session = request.getSession();
-			session.setAttribute("email", email);
-			session.setAttribute("password", password);
-			session.setAttribute("role", role);
-			response.sendRedirect("home.html");
-
-		} else {
-			
+		if(role == null) {
 			//System.out.println("login senza successo");
 
 			System.out.println("Errate");
-			request.setAttribute("error", "Wrong credentials");
+			request.setAttribute("error", "Credenziali errate");
 			request.setAttribute("logged", false);
 			request.getRequestDispatcher("WEB-INF/JSP/login.jsp").forward(request, response);
 		}
+		
+		String redirect = null;
+		
+		switch(role) {
+		
+			//Utente bloccato dall'amministratore
+			case -1:
+				System.out.println("Account bannato dall'amministratore");
+				request.setAttribute("error", "Account bannato dall'amministratore");
+				request.setAttribute("logged", false);
+				request.getRequestDispatcher("WEB-INF/JSP/login.jsp").forward(request, response);
+				break;
+			case 0:
+				redirect = "profile.html";
+				break;
+			case 1:
+				redirect = "home.html";
+				break;
+			case 2:
+				redirect = "home.html";
+				break;
+			default:
+				break;
+		}
+		
+		//System.out.println("login con successo");
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("email", email);
+		session.setAttribute("password", password);
+		session.setAttribute("role", role);
+		response.sendRedirect(redirect);
 
 	}
 

@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.easypoetto.model.User;
 import com.easypoetto.model.BeachResort;
 import com.easypoetto.model.BeachResortFactory;
 import com.easypoetto.model.Client;
 import com.easypoetto.model.ClientFactory;
+import com.easypoetto.model.User;
 import com.easypoetto.model.UserFactory;
 
 /**
@@ -70,10 +70,8 @@ public class ProfileServlet extends HttpServlet {
 				switch(role) {
 				
 					case 0:
-						List<String> clientEmailList = ClientFactory.getInstance().getClientEmails();
-						List<String> beachResortEmailList = BeachResortFactory.getInstance().getBeachResortEmails();
-						request.setAttribute("beachResortEmailList", beachResortEmailList);
-						request.setAttribute("clientEmailList", clientEmailList);
+						List<User> users = UserFactory.getInstance().getUsers();
+						request.setAttribute("usersList", users);
 						request.getRequestDispatcher("WEB-INF/JSP/admin_profile.jsp").forward(request, response);
 						break;
 					case 1:
@@ -196,27 +194,31 @@ public class ProfileServlet extends HttpServlet {
 	private void adminChanges(HttpServletRequest request, HttpServletResponse response, HttpSession session) 
 			throws ServletException, IOException{
 		
-		String email = request.getParameter("emailBeachResort");
-		
-		if(email == null) {
-			email = request.getParameter("emailClient");
-		}
+		String email = request.getParameter("email");
+		Integer newStatus = Integer.parseInt(request.getParameter("status"));
 		
 		// se è riuscito ad arrivare a quesro punto in qualche modo lo reindirizzo qui
-		if(email == null) {
+		if(email == null || newStatus == null) {
 			response.sendRedirect("profile.html");
 		}
 		
-		if(!UserFactory.getInstance().deleteUser(email)) {
-			
-			session.setAttribute("error", "Eliminazione account non riuscita");
-			response.sendRedirect("profile.html");
-		}else {
-			
-			session.setAttribute("success", "Eliminazione account avvenuta con successo!");
-			response.sendRedirect("profile.html");
-		}
-		
+		switch(newStatus) {
+			case 0:
+				if(!UserFactory.getInstance().updateUserStatus(email, newStatus))
+					session.setAttribute("error", "Ripristino dell'account non riuscito");
+				else
+					session.setAttribute("success", "Ripristino dell'account avvenuto con successo!");
+				break;
+			case 1:
+				if(!UserFactory.getInstance().updateUserStatus(email, newStatus))
+					session.setAttribute("error", "Blocco dell'account non riuscito");
+				else
+					session.setAttribute("success", "Blocco dell'account avvenuto con successo!");
+				break;
+			default:
+				break;
+		}	
+		response.sendRedirect("profile.html");
 	}
 
 	private void clientChanges(String email, String password, HttpServletRequest request,

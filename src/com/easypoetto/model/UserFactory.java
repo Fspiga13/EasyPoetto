@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,7 +26,11 @@ public class UserFactory {
 	}
 	
 	public Integer login(String email, String password) {
-		String sql = "select role from users where email= ? and password= ?";
+
+		Integer role = null;
+		int status = -1;
+		
+		String sql = "select role, status from users where email= ? and password= ?";
 
 		try (Connection conn = DbManager.getInstance().getDbConnection();
 				PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -33,9 +40,17 @@ public class UserFactory {
 			ResultSet result = stmt.executeQuery();
 
 			if (result.next()) {
-				return result.getInt("role");
+				role = result.getInt("role");
+				status = result.getInt("status");
 			}
 
+			//Utente bannato dall'amministratore
+			if(status == 1) {
+				return -1;
+			}
+			
+			return role;
+			
 		} catch (SQLException e) {
 			Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE, null, e);
 			System.out.println("errore in login dentro UserFactory");
@@ -139,22 +154,46 @@ public class UserFactory {
 		
 		return 0;
 	}
+	
+	public List<User> getUsers() {
+		
+		List<User> users = new ArrayList<User>();
+		
+		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
 
-	public boolean deleteUser(String email) {
+			String sql = "select email, role, status from users";
+
+			ResultSet result = stmt.executeQuery(sql);
+
+			while (result.next()) {
+				users.add(new User(result.getString("email"), result.getInt("role"), result.getInt("status")));
+			}
+			
+			return users;
+					
+		} catch (SQLException e) {
+			Logger.getLogger(ClientFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("errore in getUsers dentro UserFactory");
+		}	
 		
-		// prima di cancellare dalla tabella user
+		return null;
+	}
+	
+
+	public boolean updateUserStatus(String email, Integer newStatus) {
 		
-		// se client cancellare prima:
-		// righe prenotazioni_pacchetti
-		// righe prenotazione
-		// riga client
-		// riga user
-		
-		// se beach resort cancellare prima:
-		// righe prenotazioni_pacchetti
-		// righe pacchetti
-		// riga beach resort
-		// riga user
+		String sql = "update users set status= ? where email = ? ";
+		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setInt(1, newStatus);
+			stmt.setString(2, email);
+			
+			stmt.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+			Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("Errore in updateUserStatus");
+		}
 		
 		return false;
 	}

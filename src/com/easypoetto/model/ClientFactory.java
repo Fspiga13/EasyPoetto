@@ -165,30 +165,5 @@ public class ClientFactory {
 		}
 		return null;
 	}
-
-	public List<String> getClientEmails() {
-		
-		List<String> clientEmails = new ArrayList<String>();
-		
-		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
-
-			String sql = "select email from users where role=2";
-
-			ResultSet result = stmt.executeQuery(sql);
-
-			while (result.next()) {
-				
-				clientEmails.add(result.getString("email"));
-			}
-			
-			return clientEmails;
-					
-		} catch (SQLException e) {
-			Logger.getLogger(ClientFactory.class.getName()).log(Level.SEVERE, null, e);
-			System.out.println("errore in getClientEmails dentro ClientFactory");
-		}	
-		
-		return null;
-	}
 	
 }

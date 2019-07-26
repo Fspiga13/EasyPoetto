@@ -21,8 +21,10 @@ id NUMBER(38,0),
 email VARCHAR2(320CHAR)NOT NULL UNIQUE, 
 password VARCHAR2(2000CHAR)NOT NULL, 
 role NUMBER(1,0) NOT NULL, 
+status NUMBER(1,0) NOT NULL,
 CONSTRAINT pk_users_id PRIMARY KEY(id), 
-CONSTRAINT role CHECK(role BETWEEN 0 AND 2) 
+CONSTRAINT role CHECK(role BETWEEN 0 AND 2),
+CONSTRAINT status CHECK(status BETWEEN 0 AND 1) 
 ); 
 
 CREATE TABLE CLIENTS( 
@@ -83,15 +85,15 @@ CONSTRAINT fk_res_res_beach_package_id FOREIGN KEY (reservations_id) REFERENCES 
 CONSTRAINT fk_res_beach_package_id FOREIGN KEY (beach_package_id) REFERENCES beach_packages(id) 
 ); 
 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'admin@poetto.it','poetto',0); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@lepalmette.it','palmette',1); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@illido.it','lido',1); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@dacquila.it','daquila',1); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@emerson.it','emerson',1); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@palmbeach','palmbeach',1); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'federico@tiscali.it','federico',2); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'giulia@tiscali.it','giulia',2); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'omar@tiscali.it','omar',2);
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'admin@poetto.it','poetto',0, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@lepalmette.it','palmette',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@illido.it','lido',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@dacquila.it','daquila',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@emerson.it','emerson',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@palmbeach','palmbeach',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'federico@tiscali.it','federico',2, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'giulia@tiscali.it','giulia',2, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'omar@tiscali.it','omar',2 ,0);
 
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,2,'Le Palmette Beach Club',
@@ -122,7 +124,7 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,3,
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,5,
 'Emerson',
-'In un''ampia e accogliente spiaggia con una distesa di lettini color crema, l''Emerson e'' un''elegante struttura balneare con docce, servizi e spogliatoi. Due punti bar e servizi dal tocco giovane e sportivo in questa realta''  made in Cagliari.',
+'In un''ampia e accogliente spiaggia con una distesa di lettini color crema, l''Emerson e'' un''elegante struttura balneare con docce, servizi e spogliatoi. Due punti bar e servizi dal tocco giovane e sportivo in questa realta''ï¿½ made in Cagliari.',
 'http://www.emersoncagliari.it/wp-content/uploads/2017/03/spiaggia5.jpg',
 'http://www.cagliariaccommodations.com/wp-content/uploads/2019/04/logo.png',
 'Viale Lungo Mare Poetto, Quarta Fermata, 09126 Cagliari CA, Italia', 
