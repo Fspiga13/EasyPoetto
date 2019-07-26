@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.cinguetter.model.DbManager;
+
 
 public class BeachResortFactory {
 	
@@ -195,7 +195,7 @@ public class BeachResortFactory {
 	}
 
 	public boolean editDetails(String newName, String newDescription, String newEmail, String newPassword,
-			String newImage, String newLogo, String newAddress, String newTelephone, List<String> services,
+			String newImage, String newLogo, String newAddress, String newTelephone, Integer newNumUmbrellas, Integer newNumBeachLoungers, List<String> services,
 			String email) {
 	
 			try (Connection conn = DbManager.getInstance().getDbConnection()) {
@@ -246,46 +246,74 @@ public class BeachResortFactory {
 			//Sta effettuando modifiche
 			if(idBeachResort != -1) {
 				
-				String sqlEditResortDetails = " update clients set name = ?, surname= ?, birthday=to_date (?, 'yyyy-mm-dd') where id = ? ";
-				try (PreparedStatement stmt = conn.prepareStatement(sqlEditResortDetails)) {
+				String sqlEditBeachResortDetails = " update beach_resorts set name = ?, description = ?, image = ?, logo = ?, address = ?, telephone = ?,  num_umbrellas = ?, num_beach_loungers = ?, parking = 'N', pedalo = 'N', shower = 'N', toilette = 'N', restaurant = 'N', disabled_facilities = 'N', children_area = 'N', dog_area = 'N' where id = ? ";
+				
+				for(String service : services) {
+					sqlEditBeachResortDetails = sqlEditBeachResortDetails.replace(service + " = 'N'", service + " = 'Y'");		
+				}
+				
+				
+				try (PreparedStatement stmt = conn.prepareStatement(sqlEditBeachResortDetails)) {
 					stmt.setString(1, newName);
 					stmt.setString(2, newDescription);
-					stmt.setString(3, newEmail);
-					stmt.setInt(4, idClient);
+					stmt.setString(3, newImage);
+					stmt.setString(4, newLogo);
+					stmt.setString(5, newAddress);
+					stmt.setString(6, newTelephone);
+					stmt.setInt(7, newNumUmbrellas);
+					stmt.setInt(8, newNumBeachLoungers);
+					stmt.setInt(9, idBeachResort);
 					stmt.executeUpdate();
-					conn.commit(); //committo le modifiche, tutto � andato a buon fine
 
 				} catch (SQLException e) {
 					conn.rollback();//elimino le modifiche effettuate in transazione
-					Logger.getLogger(ClientFactory.class.getName()).log(Level.SEVERE, null, e);
+					Logger.getLogger(BeachResortFactory.class.getName()).log(Level.SEVERE, null, e);
 					System.out.println("Errore in editDetails");
 				}
-			}else {
+			} else {
 				
-				//INSERT in Clients
+				//INSERT in BeachResort
 				
-				String sqlInsertClientDetails = "INSERT INTO CLIENTS VALUES(client_id_seq.nextval, ?, ?, ?,TO_DATE(?, 'YYYY-MM-DD'))";
-				try (PreparedStatement stmt = conn.prepareStatement(sqlInsertClientDetails)) {
+				String sql1 = "INSERT INTO BEACH_RESORTS (id, user_id, name, description, image, logo, address, telephone, num_umbrellas, num_beach_loungers, ";
+				String sql2= " VALUES(beach_resort_id_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ";
+				for(String service : services) {
+					sql1 = sql1 + service +", ";
+					sql2 = sql2 + "'Y', ";
+				}
+				
+				sql1 = sql1.substring(0, sql1.length() -2) + ")";
+				sql2 = sql2.substring(0, sql2.length() -2) + ")";
+				
+				String sqlInsertBeachResortDetails = sql1 + sql2;
+				
+				System.out.println(sqlInsertBeachResortDetails);
+				
+				try (PreparedStatement stmt = conn.prepareStatement(sqlInsertBeachResortDetails)) {
 					stmt.setInt(1, idUser);
 					stmt.setString(2, newName);
-					stmt.setString(3, newSurname);
-					stmt.setString(4, newBirthday);
-
+					stmt.setString(3, newDescription);
+					stmt.setString(4, newImage);
+					stmt.setString(5, newLogo);
+					stmt.setString(6, newAddress);
+					stmt.setString(7, newTelephone);
+					stmt.setInt(8, newNumUmbrellas);
+					stmt.setInt(9, newNumBeachLoungers);
 					stmt.executeUpdate();
-					conn.commit(); //committo le modifiche, tutto � andato a buon fine
 				} catch (SQLException e) {
 					conn.rollback();//elimino le modifiche effettuate in transazione
-					Logger.getLogger(ClientFactory.class.getName()).log(Level.SEVERE, null, e);
+					Logger.getLogger(BeachResortFactory.class.getName()).log(Level.SEVERE, null, e);
 					System.out.println("Errore in editDetails");
 				}
 				
 			}
 			
+			conn.commit(); //committo le modifiche, tutto � andato a buon fine
 			//UPDATE tabella users
 			return UserFactory.getInstance().editDetails(idUser, newEmail, newPassword);
+
 			
 		} catch (SQLException e) {
-			Logger.getLogger(ClientFactory.class.getName()).log(Level.SEVERE, null, e);
+			Logger.getLogger(BeachResortFactory.class.getName()).log(Level.SEVERE, null, e);
 			System.out.println("Errore in editDetails");
 		}
 			

@@ -143,6 +143,7 @@
 						<c:when test="${not empty beachResort}">
 							<p> ${beachResort.numUmbrellas}
 							</p>
+							<input type="hidden" name="num_umbrellas" value="${beachResort.numUmbrellas}">
 						</c:when>
 						<c:otherwise>
 						<select name = "num_umbrellas">
@@ -162,6 +163,7 @@
 						<c:when test="${not empty beachResort}">
 							<p> ${beachResort.numBeachLoungers}
 							</p>
+							<input type="hidden" name="num_beach_loungers" value="${beachResort.numBeachLoungers}">
 						</c:when>
 						<c:otherwise>
 						<select name = "num_beach_loungers">
