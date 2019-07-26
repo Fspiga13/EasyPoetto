@@ -53,15 +53,15 @@
 				<img src="${beachResort.logo}" height="130" width="130" class="float-left m-3">
 				<div class="float-left m-3" >
 					<div class="row" >
-	                    <svg class="icon icon-position" width="30"><use xlink:href="#icon-position"></use></svg>
+	                    <svg class="icon icon-position"><use xlink:href="#icon-position"></use></svg>
 						<p class="ml-2">${beachResort.address}</p>
 					</div>
 					<div class="row" >
-						<svg class="icon icon-phone" width="30"><use xlink:href="#icon-phone"></use></svg>
+						<svg class="icon icon-phone"><use xlink:href="#icon-phone"></use></svg>
 						<p class="ml-2">${beachResort.telephone}</p>
 					</div>
 					<div class="row" >
-						<svg class="icon icon-envelope" width="30"><use xlink:href="#icon-envelope"></use></svg>
+						<svg class="icon icon-envelope"><use xlink:href="#icon-envelope"></use></svg>
 						<p class="ml-2">${beachResort.email}</p>
 					</div>
 				</div>
