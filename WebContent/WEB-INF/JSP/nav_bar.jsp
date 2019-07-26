@@ -58,7 +58,7 @@
 					</c:choose> 
 			method="get">
 				<input type="hidden" name="logout" value="yes">
-				<button type="submit" class="btn btn-outline-info rounded" id="loginButton"> 
+				<button type="submit" class="btn btn-info rounded" id="loginButton"> 
 					<c:choose>
 					<c:when test="${logged==false}">Login</c:when>
 					<c:otherwise>Logout</c:otherwise>
