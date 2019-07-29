@@ -64,10 +64,13 @@
 	<%-- <c:set var="logged" scope="request" value="${true}"/> Se siamo nella pagina di Home, siamo già loggati quindi per forza true --%>
 	<jsp:include page="nav_bar.jsp"></jsp:include>
 	<div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
+	
+		<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">	
+		</div>
 
 		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
 		
-		<div id="main" class="rounded border shadow p-3">
+		<div id="main" class="rounded border shadow p-3 mr-5">
 				<h3>Servizi</h3>
 				<form action="search.html" method="get">
 					<div class="row align-middle">
@@ -121,7 +124,7 @@
             					<input type="checkbox" name="service" value="disabled_facilities" class="check"
             					<c:if test= "${ not empty servicesMap['disabled_facilities']}">checked</c:if> />
                 					<svg class="icon icon-wheelchair"><use xlink:href="#icon-wheelchair"></use></svg>
-                					<span class="name">Servizi per disabili</span>
+                					<span class="name">Strutture accessibili</span>
             					</div>
        						 </div>
 						</div><div class="px-4 py-2">
@@ -156,7 +159,7 @@
 		
 		</div>
 
-		<div id="main" class="col-xl-8 col-lg-8 col-md-8 col-sm-8 mb-5 rounded" style="overflow:auto">
+		<div id="main" class="col-xl-7 col-lg-7 col-md-7 col-sm-7 mb-5 rounded" style="overflow:auto">
 
 			
 			
@@ -168,14 +171,14 @@
 	
 							<div class="m-1 p-1">
 								<div>
-									<img src="${beachResort.logo}" height="200" width="200" class="float-left m-3">
+									<img src="${beachResort.logo}" height="130" width="130" class="float-left m-1 rounded">
 								</div>
 												
-								<div class="p-2">
+								<div class="p-1" style="display: inline-block">
 									<h4>${beachResort.name}</h4>									
 								<div class="row text-dark" >
 				                    <svg class="icon icon-position"><use xlink:href="#icon-position"></use></svg>
-									<p class="ml-2 font-weight-light h6">${beachResort.address}</p>
+									<p class="font-weight-light h6">${beachResort.address}</p>
 								</div>
 
 									<p class="text-dark">
