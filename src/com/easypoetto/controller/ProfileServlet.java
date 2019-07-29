@@ -79,11 +79,13 @@ public class ProfileServlet extends HttpServlet {
 						BeachResort beachResort = BeachResortFactory.getInstance().getBeachResort(email);
 						request.setAttribute("beachResort", beachResort);
 						request.setAttribute("role", role);
+						request.setAttribute("email", email);
 						request.getRequestDispatcher("WEB-INF/JSP/beach_resort_profile.jsp").forward(request, response);
 						break;
 					case 2:
 						Client client = ClientFactory.getInstance().getClient(email);
 						request.setAttribute("client", client);
+						request.setAttribute("email", email);
 						request.getRequestDispatcher("WEB-INF/JSP/client_profile.jsp").forward(request, response);
 						break;
 					default:

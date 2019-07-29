@@ -53,7 +53,9 @@
 						<label for="email">E-mail</label> <input type="email"
 							class="form-control mb-4" id="email" name="email"
 							pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
-							<c:if test= "${not empty beachResort}">value="${beachResort.email}"</c:if> />
+							<c:choose><c:when test= "${not empty client}">value="${client.email}"</c:when> 
+							<c:when test= "${not empty email}">value="${email}"</c:when>
+							</c:choose> />
 					</div>
 
 					<%--inserisci vecchia password, inserisci nuova password --%>
@@ -175,7 +177,7 @@
 					</div>
 					
 
-					<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-2">Modifica</button>
+					<button type="submit" class="btn btn-outline-info btn-lg btn-block mt-2"><c:choose> <c:when test= "${not empty beachResort}">Modifica</c:when><c:otherwise>Salva</c:otherwise></c:choose></button>
 				</form>
 			</div>
 		</div>
