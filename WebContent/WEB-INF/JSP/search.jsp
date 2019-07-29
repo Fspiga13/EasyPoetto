@@ -79,8 +79,7 @@
 						</div><div class="px-4 py-2">
 							<input type="checkbox" name="service" value="pedalo" class="check"
 							<c:if test= "${ not empty servicesMap['pedalo']}">checked</c:if> />
-						 	<img src="https://www.ombrellove.com/utilities/img/services/pedalò.svg" title="pedalo" width="30" class="icon">
-							Pedalò 
+							<img src="view/Resources/pedalò-icon.svg" alt="Integrare SVG con il tag image" title="pedalo" width="30" class="icon">Pedalò 
 						</div><div class="px-4 py-2">
 					        <div class="glyph fs2">
             					<div class="clearfix pbs">

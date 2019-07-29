@@ -122,7 +122,7 @@
 				</div>
 				<div class="row ml-3">						
 					<c:if test="${beachResort.pedalo==true}">
-						<img src="https://www.ombrellove.com/utilities/img/services/pedalò.svg" title="pedalo" width="30" class="icon">
+						<img src="view/Resources/pedalò-icon.svg" alt="Integrare SVG con il tag image" title="pedalo" width="30" class="icon">
 						<p class="ml-3">Pedalò</p>
 					</c:if>
 				</div>
