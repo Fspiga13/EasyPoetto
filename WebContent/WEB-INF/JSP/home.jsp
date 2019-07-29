@@ -16,11 +16,23 @@
 		<jsp:include page="nav_bar.jsp"></jsp:include>
 		<div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
 			
+			
+			
 			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
 			</div>
 			
-			<div id="main" class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">
-		
+			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">
+			
+			
+			<div class="mb-5">
+				<form action="search.html"  method="get">
+	        	<button type="submit" class="btn btn-info btn-lg btn-block shadow mt-5 ">Trova Stabilimento</button>	
+				</form>
+			
+			</div>
+			
+			
+			<div  id="main" class="align-middle my-5 rounded p-3">
 	    	<img id="homePoetto" src="view/Resources/HomePoetto.jpg" class="img-fluid pb-5"> 
 
 			<div class="text-justify">
@@ -45,11 +57,9 @@
 			</p>
 			</div>
 
-				<form action="search.html"  method="get">
-	        	<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-5 ">Trova Stabilimento</button>	
-				</form>
 
-		
+
+			</div>
 			</div>
 			
 			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
