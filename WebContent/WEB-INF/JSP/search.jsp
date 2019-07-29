@@ -69,20 +69,23 @@
 						<div class=" px-4 py-2">
 					      <div class="glyph fs1">
 					            <div class="clearfix pbs">
-					            <input type="checkbox" name="service" value="parking" class="check">
+					            <input type="checkbox" name="service" value="parking" class="check"
+					            <c:if test= "${ not empty servicesMap['parking']}">checked</c:if> />
 					                <svg class="icon icon-travel-car"><use xlink:href="#icon-travel-car"></use></svg>
 					                <span class="name">Parcheggio </span>
 					            </div>
 					        </div>
 					      
 						</div><div class="px-4 py-2">
-							<input type="checkbox" name="service" value="pedalo" class="check">
+							<input type="checkbox" name="service" value="pedalo" class="check"
+							<c:if test= "${ not empty servicesMap['pedalo']}">checked</c:if> />
 						 	<img src="https://www.ombrellove.com/utilities/img/services/pedalò.svg" title="pedalo" width="30" class="icon">
 							Pedalò 
 						</div><div class="px-4 py-2">
 					        <div class="glyph fs2">
             					<div class="clearfix pbs">
-            						<input type="checkbox" name="service" value="shower" class="check">	
+            						<input type="checkbox" name="service" value="shower" class="check"
+            						<c:if test= "${ not empty servicesMap['shower']}">checked</c:if> />
                 					<svg class="icon icon-shower"><use xlink:href="#icon-shower"></use></svg>
                 					<span class="name">Docce</span>
             					</div>
@@ -90,7 +93,8 @@
 						</div><div class="px-4 py-2"> 
 					        <div class="glyph fs3">
             					<div class="clearfix pbs">
-            					<input type="checkbox" name="service" value="toilette" class="check">
+            					<input type="checkbox" name="service" value="toilette" class="check"
+            					<c:if test= "${ not empty servicesMap['toilette']}">checked</c:if> />
                						<svg class="icon icon-man-woman"><use xlink:href="#icon-man-woman"></use></svg>
                						<span class="name">Toilette</span>
             					</div>
@@ -101,7 +105,8 @@
 						<div class="px-4 py-2">
 							<div class="glyph fs3">
             					<div class="clearfix pbs">
-            					<input type="checkbox" name="service"value="restaurant" class="check"> 
+            					<input type="checkbox" name="service"value="restaurant" class="check"
+            					<c:if test= "${ not empty servicesMap['restaurant']}">checked</c:if> />
                 				<svg class="icon icon-spoon-knife"><use xlink:href="#icon-spoon-knife"></use></svg>
                 				<span class="name">Punto ristoro</span>
            					 </div>
@@ -109,7 +114,8 @@
 						</div><div class="px-4 py-2">
 							<div class="glyph fs2">
             					<div class="clearfix pbs">
-            					<input type="checkbox" name="service" value="disabled_facilities" class="check">
+            					<input type="checkbox" name="service" value="disabled_facilities" class="check"
+            					<c:if test= "${ not empty servicesMap['disabled_facilities']}">checked</c:if> />
                 					<svg class="icon icon-wheelchair"><use xlink:href="#icon-wheelchair"></use></svg>
                 					<span class="name">Servizi per disabili</span>
             					</div>
@@ -117,7 +123,8 @@
 						</div><div class="px-4 py-2">
 							<div class="glyph fs2">
             					<div class="clearfix pbs">
-            					<input type="checkbox" name="service"value="children_area" class="check">
+            					<input type="checkbox" name="service"value="children_area" class="check"
+            					<c:if test= "${ not empty servicesMap['children_area']}">checked</c:if> />
                 				<svg class="icon icon-child"><use xlink:href="#icon-child"></use></svg>
                 				<span class="name">Area bambini</span>
             					</div>
@@ -127,7 +134,8 @@
 						<div class="item"></div>	
 							<div class="glyph fs2">
            						<div class="clearfix pbs">
-           						<input type="checkbox"name="service" value="dog_area" class="check">
+           						<input type="checkbox"name="service" value="dog_area" class="check"
+           						<c:if test= "${ not empty servicesMap['dog_area']}">checked</c:if> />
                 					<svg class="icon icon-paw"><use xlink:href="#icon-paw"></use></svg>
                 					<span class="name">Area cani</span>
            						 </div>

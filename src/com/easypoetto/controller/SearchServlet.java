@@ -3,7 +3,9 @@ package com.easypoetto.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,6 +43,14 @@ public class SearchServlet extends HttpServlet {
 		if(servicesStrings != null) {
 		
 			List<String> services = new ArrayList<String>(Arrays.asList(servicesStrings));	
+			
+			Map<String, Boolean> servicesMap = new HashMap<String, Boolean>();
+			
+			for(String service : services) {
+				servicesMap.put(service, true);
+			}
+			
+			request.setAttribute("servicesMap", servicesMap);
 			request.setAttribute("beachResorts", BeachResortFactory.getInstance().getFilteredBeachResorts(services));
 			
 		}else {			
