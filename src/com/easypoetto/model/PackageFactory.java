@@ -1,5 +1,15 @@
 package com.easypoetto.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class PackageFactory {
 	
 	private static PackageFactory singleton;
@@ -19,5 +29,57 @@ public class PackageFactory {
 		return false;
 
 }
+
+	public List<Package> getPackages(String email) {
+		
+		List<Package> packages = new ArrayList<Package>();
+		
+		String sql = "select bp.id, bp.name, bp.included_umbrellas, bp.included_beach_loungers, bp.price from users u, beach_resorts br, beach_packages bp where u.id=br.user_id and br.id=bp.beach_resort_id and email= ?" ;
+		
+		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql))  {
+			
+			stmt.setString(1, email);
+
+			ResultSet result = stmt.executeQuery();
+
+			while (result.next()) {
+				packages.add(new Package(result.getInt("id"), result.getString("name"), result.getInt("included_umbrellas"), 
+						result.getInt("included_beach_loungers"), result.getDouble("price")));
+			}
+			
+			return packages;
+					
+		} catch (SQLException e) {
+			Logger.getLogger(ClientFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("errore in getPackages dentro PackageFactory");
+		}	
+		
+		
+		return null;
+	}
+
+	public boolean addPackage(String email) {
+		
+		BeachResort br= BeachResortFactory.getInstance().getBeachResort(email);
+				
+		if (br != null) { // deve per forza trovare un beach resort
+			
+			String sqlNewUser = " insert into beach_packages(id, beach_resort_id) values (beach_package_id_seq.nextval, ?) ";
+			try (Connection conn = DbManager.getInstance().getDbConnection();
+					PreparedStatement stmt = conn.prepareStatement(sqlNewUser)) {
+				
+				stmt.setInt(1, br.getId());
+	
+				stmt.executeUpdate();
+				return true;
+			} catch (SQLException e) {
+				Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE, null, e);
+				System.out.println("Errore in addPackage di PackageFactory");
+			}
+
+		}
+		return false;
+		
+	}
 	
 }

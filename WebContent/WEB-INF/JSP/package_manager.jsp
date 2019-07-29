@@ -16,7 +16,7 @@
 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 	crossorigin="anonymous"></script>
 <script type="text/javascript" src="../../jQuery/jquery-3.4.1.min.js"></script>
-<title>Easy Poetto - Pacchetto</title>
+<title>Easy Poetto - I miei Pacchetti</title>
 </head>
 <body>
 	<%-- Imposto le variabili che servono alla navbar per essere visualizzata nel modo corretto --%>
@@ -39,63 +39,89 @@
 					<div class="alert alert-success" role="alert">${success}</div>
 				</c:if>
 
-				<h1 class="pb-3">Pacchetto</h1>
-				
-				<form action="package.html" method="post">
-	
-					<div>
-						<label for="name">Nome Pacchetto</label> <input type="text"
-							class="form-control mb-4" id="name" name="name" required
-							<c:if test= "${not empty package}">value="${package.name}"</c:if> />
-					</div>
-					
-					<div class = "row align-middle px-3 mt-3">
-					<label for="num_package_umbrellas">Numero di ombrelloni: </label>
-						<c:choose>
-							<c:when test="${not empty package}">
-								<p> ${package.numPackageUmbrellas}
-								</p>
-								<input type="hidden" name="num_package_umbrellas" value="${package.numPackageUmbrellas}">
-							</c:when>
-							<c:otherwise>
-							<select name = "num_packag_umbrellas">
-								
-								<c:forEach begin = "${0}" end="${5}" step="1" var="index">							
-									<option value="${index}">${index}</option>
-								</c:forEach>
-							</select>
-							</c:otherwise>
-						</c:choose>
-					</div>
-					
-					<div class = "row align-middle px-3">
-					<label for="num_package_loungers">Numero di lettini: </label>
-						<c:choose>
-								<c:when test="${not empty package}">
-									<p> ${package.numPackageLoungers}
-									</p>
-									<input type="hidden" name="num_beach_loungers" value="${package.numPackageLoungers}">
-								</c:when>
-								<c:otherwise>
-							<select name = "num_beach_loungers">
-								
-								<c:forEach begin = "${0}" end="${5}" step="1" var="index">
-									<option value="${index}">${index}</option>
-								</c:forEach>
-							</select>
-							</c:otherwise>
-						</c:choose>
-					</div>
-					
-					<div>
-						<label for="price">Prezzo</label> <input type="text" 
-							class="form-control mb-4" id="price"name="price"
-							<c:if test= "${not empty package}">value="${package.price}"</c:if> />
-					</div>
-					
-						<button type="submit" class="btn btn-outline-info btn-lg btn-block mt-5"><c:choose> <c:when test= "${not empty package}">Modifica</c:when><c:otherwise>Salva</c:otherwise></c:choose></button>
+				<div class="form-row align-items-center">
+					<h1 class="mr-5 pr-5">I miei Pacchetti</h1>
+						<form action="packagemanager.html" method="get">
+						<input type="hidden" name="newPackage" value="yes">
+						<button type="submit" class="btn btn-outline-info btn-lg ml-5">Crea Nuovo</button>
 				</form>
+				</div>
+				
+				<div class="form-row px-4 mt-3 align-items-center">
+    				<div class="col">
+     					<h6>Nome</h6>
+    				</div>
+    				<div class="col">
+      					<h6>Ombrelloni</h6>
+    				</div>
+   					<div class="col">
+      					<h6>Lettini</h6>
+   					</div>
+					<div class="col">
+      					<h6>Prezzo</h6>
+   					</div>
+   					<div class="col">
+      					<h6>Azioni</h6>
+   					</div>
+				</div>
+				
+				 <c:forEach var="beach_package" items="${packageList}">
+				
+				<div class = "form-row px-3 mt-3 align-items-center">
+					<form action="packagemanager.html" method="post">
+									<div class = "form-row px-3 mt-3 align-items-center">
+					
+						<div class="col">
+						<input type="text" class="form-control" id="name" name="name" placeholder="Nome" required
+							<c:if test= "${not empty beach_package}">value="${beach_package.name}"</c:if> />
+						</div>
+					
+					
+					<div class="col">											
+						<select name = "num_packag_umbrellas">
+							<option <c:if test="${empty beach_package}">selected</c:if>>Num Ombrelloni</option>
+							
+							<c:forEach begin = "${0}" end="${5}" step="1" var="index">							
+								<option value="${index}" <c:if test="${beach_package.includedUmbrellas == index}">selected</c:if>>${index}</option>
+							</c:forEach>
+						</select>					
+					</div>
+				
+					<div class="col">
+									
+							<select name = "num_beach_loungers">
+								<option <c:if test="${empty beach_package}">selected</c:if>>Num Lettini</option>
+				
+								<c:forEach begin = "${0}" end="${15}" step="1" var="index">
+									<option value="${index}"  <c:if test="${beach_package.includedBeachLoungers == index}">selected</c:if> >${index}</option>
+								</c:forEach>
+							</select>
+							
+					</div>	
+				
+						<div class="col">
+							 <input type="text" class="form-control" id="price"name="price" placeholder="Prezzo"
+							<c:if test= "${not empty beach_package}">value="${beach_package.price}"</c:if> />
+						</div>
+					
+						<div class="col">
+							<input type="hidden" name="idPackage" value="${beach_package.id}">
+							<button type="submit" class="btn btn-outline-info btn-sm">Modifica</button>
+						</div>
+						</div>
+				</form>
+				<form action="packagemanager.html" action="get">
+
+								<inputype="hidden" name="idPackage" value="${beach_package.id}">
+						
+							<button type="submit" class="float-right btn btn-outline-info btn-sm">Elimina</button>
+
+				</form>
+				</div>
+
+				</c:forEach>
 			</div>
+			
 		</div>
 
 		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div>

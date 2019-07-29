@@ -38,8 +38,9 @@
 				<c:if test="${not empty success}">
 					<div class="alert alert-success" role="alert">${success}</div>
 				</c:if>
-				<div>
+				
 				<h1 class="pb-3">Profilo</h1>
+				
 
 				<form action="profile.html" method="post">
 

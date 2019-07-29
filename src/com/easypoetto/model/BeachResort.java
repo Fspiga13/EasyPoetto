@@ -54,6 +54,7 @@ public class BeachResort{
 	
 	
 	/**
+	 * @param id
 	 * @param email
 	 * @param name
 	 * @param address
@@ -72,10 +73,10 @@ public class BeachResort{
 	 * @param childrenArea
 	 * @param dogArea
 	 */
-	public BeachResort(String email, String name, String description, String image, String logo, String address, String telephone, int numUmbrellas,
+	public BeachResort(int id, String email, String name, String description, String image, String logo, String address, String telephone, int numUmbrellas,
 			int numBeachLoungers, boolean parking, boolean pedalo, boolean shower, boolean toilette, boolean restaurant,
 			boolean disabledFacilities, boolean childrenArea, boolean dogArea) {
-		
+		this.id = id;
 		this.email = email;
 		this.name = name;
 		this.address = address;

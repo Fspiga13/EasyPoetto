@@ -38,7 +38,7 @@ public class BeachResortFactory {
 	
 	public BeachResort getBeachResort(String email) {
 
-		String sql = "select email, name, description, image, logo, address, telephone, num_umbrellas, "
+		String sql = "select beach_resorts.id, email, name, description, image, logo, address, telephone, num_umbrellas, "
 				+ "num_beach_loungers, parking, pedalo, shower, toilette, restaurant, "
 				+ "disabled_facilities, children_area, dog_area from beach_resorts, users where user_id = users.id and email=?";
 		
@@ -57,7 +57,7 @@ public class BeachResortFactory {
 					image = "";
 					}
 				
-				return new BeachResort(result.getString("email"), result.getString("name"),result.getString("description"), image,
+				return new BeachResort(result.getInt("id"), result.getString("email"), result.getString("name"),result.getString("description"), image,
 						logo, result.getString("address"), result.getString("telephone"), result.getInt("num_umbrellas"),
 						result.getInt("num_beach_loungers"), 
 						 convertBoolean(result.getString("parking")), convertBoolean(result.getString("pedalo")), convertBoolean(result.getString("shower")), convertBoolean(result.getString("toilette")),
@@ -88,7 +88,7 @@ public class BeachResortFactory {
 
 			while (result.next()) {
 				
-				return new BeachResort(result.getString("email"), result.getString("name"),result.getString("description"), result.getString("image"),
+				return new BeachResort(id, result.getString("email"), result.getString("name"),result.getString("description"), result.getString("image"),
 						result.getString("logo"), result.getString("address"), result.getString("telephone"), result.getInt("num_umbrellas"),
 						result.getInt("num_beach_loungers"), 
 						 convertBoolean(result.getString("parking")), convertBoolean(result.getString("pedalo")), convertBoolean(result.getString("shower")), convertBoolean(result.getString("toilette")),

@@ -52,7 +52,7 @@
 		
 		<c:if test="${not empty role && role == 1}">
 			<li>
-				<a href="packagelist.html" class="mynavlink pr-4"> 
+				<a href="packagemanager.html" class="mynavlink pr-4"> 
 					I miei pacchetti
 				</a>
 			</li>
