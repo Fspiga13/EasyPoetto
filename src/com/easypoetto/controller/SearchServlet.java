@@ -76,6 +76,7 @@ public class SearchServlet extends HttpServlet {
 					!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
 					UserFactory.getInstance().login(email, password) == role){
 				
+				request.setAttribute("role", role);
 				request.setAttribute("logged", true);
 			}else {
 				request.setAttribute("logged", false);
@@ -91,6 +92,32 @@ public class SearchServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		HttpSession session = request.getSession(false);
+		
+		if(session == null || session.getAttribute("email") == null || session.getAttribute("password") == null 
+				|| session.getAttribute("role") == null) {
+			
+			request.setAttribute("logged", false);
+			
+		}else{
+			
+			//System.out.println("esiste sessione");
+			
+			String email = (String) session.getAttribute("email");
+			String password = (String) session.getAttribute("password");
+			Integer role = (Integer) session.getAttribute("role");
+			
+			if (email!= null && password != null && role != null &&
+					!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
+					UserFactory.getInstance().login(email, password) == role){
+				
+				request.setAttribute("logged", true);
+			}else {
+				request.setAttribute("logged", false);
+			}
+			
+		}	
 		
 		request.setAttribute("beachResort", 
 				BeachResortFactory.getInstance().getBeachResortById(Integer.parseInt(request.getParameter("beachResortId"))));

@@ -29,7 +29,7 @@
 				EasyPoetto
 			</a>
 		</div>
-	<%--INSERIRE IL LOGO A SINISTRA DELLA NAVBAR --%>
+
 		<ul class="nav navbar-right row" id="mylinks">
 		<li>
 			<a href="home.html" class="mynavlink pr-4">Home</a>
@@ -49,6 +49,14 @@
 				</a>
 			</li></c:otherwise>
 		</c:choose>
+		
+		<c:if test="${not empty role && role == 1}">
+			<li>
+				<a href="packagelist.html" class="mynavlink pr-4"> 
+					I miei pacchetti
+				</a>
+			</li>
+		</c:if>
 
 		<li class="mynavlink pr-4" >
 			<form 

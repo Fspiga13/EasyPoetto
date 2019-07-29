@@ -67,6 +67,7 @@ public class HomeServlet extends HttpServlet {
 				
 				//System.out.println("utente loggato accede a home");
 				
+				request.setAttribute("role", role);
 				request.setAttribute("logged", true);
 				request.getRequestDispatcher("WEB-INF/JSP/home.jsp").forward(request, response);
 				}

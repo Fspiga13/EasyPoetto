@@ -40,9 +40,6 @@
 				</c:if>
 				<div>
 				<h1 class="pb-3">Profilo</h1>
-				
-				<button type="submit" class="btn btn-outline-info btn-lg" >Crea i tuoi pacchetti</button>
-				</div>
 
 				<form action="profile.html" method="post">
 

@@ -78,6 +78,7 @@ public class ProfileServlet extends HttpServlet {
 						System.out.println(email);
 						BeachResort beachResort = BeachResortFactory.getInstance().getBeachResort(email);
 						request.setAttribute("beachResort", beachResort);
+						request.setAttribute("role", role);
 						request.getRequestDispatcher("WEB-INF/JSP/beach_resort_profile.jsp").forward(request, response);
 						break;
 					case 2:
