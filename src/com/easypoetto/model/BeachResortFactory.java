@@ -160,7 +160,7 @@ public class BeachResortFactory {
 
 			while (result.next()) {
 				
-				beachResorts.add(new BeachResort(result.getInt("id"), result.getString("name"),result.getString("description"), result.getString("image"),
+				beachResorts.add(new BeachResort(result.getInt("id"), result.getString("name"),result.getString("address"), result.getString("logo"),
 						convertBoolean(result.getString("parking")), convertBoolean(result.getString("pedalo")), convertBoolean(result.getString("shower")), convertBoolean(result.getString("toilette")),
 						convertBoolean(result.getString("restaurant")), convertBoolean(result.getString("disabled_facilities")), 
 						convertBoolean(result.getString("children_area")), convertBoolean(result.getString("dog_area"))));
