@@ -64,9 +64,9 @@ public class PackageFactory {
 				
 		if (br != null) { // deve per forza trovare un beach resort
 			
-			String sqlNewUser = " insert into beach_packages(id, beach_resort_id) values (beach_package_id_seq.nextval, ?) ";
+			String sqlNewPackage = " insert into beach_packages(id, beach_resort_id) values (beach_package_id_seq.nextval, ?) ";
 			try (Connection conn = DbManager.getInstance().getDbConnection();
-					PreparedStatement stmt = conn.prepareStatement(sqlNewUser)) {
+					PreparedStatement stmt = conn.prepareStatement(sqlNewPackage)) {
 				
 				stmt.setInt(1, br.getId());
 	
@@ -81,5 +81,31 @@ public class PackageFactory {
 		return false;
 		
 	}
+	
+
+	public boolean editPackage(int id, String name, int includedUmbrellas, int includedBeachLoungers, double price) {
+		
+		String sqlEditPackage = " update beach_packages set name= ?, included_umbrellas= ?, included_beach_loungers= ?, price= ? where id= ?";
+		
+		try (Connection conn = DbManager.getInstance().getDbConnection();
+				PreparedStatement stmt = conn.prepareStatement(sqlEditPackage)) {
+			stmt.setString(1, name);
+			stmt.setInt(2, includedUmbrellas);
+			stmt.setInt(3, includedBeachLoungers);
+			stmt.setDouble(4, price);
+			stmt.setInt(5, id);
+
+			stmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("Errore in editPackage di PackageFactory");
+		}
+
+		return false;
+		
+	}
+	
+	
 	
 }

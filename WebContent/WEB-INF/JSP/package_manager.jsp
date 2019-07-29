@@ -78,7 +78,7 @@
 					
 					
 					<div class="col">											
-						<select name = "num_packag_umbrellas">
+						<select name = "num_umbrellas">
 							<option <c:if test="${empty beach_package}">selected</c:if>>Num Ombrelloni</option>
 							
 							<c:forEach begin = "${0}" end="${5}" step="1" var="index">							
