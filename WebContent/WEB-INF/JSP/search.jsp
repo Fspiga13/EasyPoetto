@@ -164,7 +164,7 @@
 			
 			
 			<c:forEach var="beachResort" items="${beachResorts}">
-				<div class="pt-4 px-4">
+				<div class="pt-4 px-2">
 					<form action="search.html" method="post">
 						<button type="submit"
 							class="btn btn-outline-info btn-lg btn-block shadow">

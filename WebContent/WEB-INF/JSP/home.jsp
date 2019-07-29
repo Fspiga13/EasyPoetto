@@ -24,7 +24,7 @@
 			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">
 			
 			
-			<div class="m-5 p-5">
+			<div class="p-5">
 				<form action="search.html"  method="get">
 	        	<button type="submit" class="btn btn-info btn-lg btn-block shadow mt-5 ">Trova Stabilimento</button>	
 				</form>
