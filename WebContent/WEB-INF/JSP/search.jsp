@@ -168,7 +168,9 @@
 								
 								<div class="p-2">
 									<h4>${beachResort.name}</h4>
-									<p class=" border-bottom">${beachResort.description}</p>
+									<div class=" border-bottom text-justify">
+										${beachResort.description}
+									</div>
 									
 									<p class="text-dark">
 										<c:if test="${beachResort.parking==true}">
