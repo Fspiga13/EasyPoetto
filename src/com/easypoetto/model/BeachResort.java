@@ -24,8 +24,8 @@ public class BeachResort{
 	/**
 	 * @param id
 	 * @param name
-	 * @param description
-	 * @param image
+	 * @param address
+	 * @param logo
 	 * @param parking
 	 * @param pedalo
 	 * @param shower
@@ -35,13 +35,13 @@ public class BeachResort{
 	 * @param childrenArea
 	 * @param dogArea
 	 */
-	public BeachResort(int id, String name, String description, String image, boolean parking, boolean pedalo, boolean shower, boolean toilette, boolean restaurant,
+	public BeachResort(int id, String name, String address, String logo, boolean parking, boolean pedalo, boolean shower, boolean toilette, boolean restaurant,
 			boolean disabledFacilities, boolean childrenArea, boolean dogArea) {
 		
 		this.id = id;
 		this.name = name;
-		this.description = description;
-		this.image = image;
+		this.address = address;
+		this.logo = logo;
 		this.parking = parking;
 		this.pedalo = pedalo;
 		this.shower = shower;

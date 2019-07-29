@@ -21,6 +21,11 @@
 
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
+
+<symbol id="icon-position" viewBox="0 0 32 32">
+<title>position</title>
+<path d="M16.5 24.447v-0.996c3.352 0.099 5.993 1.174 5.993 2.487 0 1.379-2.906 2.56-6.492 2.56s-6.492-1.181-6.492-2.56c0-1.313 2.641-2.389 5.992-2.487v0.996c-2.799 0.069-4.993 0.71-4.993 1.491 0 0.827 2.459 1.623 5.493 1.623 3.033 0 5.492-0.796 5.492-1.623-0.001-0.781-2.194-1.421-4.993-1.491zM10.516 8.995c0-3.033 2.521-5.493 5.556-5.493 3.034 0 5.493 2.46 5.493 5.493 0 2.607-1.818 4.786-4.256 5.348l-1.309 13.219-1.313-13.256c-2.362-0.615-4.171-2.756-4.171-5.311zM16 7.524c0-0.828-0.671-1.498-1.498-1.498s-1.499 0.67-1.499 1.498c0 0.827 0.671 1.498 1.499 1.498s1.498-0.67 1.498-1.498z"></path>
+</symbol>
 <symbol id="icon-travel-car" viewBox="0 0 20 20">
 <title>travel-car</title>
 <path d="M2 14v-3h-1c-0.552 0-1-0.448-1-1v0c0-0.552 0.448-1 1-1v0h1l4-7h8l4 7h1c0.552 0 1 0.448 1 1v0c0 0.552-0.448 1-1 1v0h-1v6c0 0.552-0.448 1-1 1v0h-1c-0.552 0-1-0.448-1-1v0-1h-10v1c0 0.552-0.448 1-1 1v0h-1c-0.552 0-1-0.448-1-1v0-3zM15.86 9l-2.86-5h-6l-2.86 5h11.72zM5.5 14c0.828 0 1.5-0.672 1.5-1.5s-0.672-1.5-1.5-1.5v0c-0.828 0-1.5 0.672-1.5 1.5s0.672 1.5 1.5 1.5v0zM14.5 14c0.828 0 1.5-0.672 1.5-1.5s-0.672-1.5-1.5-1.5v0c-0.828 0-1.5 0.672-1.5 1.5s0.672 1.5 1.5 1.5v0z"></path>
@@ -161,41 +166,42 @@
 						<button type="submit"
 							class="btn btn-outline-info btn-lg btn-block shadow">
 	
-							<div class="m-1 p-2">
-								<div >
-								<img src="${beachResort.image}" height="200" width="200" class="float-left">
-								</div>	
-								
+							<div class="m-1 p-1">
+								<div>
+									<img src="${beachResort.logo}" height="200" width="200" class="float-left m-3">
+								</div>
+												
 								<div class="p-2">
-									<h4>${beachResort.name}</h4>
-									<div class=" border-bottom text-justify">
-										${beachResort.description}
-									</div>
-									
+									<h4>${beachResort.name}</h4>									
+								<div class="row text-dark" >
+				                    <svg class="icon icon-position"><use xlink:href="#icon-position"></use></svg>
+									<p class="ml-2 font-weight-light h6">${beachResort.address}</p>
+								</div>
+
 									<p class="text-dark">
 										<c:if test="${beachResort.parking==true}">
-											Parcheggio
+											<svg class="icon icon-travel-car"><use xlink:href="#icon-travel-car"></use></svg>
 										</c:if>
 										<c:if test="${beachResort.pedalo==true}">
-											Pedalò
+											<img src="view/Resources/pedalò-icon.svg" alt="Integrare SVG con il tag image" title="pedalo" width="30" class="icon">
 										</c:if>
 										<c:if test="${beachResort.shower==true}">
-											Docce
+               								<svg class="icon icon-shower"><use xlink:href="#icon-shower"></use></svg>
 										</c:if>
 										<c:if test="${beachResort.toilette==true}">
-											Toilette
+		               						<svg class="icon icon-man-woman"><use xlink:href="#icon-man-woman"></use></svg>
 										</c:if>
 										<c:if test="${beachResort.restaurant==true}">
-											Punto ristoro
+                							<svg class="icon icon-spoon-knife"><use xlink:href="#icon-spoon-knife"></use></svg>
 										</c:if>
 										<c:if test="${beachResort.disabledFacilities==true}">
-											Servizi per disabili
+                							<svg class="icon icon-wheelchair"><use xlink:href="#icon-wheelchair"></use></svg>
 										</c:if>
 										<c:if test="${beachResort.childrenArea==true}">
-											Area bambini
+                				   			<svg class="icon icon-child"><use xlink:href="#icon-child"></use></svg>
 										</c:if>
 										<c:if test="${beachResort.dogArea==true}">
-											Area cani
+                							<svg class="icon icon-paw"><use xlink:href="#icon-paw"></use></svg>
 										</c:if>
 									</p>
 								</div>
