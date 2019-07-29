@@ -63,6 +63,9 @@
 			</div>
 		</div>
 	</div>
+			<div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
+
+		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div>
 			
 			
 			<div  id="main" class="align-middle mt-5 rounded p-3">
@@ -93,7 +96,7 @@
 
 
 			</div>
-			</div>
+			
 			
 			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
 			</div>
