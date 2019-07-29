@@ -101,48 +101,49 @@
 
 
 				<label>Servizi del tuo stabilimento</label>
+				<div class="border px-4 rounded">
+					<div class="form-row align-items-center">
 					
-				<div class="rounded border p-3">
-				<div>
-					<div class="form-check form-check-inline">
-							<input type="checkbox" name="service" id="service1" value="parking" class="check form-check-input"
-							<c:if test= "${beachResort.parking == true}">checked</c:if> />
-							<label class="form-check-label" for="service1">Parcheggio</label>
-						</div><div class="form-check form-check-inline">
-							<input type="checkbox" name="service" id="service2" value="pedalo" class="check form-check-input"
-							<c:if test= "${beachResort.pedalo == true}">checked</c:if> />
-							<label class="form-check-label" for="service2">Pedalò</label>
-						</div><div  class="form-check form-check-inline">
-							<input type="checkbox" name="service" id="service3" value="shower" class="check form-check-input"
-							<c:if test= "${beachResort.shower == true}">checked</c:if> />
-							<label class="form-check-label" for="service3">Docce</label>
-						</div><div class="form-check form-check-inline"> 
-							<input type="checkbox" name="service" id="service4" value="toilette" class="check form-check-input"
-							<c:if test= "${beachResort.toilette == true}">checked</c:if> />
-							<label class="form-check-label" for="service4">Toilette</label>
-						</div>
-				</div><div>
-						<div  class="form-check form-check-inline">
-							<input type="checkbox" name="service" id="service5" value="restaurant" class="check form-check-input"
-							<c:if test= "${beachResort.restaurant == true}">checked</c:if> />
-							<label class="form-check-label" for="service5">Punto ristoro</label>
-						</div><div  class="form-check form-check-inline">
-							<input type="checkbox" name="service" id="service6" value="disabled_facilities" class="check form-check-input"
-							<c:if test= "${beachResort.disabledFacilities == true}">checked</c:if> />
-							<label class="form-check-label" for="service6">Strutture accessibili</label>
-						</div><div  class="form-check form-check-inline">
-							<input type="checkbox" name="service" id="service7" value="children_area" class="check form-check-input"
-							<c:if test= "${beachResort.childrenArea == true}">checked</c:if> /> 
-							<label class="form-check-label" for="service7">Area bambini</label>
-						</div><div class="form-check form-check-inline">
-							<input type="checkbox" name="service" id="service8" value="dog_area" class="check form-check-input"
-							<c:if test= "${beachResort.dogArea == true}">checked</c:if> />
-							<label class="form-check-label" for="service8">Area cani</label>
-						</div>
+						<div class="col">
+								<input type="checkbox" name="service" id="service1" value="parking" class="check form-check-input"
+								<c:if test= "${beachResort.parking == true}">checked</c:if> />
+								<label class="form-check-label" for="service1">Parcheggio</label>
+							</div><div class="col">
+								<input type="checkbox" name="service" id="service2" value="pedalo" class="check form-check-input"
+								<c:if test= "${beachResort.pedalo == true}">checked</c:if> />
+								<label class="form-check-label" for="service2">Pedalò</label>
+							</div><div  class="col">
+								<input type="checkbox" name="service" id="service3" value="shower" class="check form-check-input"
+								<c:if test= "${beachResort.shower == true}">checked</c:if> />
+								<label class="form-check-label" for="service3">Docce</label>
+							</div><div class="col"> 
+								<input type="checkbox" name="service" id="service4" value="toilette" class="check form-check-input"
+								<c:if test= "${beachResort.toilette == true}">checked</c:if> />
+								<label class="form-check-label" for="service4">Toilette</label>
+							</div>
 					</div>
+					<div class="form-row align-items-center">
+							<div  class="col">
+								<input type="checkbox" name="service" id="service5" value="restaurant" class="check form-check-input"
+								<c:if test= "${beachResort.restaurant == true}">checked</c:if> />
+								<label class="form-check-label" for="service5">Punto ristoro</label>
+							</div><div  class="col">
+								<input type="checkbox" name="service" id="service6" value="disabled_facilities" class="check form-check-input"
+								<c:if test= "${beachResort.disabledFacilities == true}">checked</c:if> />
+								<label class="form-check-label" for="service6">Strutture accessibili</label>
+							</div><div  class="col">
+								<input type="checkbox" name="service" id="service7" value="children_area" class="check form-check-input"
+								<c:if test= "${beachResort.childrenArea == true}">checked</c:if> /> 
+								<label class="form-check-label" for="service7">Area bambini</label>
+							</div><div class="col">
+								<input type="checkbox" name="service" id="service8" value="dog_area" class="check form-check-input"
+								<c:if test= "${beachResort.dogArea == true}">checked</c:if> />
+								<label class="form-check-label" for="service8">Area cani</label>
+							</div>
 						
-			</div>
+					</div>
 					
+				</div>	
 					<div class = "row align-middle px-3 mt-3">
 					<label for="num_umbrellas">Numero di ombrelloni: </label>
 						<c:choose>
