@@ -25,7 +25,9 @@
 	<jsp:include page="nav_bar.jsp"></jsp:include>
 	<div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
 
-		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div>
+		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+		
+		</div>
 
 		<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle">
 
@@ -67,7 +69,7 @@
 				
 				 <c:forEach var="beach_package" items="${packageList}">
 				
-				<div class = "form-row px-3 mt-3 align-items-center">
+				<div class = "form-row px-2 mt-2 align-items-center">
 					<form action="packagemanager.html" method="post">
 									<div class = "form-row px-3 mt-3 align-items-center">
 					
@@ -78,7 +80,7 @@
 					
 					
 					<div class="col">											
-						<select name = "num_packag_umbrellas">
+						<select name = "num_umbrellas">
 							<option <c:if test="${empty beach_package}">selected</c:if>>Num Ombrelloni</option>
 							
 							<c:forEach begin = "${0}" end="${5}" step="1" var="index">							
@@ -100,19 +102,19 @@
 					</div>	
 				
 						<div class="col">
-							 <input type="text" class="form-control" id="price"name="price" placeholder="Prezzo"
+							 <input type="number" class="form-control" id="price"name="price" placeholder="Prezzo"
 							<c:if test= "${not empty beach_package}">value="${beach_package.price}"</c:if> />
 						</div>
 					
 						<div class="col">
 							<input type="hidden" name="idPackage" value="${beach_package.id}">
-							<button type="submit" class="btn btn-outline-info btn-sm">Modifica</button>
+							<button type="submit" class="btn btn-outline-info btn-sm">Salva</button>
 						</div>
 						</div>
 				</form>
 				<form action="packagemanager.html" action="get">
 
-								<inputype="hidden" name="idPackage" value="${beach_package.id}">
+								<input type="hidden" name="idPackage" value="${beach_package.id}">
 						
 							<button type="submit" class="float-right btn btn-outline-info btn-sm">Elimina</button>
 
