@@ -93,7 +93,7 @@
 							<c:if test= "${not empty package}">value="${package.price}"</c:if> />
 					</div>
 					
-						<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-5"><c:choose> <c:when test= "${not empty client}">Modifica</c:when><c:otherwise>Salva</c:otherwise></c:choose></button>
+						<button type="submit" class="btn btn-outline-info btn-lg btn-block shadow mt-5"><c:choose> <c:when test= "${not empty package}">Modifica</c:when><c:otherwise>Salva</c:otherwise></c:choose></button>
 				</form>
 			</div>
 		</div>
