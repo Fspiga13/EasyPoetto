@@ -107,5 +107,23 @@ public class PackageFactory {
 	}
 	
 	
-	
+	public boolean deletePackage(int id) {
+		
+		String sqlDelPackage = " delete from beach_packages where id= ?";
+		
+		try (Connection conn = DbManager.getInstance().getDbConnection();
+				PreparedStatement stmt = conn.prepareStatement(sqlDelPackage)) {
+
+			stmt.setInt(1, id);
+
+			stmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("Errore in deletePackage di PackageFactory");
+		}
+
+		return false;
+		
+	}
 }

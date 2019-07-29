@@ -62,6 +62,7 @@ public class PackageManagerServlet extends HttpServlet {
 				request.setAttribute("error", error);
 				request.setAttribute("success", success);
 				
+				// Gestisco creazione nuovo pacchetto
 				if(request.getParameter("newPackage") != null) {
 
 					if (PackageFactory.getInstance().addPackage(email)) {
@@ -70,6 +71,16 @@ public class PackageManagerServlet extends HttpServlet {
 					}else {
 						request.setAttribute("error", "Errore nella creazione del pacchetto");
 					}			
+				}else {
+					if( (request.getParameter("idPackage") != null)) {
+						
+						if(PackageFactory.getInstance().deletePackage(Integer.parseInt(request.getParameter("idPackage")))) {
+	
+							request.setAttribute("success", "Pacchetto eliminato!");
+						}else {
+							request.setAttribute("error", "Errore nell'eliminazione del pacchetto");
+						}
+					}
 				}
 				
 				List<Package> packages = PackageFactory.getInstance().getPackages(email);
