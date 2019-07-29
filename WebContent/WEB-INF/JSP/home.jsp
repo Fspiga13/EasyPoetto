@@ -24,7 +24,7 @@
 			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">
 			
 			
-			<div class="mb-5">
+			<div class="m-5 p-5">
 				<form action="search.html"  method="get">
 	        	<button type="submit" class="btn btn-info btn-lg btn-block shadow mt-5 ">Trova Stabilimento</button>	
 				</form>
@@ -32,8 +32,8 @@
 			</div>
 			
 			
-			<div  id="main" class="align-middle my-5 rounded p-3">
-	    	<img id="homePoetto" src="view/Resources/HomePoetto.jpg" class="img-fluid pb-5"> 
+			<div  id="main" class="align-middle mt-5 rounded p-3">
+	    	<img id="homePoetto" src="view/Resources/home-poetto.jpg" class="img-fluid pb-5"> 
 
 			<div class="text-justify">
 			<p>	Situata nella costa centro-meridionale della Sardegna, la spiaggia del Poetto ancora oggi e' considerata 

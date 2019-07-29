@@ -44,10 +44,10 @@
 		 			       <div class="rounded border p-3">
 		 			           <c:forEach var="package" items="${packageList}">
 		 			            <div class="row mx-3">
-			 			           <form action="{packagelist.html" method="post">
+			 			           <form action="packagelist.html" method="post">
 			 			           		<label for="email">${package.name}</label>
 			 			           		<input type="hidden" name="id" value="${package.id}">
-			 			           		<button type="submit" class="btn btn-outline-info btn-sm mt-5">Ripristina</button> 
+			 			           		<button type="submit" class="btn btn-outline-info btn-sm mt-5">Modifica</button> 
 			 			           </form>	
 		 			           </div>	
 		 			                  		 			           
