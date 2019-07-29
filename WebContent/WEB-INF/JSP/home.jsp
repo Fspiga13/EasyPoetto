@@ -24,12 +24,45 @@
 			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">
 			
 			
-			<div class="p-5">
-				<form action="search.html"  method="get">
-	        	<button type="submit" class="btn btn-info btn-lg btn-block shadow mt-5 ">Trova Stabilimento</button>	
-				</form>
+			<div class="yb-cover home">
+
+
 			
+				
+					<p>Vivi la tua giornata in spiaggia senza stress!</p>
+				
+
+
+				<div class="form-row px-4 mt-3 align-items-center">
+					
+					<div class="col">
+					<p>Scegli la data</p>
+					</div>
+					
+					<div class="col">
+						<div class="ol-cover-search">
+							<div class="search-input-anchor">
+								<div id="search_hint" style="display: none"></div>
+							</div>
+							<input type="date" name="date" id="search-date" class="date"
+								value="2019-07-28">
+						</div>
+					</div>
+					
+									
+					<div class="col">
+					
+					  <form action="search.html" method="get">
+					  
+					   <button type="submit" id="trova" class="btn btn-info rounded">Trova lo stabilimento</button>
+					   
+				      </form>
+				 
+					</div>
+				</div>
 			</div>
+		</div>
+	</div>
 			
 			
 			<div  id="main" class="align-middle mt-5 rounded p-3">
