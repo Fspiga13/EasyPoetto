@@ -5,8 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class ReservationFactory {
 
@@ -24,14 +23,14 @@ public class ReservationFactory {
 	}
 
 	public List<Reservation> getReservationsByBeachResort(String email) {
-		List<Reservation> reservations = new ArrayList<Reservation>();
-		return reservations;
+		List<Reservation> reservationsBeachResort = new ArrayList<Reservation>();
+		return reservationsBeachResort;
 
 	}
 
 	public List<Reservation> getReservationsByClient(String email) {
-		List<Reservation> reservations = new ArrayList<Reservation>();
-		return reservations;
+		List<Reservation> reservationsClient = new ArrayList<Reservation>();
+		return reservationsClient;
 
 	}
 
