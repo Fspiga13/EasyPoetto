@@ -162,6 +162,12 @@
 						<p class="ml-3">Area cani</p>
 					</c:if>
 				</div>
+				
+								<form action="reservation.html" method="get">
+					<button type="submit"
+						class="btn btn-outline-info btn-lg btn-block shadow mt-2 ">Scegli
+						la tua offerta!</button>
+				</form>
 				</div>
 			</div>
 
@@ -169,18 +175,6 @@
 
       <%--Se l'utente è loggato vede il bottone e sceglie la sua offerta --%>
       
-	
-				<form action="reservation.html" method="get">
-					<button type="submit"
-						class="btn btn-outline-info btn-lg btn-block shadow mt-2 ">Scegli
-						la tua offerta!</button>
-				</form>
-		
-			
-			
-			
-			
-
 
 		</div>
 
