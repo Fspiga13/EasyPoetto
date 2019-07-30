@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.easypoetto.model.ClientFactory;
 import com.easypoetto.model.Package;
-import com.easypoetto.model.PackageFactory;
+import com.easypoetto.model.ReservationFactory;
 import com.easypoetto.model.UserFactory;
 
 /**
@@ -65,7 +65,7 @@ public class PackageManagerServlet extends HttpServlet {
 				// Gestisco creazione nuovo pacchetto
 				if(request.getParameter("newPackage") != null) {
 
-					if (PackageFactory.getInstance().addPackage(email)) {
+					if (ReservationFactory.getInstance().addPackage(email)) {
 
 						request.setAttribute("success", "Nuovo pacchetto creato!");
 					}else {
@@ -74,7 +74,7 @@ public class PackageManagerServlet extends HttpServlet {
 				}else {
 					if( (request.getParameter("idPackage") != null)) {
 						
-						if(PackageFactory.getInstance().deletePackage(Integer.parseInt(request.getParameter("idPackage")))) {
+						if(ReservationFactory.getInstance().deletePackage(Integer.parseInt(request.getParameter("idPackage")))) {
 	
 							request.setAttribute("success", "Pacchetto eliminato!");
 						}else {
@@ -83,7 +83,7 @@ public class PackageManagerServlet extends HttpServlet {
 					}
 				}
 				
-				List<Package> packages = PackageFactory.getInstance().getPackages(email);
+				List<Package> packages = ReservationFactory.getInstance().getPackages(email);
 				
 				request.setAttribute("packageList", packages);
 				request.setAttribute("role", role);
@@ -129,7 +129,7 @@ public class PackageManagerServlet extends HttpServlet {
 				// Aggiorno i dettagli pachetto
 				
 				// Se la modifica non va a buon fine
-				if (!PackageFactory.getInstance().editPackage(idPackage, newName, newIncludedUmbrellas, newIncludedBeachLoungers, newPrice)) {
+				if (!ReservationFactory.getInstance().editPackage(idPackage, newName, newIncludedUmbrellas, newIncludedBeachLoungers, newPrice)) {
 					// Mando l'errore al jsp
 					session.setAttribute("error", "Modifica pacchetto non riuscita");
 				} else {
