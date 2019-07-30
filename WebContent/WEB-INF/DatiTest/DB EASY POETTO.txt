@@ -70,7 +70,7 @@ beach_loungers_qty NUMBER(1,0),
 tolal_price NUMBER(5,2),
 CONSTRAINT beach_loungers_qty CHECK(beach_loungers_qty BETWEEN 0 AND 9), 
 CONSTRAINT umbrellas_qty CHECK(umbrellas_qty BETWEEN 0 AND 3),
-CONSTRAINT pk_reservation_id PRIMARY KEY(reservation_id), 
+CONSTRAINT pk_reservation_id PRIMARY KEY(id), 
 CONSTRAINT fk_res_beach_resort_id FOREIGN KEY (beach_resort_id) REFERENCES beach_resorts(id), 
 CONSTRAINT fk_res_client_id FOREIGN KEY (client_id) REFERENCES clients(id) 
 ); 
