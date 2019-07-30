@@ -24,37 +24,55 @@
 
 	<jsp:include page="nav_bar.jsp"></jsp:include>
 	<div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
-
-		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-		
+		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">		
 		</div>
-
-			<div id="main" class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">
-		
-			<div id="main" class="shadow-lg border border-light p-5 rounded">
-				<c:if test="${not empty error}">
-					<div class="alert alert-danger" role="alert">${error}</div>
-				</c:if>
-
-				<c:if test="${not empty success}">
-					<div class="alert alert-success" role="alert">${success}</div>
-				</c:if>
-
-					<h1 class="mr-5 pr-5">${beachResort.name}</h1>
-
+			<div id="main" class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">		
+				<div id="main" class="shadow-lg border border-light p-5 rounded">
+					<c:if test="${not empty error}">
+						<div class="alert alert-danger" role="alert">${error}</div>
+					</c:if>
+	
+					<c:if test="${not empty success}">
+						<div class="alert alert-success" role="alert">${success}</div>
+					</c:if>
+	
+						<h1 class="mr-5 pr-5">${beachResort.name}</h1>
+	
+								
+					 <c:forEach var="beach_package" items="${packageList}">
+					 	<div class="rounded border p-3">
+					 		<h6>${package.name}</h6>
+						 		
+						 	<div>
+								<label for="num_umbrellas">Ombrelloni:</label> <input type="number" readonly
+									class="form-control mb-4" id="num_umbrellas" name="num_umbrellas" required value="${package.includedUmbrellas}" />
+							</div>
+						 		
+						 	<div>
+								<label for="num_beach_loungers">Numero di lettini:</label> <input type="number" readonly
+									class="form-control mb-4" id="num_beach_loungers" name="num_beach_loungers" required value="${beachResort.numBeachLoungers}" />
+							</div>
+						 						 		
+						 	<div>
+								<label for="price">Prezzo</label> <input type="number" readonly
+									class="form-control mb-4" id="price" name="price" required value="${package.price}" />
+							</div>
 							
-				 <c:forEach var="beach_package" items="${packageList}">
-				 	<div class="rounded border p-3">
-				 		<h6>${package.name}</h6>
-				 		<label>Ombrelloni:</label>
-				 		<p>${package.includedUmbrellas}</p>
-				 					 	
-				 	</div>
-				</c:forEach>
+							<div class = "row align-middle px-3">
+								<label for="qty_package">Quantità: </label>
+								<select name = "qty_package">									
+									<c:forEach begin = "${0}" end="${5}" step="1" var="index">									
+										<option value="${index}">${index}</option>
+									</c:forEach>
+								</select>		
+							</div>				 					 	
+					 	</div>
+					</c:forEach>					
+					<div class="col-auto">		  
+					   <button type="submit" id="prenota" class="btn btn-info rounded">Prenota</button>
+					</div>
+				</div>			
 			</div>
-			
-		</div>
-
 		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div>
 	</div>
 </body>
