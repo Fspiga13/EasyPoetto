@@ -104,6 +104,29 @@ public class BeachResortFactory {
 		return null;
 		
 	}
+	
+	
+	public BeachResort getBeachResortForReservation(int id) {		
+		
+		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
+
+			String sql = "select name, price_umbrella, price_beach_lounger from beach_resorts, users where user_id = users.id and beach_resorts.id= " + id;
+
+			ResultSet result = stmt.executeQuery(sql);
+
+			while (result.next()) {
+				
+				return new BeachResort(id, result.getString("name"), result.getDouble("price_umbrella"), result.getDouble("price_beach_lounger"));
+			}
+					
+		} catch (SQLException e) {
+			Logger.getLogger(BeachResortFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("errore in getBeachResortById dentro BeachResortFactory");
+		}	
+		
+		return null;
+		
+	}
 
 	// Restituisce lista con informazioni essenziali dei resort
 	
