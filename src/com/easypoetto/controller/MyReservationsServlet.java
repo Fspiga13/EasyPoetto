@@ -57,7 +57,7 @@ public class MyReservationsServlet extends HttpServlet {
 			if (email!= null && password != null && role != null &&
 					!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
 					UserFactory.getInstance().login(email, password) == role && role==2){
-				
+				System.out.println("aaaaaaa");
 				request.setAttribute("error", error);
 				request.setAttribute("success", success);			
 				
@@ -65,7 +65,7 @@ public class MyReservationsServlet extends HttpServlet {
 				
 				request.setAttribute("reservationList", reservations);
 				request.setAttribute("role", role);
-				request.getRequestDispatcher("WEB-INF/JSP/myreservations.jsp").forward(request, response);			
+				request.getRequestDispatcher("WEB-INF/JSP/my_reservations.jsp").forward(request, response);			
 			}else {
 				response.sendRedirect("login.html");
 			}
