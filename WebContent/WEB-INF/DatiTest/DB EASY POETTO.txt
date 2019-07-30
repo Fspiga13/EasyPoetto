@@ -2,11 +2,10 @@
 DROP SEQUENCE user_id_seq; 
 DROP SEQUENCE client_id_seq; 
 DROP SEQUENCE beach_resort_id_seq; 
-DROP SEQUENCE reservation_id_seq; 
-DROP SEQUENCE beach_package_id_seq; 
+DROP SEQUENCE reservation_id_seq;  
 
-drop table RESERVATIONS_BEACH_PACKAGES; 
-drop table beach_packages; drop table RESERVATIONS; 
+
+drop table RESERVATIONS; 
 drop table beach_resorts; drop table clients; 
 DROP TABLE USERS; 
 
@@ -14,7 +13,7 @@ CREATE SEQUENCE user_id_seq;
 CREATE SEQUENCE client_id_seq; 
 CREATE SEQUENCE beach_resort_id_seq; 
 CREATE SEQUENCE reservation_id_seq; 
-CREATE SEQUENCE beach_package_id_seq; 
+ 
 
 CREATE TABLE USERS( 
 id NUMBER(38,0), 
@@ -47,7 +46,9 @@ logo VARCHAR2(2000CHAR),
 address VARCHAR2(200CHAR), 
 telephone VARCHAR2(15CHAR), 
 num_umbrellas NUMBER(3,0), 
-num_beach_loungers NUMBER(4,0), 
+price_umbrellas NUMBER(4,2),
+num_beach_loungers NUMBER(4,0),
+price_beach_loungers NUMBER(4,2),
 parking CHAR(1) DEFAULT 'N' CHECK (parking in ('Y','N')),
 pedalo CHAR(1) DEFAULT 'N' CHECK (pedalo in ('Y','N')),
 shower CHAR(1) DEFAULT 'N' CHECK (shower in ('Y','N')), 
@@ -63,27 +64,20 @@ reservation_date DATE NOT NULL, CONSTRAINT pk_reservations_id PRIMARY KEY(id),
 CONSTRAINT fk_reservations_user_id FOREIGN KEY (user_id) REFERENCES users(id) 
 );
 
-CREATE TABLE BEACH_PACKAGES( 
-id NUMBER(38,0), 
-name VARCHAR2(50CHAR),
-beach_resort_id NUMBER (38,0), 
-included_umbrellas NUMBER (1,0), 
-included_beach_loungers NUMBER (2,0), 
-price NUMBER(6,2), 
-CONSTRAINT pk_beach_package_id PRIMARY KEY(id), 
-CONSTRAINT fk_beach_packages_beach_resort FOREIGN KEY (beach_resort_id) REFERENCES beach_resorts(id), 
-CONSTRAINT included_umbrellas CHECK(included_umbrellas BETWEEN 0 AND 5), 
-CONSTRAINT included_beach_loungers CHECK(included_beach_loungers BETWEEN 0 AND 15) 
-); 
 
-CREATE TABLE RESERVATIONS_BEACH_PACKAGES( 
-reservations_id NUMBER (38,0), 
-beach_package_id NUMBER (38,0), 
-quantity NUMBER(1,0), 
-CONSTRAINT quantity CHECK(quantity BETWEEN 0 AND 5), 
-CONSTRAINT pk_res_beach_package_id PRIMARY KEY(reservations_id, beach_package_id), 
-CONSTRAINT fk_res_res_beach_package_id FOREIGN KEY (reservations_id) REFERENCES reservations(id), 
-CONSTRAINT fk_res_beach_package_id FOREIGN KEY (beach_package_id) REFERENCES beach_packages(id) 
+
+CREATE TABLE RESERVATIONS( 
+reservation_id NUMBER (38,0), 
+beach_resort_id NUMBER (38,0), 
+client_id NUMBER (38,0), 
+reservation_date DATE,
+umbrellas_qty NUMBER(1,0),
+beach_loungers_qty NUMBER(1,0), 
+CONSTRAINT beach_loungers_qty CHECK(beach_loungers_qty BETWEEN 0 AND 9), 
+CONSTRAINT umbrellas_qty CHECK(umbrellas_qty BETWEEN 0 AND 3),
+CONSTRAINT pk_reservation_id PRIMARY KEY(reservation_id), 
+CONSTRAINT fk_res_beach_resort_id FOREIGN KEY (beach_resort_id) REFERENCES beach_resorts(id), 
+CONSTRAINT fk_res_client_id FOREIGN KEY (client_id) REFERENCES clients(id) 
 ); 
 
 INSERT INTO USERS VALUES(user_id_seq.nextval, 'admin@poetto.it','poetto',0, 0); 
@@ -102,7 +96,7 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,2,'Le Palmette Beac
 'https://www.bookyourbeach.net/album/768/2263/13433138-609097139266648-6982807008407385407-o.jpg',
 'https://www.primiposti.it/blog/wp-content/uploads/2018/11/logo-le-palmette-blog.jpg',
 'Viale Lungo Mare Poetto, Prima Fermata, 09126 Cagliari CA, Italia',
-'338 104 1979',500,1500,'Y','Y','Y','Y','Y','Y','Y','N');
+'338 104 1979',100,6.0,300,3.0,'N','Y','N','Y','Y','Y','N','N');
 
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,4,
@@ -111,7 +105,7 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,4,
 'https://i.pinimg.com/originals/cd/6e/45/cd6e45287a4af9e357624598f4547615.jpg',
 'https://lh3.googleusercontent.com/ZXe4-KqNqdjjGRxeymbJx7FcZbzQ9z4RG4Wzc5wTGuoFqX-daeV587gqsQBkde-c772D-28h=w768-h768-n-o-v1',
 'Viale Lungo Mare Poetto, Seconda Fermata, 09126 Cagliari CA, Italia', 
-'070 371698',50,150,'N','Y','N','N','Y','N','N','N');
+'070 371698',500,10.0,1500,8.0,'Y','Y','Y','Y','Y','Y','Y','N');
 
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,3,
@@ -120,7 +114,7 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,3,
 'http://www.lidocagliari.com/public/biz_editor/Image/slideshow/2.jpg',
 'http://www.lidocagliari.com/public/biz_editor/custom/logo_illido.png',
 'Viale Lungo Mare Poetto, Terza Fermata, 09126 Cagliari CA, Italia',
-'070 3891698',500,1500,'Y','Y','Y','Y','Y','Y','Y','N');
+'070 3891698',500,12.0,1500,8.0,'Y','Y','Y','Y','Y','Y','Y','N');
 
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,5,
@@ -129,7 +123,7 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,5,
 'http://www.emersoncagliari.it/wp-content/uploads/2017/03/spiaggia5.jpg',
 'http://www.cagliariaccommodations.com/wp-content/uploads/2019/04/logo.png',
 'Viale Lungo Mare Poetto, Quarta Fermata, 09126 Cagliari CA, Italia', 
-'348 629 3969',50,150,'N','Y','N','N','Y','N','N','N');
+'348 629 3969',150,7.5,450,4.0,'N','Y','N','N','Y','N','N','N');
 
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,6,
@@ -137,5 +131,5 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,6,
 'https://cdn0.matrimonio.com/emp/fotos/5/4/5/0/19905281-2032043933698506-8482575641150889729-n.jpg',
 'https://image.freepik.com/free-vector/palm-beach-logo-design-inspiration_57043-208.jpg',
 'Viale Lungo Mare Poetto, Quinta Fermata, 09126 Cagliari CA, Italia',
-'327 359 1280',500,1500,'Y','Y','Y','Y','Y','Y','Y','Y');
+'327 359 1280',80,9.5,240,5.5,'N','N','Y','Y','Y','Y','Y','Y');
 
