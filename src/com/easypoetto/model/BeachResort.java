@@ -1,6 +1,6 @@
 package com.easypoetto.model;
 
-public class BeachResort{
+public class BeachResort {
 
 	private int id;
 	private String email;
@@ -22,7 +22,7 @@ public class BeachResort{
 	private boolean disabledFacilities;
 	private boolean childrenArea;
 	private boolean dogArea;
-	
+
 	/**
 	 * @param id
 	 * @param name
@@ -37,9 +37,10 @@ public class BeachResort{
 	 * @param childrenArea
 	 * @param dogArea
 	 */
-	public BeachResort(int id, String name, String address, String logo, boolean parking, boolean pedalo, boolean shower, boolean toilette, boolean restaurant,
-			boolean disabledFacilities, boolean childrenArea, boolean dogArea) {
-		
+	public BeachResort(int id, String name, String address, String logo, boolean parking, boolean pedalo,
+			boolean shower, boolean toilette, boolean restaurant, boolean disabledFacilities, boolean childrenArea,
+			boolean dogArea) {
+
 		this.id = id;
 		this.name = name;
 		this.address = address;
@@ -53,8 +54,7 @@ public class BeachResort{
 		this.childrenArea = childrenArea;
 		this.dogArea = dogArea;
 	}
-	
-	
+
 	/**
 	 * @param id
 	 * @param email
@@ -77,8 +77,9 @@ public class BeachResort{
 	 * @param childrenArea
 	 * @param dogArea
 	 */
-	public BeachResort(int id, String email, String name, String description, String image, String logo, String address, String telephone, int numUmbrellas,
-			double priceUmbrella, int numBeachLoungers, double priceBeachLounger, boolean parking, boolean pedalo, boolean shower, boolean toilette, boolean restaurant,
+	public BeachResort(int id, String email, String name, String description, String image, String logo, String address,
+			String telephone, int numUmbrellas, double priceUmbrella, int numBeachLoungers, double priceBeachLounger,
+			boolean parking, boolean pedalo, boolean shower, boolean toilette, boolean restaurant,
 			boolean disabledFacilities, boolean childrenArea, boolean dogArea) {
 		this.id = id;
 		this.email = email;
@@ -103,12 +104,25 @@ public class BeachResort{
 	}
 
 	/**
+	 * @param id
+	 * @param name
+	 * @param priceUmbrella
+	 * @param priceBeachLounger
+	 */
+	public BeachResort(int id, String name, double priceUmbrella, double priceBeachLounger) {
+		this.id = id;
+		this.name = name;
+		this.priceUmbrella = priceUmbrella;
+		this.priceBeachLounger = priceBeachLounger;
+	}
+
+	/**
 	 * @return the email
 	 */
 	public String getEmail() {
 		return email;
 	}
-	
+
 	/**
 	 * @return the name
 	 */
@@ -129,7 +143,7 @@ public class BeachResort{
 	public String getTelephone() {
 		return telephone;
 	}
-	
+
 	/**
 	 * @return the description
 	 */
@@ -227,15 +241,15 @@ public class BeachResort{
 	public int getId() {
 		return id;
 	}
-	
+
 	/**
 	 * @return the priceUmbrella
 	 */
-	
+
 	public double getPriceUmbrella() {
 		return priceUmbrella;
 	}
-	
+
 	/**
 	 * @return the priceBeachLounger
 	 */
@@ -244,5 +258,4 @@ public class BeachResort{
 		return priceBeachLounger;
 	}
 
-	
 }
