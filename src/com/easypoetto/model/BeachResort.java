@@ -11,7 +11,9 @@ public class BeachResort{
 	private String image;
 	private String logo;
 	private int numUmbrellas;
+	private double priceUmbrella;
 	private int numBeachLoungers;
+	private double priceBeachLounger;
 	private boolean parking;
 	private boolean pedalo;
 	private boolean shower;
@@ -63,7 +65,9 @@ public class BeachResort{
 	 * @param image
 	 * @param logo
 	 * @param numUmbrellas
+	 * @param priceUmbrella
 	 * @param numBeachLoungers
+	 * @param priceBeachLounger
 	 * @param parking
 	 * @param pedalo
 	 * @param shower
@@ -74,7 +78,7 @@ public class BeachResort{
 	 * @param dogArea
 	 */
 	public BeachResort(int id, String email, String name, String description, String image, String logo, String address, String telephone, int numUmbrellas,
-			int numBeachLoungers, boolean parking, boolean pedalo, boolean shower, boolean toilette, boolean restaurant,
+			double priceUmbrella, int numBeachLoungers, double priceBeachLounger, boolean parking, boolean pedalo, boolean shower, boolean toilette, boolean restaurant,
 			boolean disabledFacilities, boolean childrenArea, boolean dogArea) {
 		this.id = id;
 		this.email = email;
@@ -85,7 +89,9 @@ public class BeachResort{
 		this.image = image;
 		this.logo = logo;
 		this.numUmbrellas = numUmbrellas;
+		this.priceUmbrella = priceUmbrella;
 		this.numBeachLoungers = numBeachLoungers;
+		this.priceBeachLounger = priceBeachLounger;
 		this.parking = parking;
 		this.pedalo = pedalo;
 		this.shower = shower;
@@ -221,5 +227,22 @@ public class BeachResort{
 	public int getId() {
 		return id;
 	}
+	
+	/**
+	 * @return the priceUmbrella
+	 */
+	
+	public double getPriceUmbrella() {
+		return priceUmbrella;
+	}
+	
+	/**
+	 * @return the priceBeachLounger
+	 */
+
+	public double getPriceBeachLounger() {
+		return priceBeachLounger;
+	}
+
 	
 }

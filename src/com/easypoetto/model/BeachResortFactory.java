@@ -38,8 +38,8 @@ public class BeachResortFactory {
 	
 	public BeachResort getBeachResort(String email) {
 
-		String sql = "select beach_resorts.id, email, name, description, image, logo, address, telephone, num_umbrellas, "
-				+ "num_beach_loungers, parking, pedalo, shower, toilette, restaurant, "
+		String sql = "select beach_resorts.id, email, name, description, image, logo, address, telephone, num_umbrellas, price_umbrella, "
+				+ "num_beach_loungers, price_beach_lounger, parking, pedalo, shower, toilette, restaurant, "
 				+ "disabled_facilities, children_area, dog_area from beach_resorts, users where user_id = users.id and email=?";
 		
 		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -58,9 +58,9 @@ public class BeachResortFactory {
 					}
 				
 				return new BeachResort(result.getInt("id"), result.getString("email"), result.getString("name"),result.getString("description"), image,
-						logo, result.getString("address"), result.getString("telephone"), result.getInt("num_umbrellas"),
-						result.getInt("num_beach_loungers"), 
-						 convertBoolean(result.getString("parking")), convertBoolean(result.getString("pedalo")), convertBoolean(result.getString("shower")), convertBoolean(result.getString("toilette")),
+						logo, result.getString("address"), result.getString("telephone"), result.getInt("num_umbrellas"), result.getDouble("price_umbrella"),
+						result.getInt("num_beach_loungers"), result.getDouble("price_beach_lounger"),
+						convertBoolean(result.getString("parking")), convertBoolean(result.getString("pedalo")), convertBoolean(result.getString("shower")), convertBoolean(result.getString("toilette")),
 						convertBoolean(result.getString("restaurant")), convertBoolean(result.getString("disabled_facilities")), 
 						convertBoolean(result.getString("children_area")), convertBoolean(result.getString("dog_area")));
 			}
@@ -80,8 +80,8 @@ public class BeachResortFactory {
 		
 		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
 
-			String sql = "select email, name, description, image, logo, address, telephone, num_umbrellas, "
-					+ "num_beach_loungers, parking, pedalo, shower, toilette, restaurant, "
+			String sql = "select email, name, description, image, logo, address, telephone, num_umbrellas, price_umbrella, "
+					+ "num_beach_loungers, price_beach_lounger, parking, pedalo, shower, toilette, restaurant, "
 					+ "disabled_facilities, children_area, dog_area from beach_resorts, users where user_id = users.id and beach_resorts.id= " + id;
 
 			ResultSet result = stmt.executeQuery(sql);
@@ -89,8 +89,8 @@ public class BeachResortFactory {
 			while (result.next()) {
 				
 				return new BeachResort(id, result.getString("email"), result.getString("name"),result.getString("description"), result.getString("image"),
-						result.getString("logo"), result.getString("address"), result.getString("telephone"), result.getInt("num_umbrellas"),
-						result.getInt("num_beach_loungers"), 
+						result.getString("logo"), result.getString("address"), result.getString("telephone"), result.getInt("num_umbrellas"), result.getDouble("price_umbrella"),
+						result.getInt("num_beach_loungers"),  result.getDouble("price_beach_lounger"), 
 						 convertBoolean(result.getString("parking")), convertBoolean(result.getString("pedalo")), convertBoolean(result.getString("shower")), convertBoolean(result.getString("toilette")),
 						convertBoolean(result.getString("restaurant")), convertBoolean(result.getString("disabled_facilities")), 
 						convertBoolean(result.getString("children_area")), convertBoolean(result.getString("dog_area")));
@@ -206,12 +206,12 @@ public class BeachResortFactory {
 	}
 
 	public boolean editDetails(String newName, String newDescription, String newEmail, String newPassword,
-			String newImage, String newLogo, String newAddress, String newTelephone, Integer newNumUmbrellas, Integer newNumBeachLoungers, List<String> services,
+			String newImage, String newLogo, String newAddress, String newTelephone, Integer newNumUmbrellas, Double newPriceUmbrella, Integer newNumBeachLoungers, Double newPriceBeachLounger, List<String> services,
 			String email) {
 	
 			try (Connection conn = DbManager.getInstance().getDbConnection()) {
 			
-			conn.setAutoCommit(false); //Iniza la transazione perch� se due persone entrano in concorrenza in questo metodo potrebbero superare il successivo controllo e impostare assieme la stessa mail
+			conn.setAutoCommit(false); //Inizia la transazione perch� se due persone entrano in concorrenza in questo metodo potrebbero superare il successivo controllo e impostare assieme la stessa mail
 			
 			if (newEmail.equals("")) {
 				newEmail=email;
@@ -257,7 +257,7 @@ public class BeachResortFactory {
 			//Sta effettuando modifiche
 			if(idBeachResort != -1) {
 				
-				String sqlEditBeachResortDetails = " update beach_resorts set name = ?, description = ?, image = ?, logo = ?, address = ?, telephone = ?,  num_umbrellas = ?, num_beach_loungers = ?, parking = 'N', pedalo = 'N', shower = 'N', toilette = 'N', restaurant = 'N', disabled_facilities = 'N', children_area = 'N', dog_area = 'N' where id = ? ";
+				String sqlEditBeachResortDetails = " update beach_resorts set name = ?, description = ?, image = ?, logo = ?, address = ?, telephone = ?,  num_umbrellas = ?,  price_umbrella = ?, num_beach_loungers = ?,  price_beach_lounger = ?, parking = 'N', pedalo = 'N', shower = 'N', toilette = 'N', restaurant = 'N', disabled_facilities = 'N', children_area = 'N', dog_area = 'N' where id = ? ";
 				
 				for(String service : services) {
 					sqlEditBeachResortDetails = sqlEditBeachResortDetails.replace(service + " = 'N'", service + " = 'Y'");		
@@ -272,8 +272,10 @@ public class BeachResortFactory {
 					stmt.setString(5, newAddress);
 					stmt.setString(6, newTelephone);
 					stmt.setInt(7, newNumUmbrellas);
-					stmt.setInt(8, newNumBeachLoungers);
-					stmt.setInt(9, idBeachResort);
+					stmt.setDouble(8, newPriceUmbrella);
+					stmt.setInt(9, newNumBeachLoungers);
+					stmt.setDouble(10, newPriceBeachLounger);
+					stmt.setInt(11, idBeachResort);
 					stmt.executeUpdate();
 
 				} catch (SQLException e) {
@@ -285,8 +287,8 @@ public class BeachResortFactory {
 				
 				//INSERT in BeachResort
 				
-				String sql1 = "INSERT INTO BEACH_RESORTS (id, user_id, name, description, image, logo, address, telephone, num_umbrellas, num_beach_loungers, ";
-				String sql2= " VALUES(beach_resort_id_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ";
+				String sql1 = "INSERT INTO BEACH_RESORTS (id, user_id, name, description, image, logo, address, telephone, num_umbrellas, price_umbrella, num_beach_loungers, price_beach_lounger ";
+				String sql2= " VALUES(beach_resort_id_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ";
 				for(String service : services) {
 					sql1 = sql1 + service +", ";
 					sql2 = sql2 + "'Y', ";
@@ -308,7 +310,9 @@ public class BeachResortFactory {
 					stmt.setString(6, newAddress);
 					stmt.setString(7, newTelephone);
 					stmt.setInt(8, newNumUmbrellas);
-					stmt.setInt(9, newNumBeachLoungers);
+					stmt.setDouble(9, newPriceUmbrella);
+					stmt.setInt(10, newNumBeachLoungers);
+					stmt.setDouble(11, newPriceBeachLounger);
 					stmt.executeUpdate();
 				} catch (SQLException e) {
 					conn.rollback();//elimino le modifiche effettuate in transazione
