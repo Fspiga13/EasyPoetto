@@ -16,7 +16,7 @@
 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 	crossorigin="anonymous"></script>
 <script type="text/javascript" src="../../jQuery/jquery-3.4.1.min.js"></script>
-<title>Easy Poetto - Prenotazione</title>
+<title>Easy Poetto - Pagamento</title>
 </head>
 <body>
 	<%-- Imposto le variabili che servono alla navbar per essere visualizzata nel modo corretto --%>
@@ -36,46 +36,29 @@
 						<div class="alert alert-success" role="alert">${success}</div>
 					</c:if>
 	
-						<h1 class="mr-5 pr-5">Prenotazione</h1>
+						<h1 class="mr-5 pr-5">Prenota e paga</h1>
 	
 								
 					 	<div class="rounded border p-3">
-					 		<h5>Ombrellone</h5>
+					 		<h5>Riepilogo</h5>
 								
 						 	<div>
-								<label for="price_umbrella">Prezzo per unità:</label> <input type="number" readonly
-									class="form-control mb-4" id="price_umbrella" name="price_umbrella" required value="${beachResort.priceUmbrella}" />
+								<label for="num_umbrella">Numero ombrelloni:</label> <input type="number" readonly
+									class="form-control mb-4" id="num_umbrella" name="num_umbrella" required value="${umbrellasQty}" />
 							</div>
 							
-							<div class = "row align-middle px-3">
-								<label for="num_umbrellas">Quantità: </label>
-								<select name = "num_umbrellas">									
-									<c:forEach begin = "${0}" end="${3}" step="1" var="index">									
-										<option value="${index}">${index}</option>
-									</c:forEach>
-								</select>		
+							<div>
+								<label for="num_beach_lounger">Numero lettini:</label> <input type="number" readonly
+									class="form-control mb-4" id="num_beach_lounger" name="num_beach_lounger" required value="${beachLoungersQty}" />
 							</div>
-						</div>
-						
-						<div class="rounded border p-3">
-					 		<h5>Lettino</h5>
-								
+							
 						 	<div>
-								<label for="price_beach_lounger">Prezzo per unità:</label> <input type="number" readonly
-									class="form-control mb-4" id="price_beach_lounger" name="price_beach_lounger" required value="${beachResort.priceBeachLounger}" />
-							</div>
-							
-							<div class = "row align-middle px-3">
-								<label for="num_beach_lounger">Quantità: </label>
-								<select name = "num_beach_lounger">									
-									<c:forEach begin = "${0}" end="${9}" step="1" var="index">									
-										<option value="${index}">${index}</option>
-									</c:forEach>
-								</select>		
+								<label for="total_price">Prezzo totale:</label> <input type="number" readonly
+									class="form-control mb-4" id="total_price" name="total_price" required value="${totalPrice}" />
 							</div>
 						</div>	
 					<div class="col-auto">		  
-					   <button type="submit" id="prenota" class="btn btn-info rounded">Prenota</button>
+					   <button type="submit" id="prenota" class="btn btn-info rounded">Prenota e paga</button>
 					</div>
 				</div>			
 			</div>
