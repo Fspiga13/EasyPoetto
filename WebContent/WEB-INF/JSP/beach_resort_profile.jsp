@@ -144,13 +144,11 @@
 					</div>
 					
 				</div>	
-					<div class = "row align-middle px-3 mt-3">
-					<label for="num_umbrellas">Numero di ombrelloni: </label>
+					<div class = "form-inline align-middle px-3 mt-3">
+						<label for="num_umbrellas">Numero di ombrelloni: </label>
 						<c:choose>
 						<c:when test="${not empty beachResort}">
-							<p> ${beachResort.numUmbrellas}
-							</p>
-							<input type="hidden" name="num_umbrellas" value="${beachResort.numUmbrellas}">
+							<input type="number" class="form-control" readonly name="num_umbrellas" value="${beachResort.numUmbrellas}">
 						</c:when>
 						<c:otherwise>
 						<select name = "num_umbrellas">
@@ -162,26 +160,31 @@
 						</select>
 						</c:otherwise>
 						</c:choose>
+											
+						<label for="price_umbrella">Prezzo per ombrellone: </label>
+						<input type="number" class="form-control" name="price_umbrella" <c:if test= "${not empty beachResort}">value="${beachResort.priceUmbrella}"</c:if>>
+						
 					</div>
 					
-					<div class = "row align-middle px-3">
+					<div class = "form-inline align-middle px-3">
 					<label for="num_beach_loungers">Numero di lettini: </label>
 						<c:choose>
 						<c:when test="${not empty beachResort}">
-							<p> ${beachResort.numBeachLoungers}
-							</p>
-							<input type="hidden" name="num_beach_loungers" value="${beachResort.numBeachLoungers}">
+							<input type="hidden" readonly class="form-control" name="num_beach_loungers" value="${beachResort.numBeachLoungers}">
 						</c:when>
 						<c:otherwise>
 						<select name = "num_beach_loungers">
 							
 							<c:forEach begin = "${30}" end="${1500}" step="30" var="index">
-							
 								<option value="${index}">${index}</option>
 							</c:forEach>
 						</select>
 						</c:otherwise>
 						</c:choose>
+						
+						
+						<label for="price_beach_lounger">Prezzo per lettino: </label>
+						<input type="number" class="form-control" name="price_beach_lounger" <c:if test= "${not empty beachResort}">value="${beachResort.priceBeachLounger}"</c:if>>
 					</div>
 					
 
