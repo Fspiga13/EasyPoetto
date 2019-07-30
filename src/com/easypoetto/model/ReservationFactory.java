@@ -77,7 +77,7 @@ public class ReservationFactory {
 
 			while (result.next()) {
 				reservations.add(new Reservation(result.getInt("id"), result.getString("name"), result.getString("surname"), 
-						reservationDateManager(result.getString("date")), result.getInt("umbrellas_qty"), 
+						reservationDateManager(result.getString("reservation_date")), result.getInt("umbrellas_qty"), 
 						result.getInt("beach_loungers_qty"), result.getDouble("total_price")));
 			}
 			

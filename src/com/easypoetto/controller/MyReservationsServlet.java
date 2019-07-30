@@ -56,12 +56,25 @@ public class MyReservationsServlet extends HttpServlet {
 			
 			if (email!= null && password != null && role != null &&
 					!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
-					UserFactory.getInstance().login(email, password) == role && role==2){
-				System.out.println("aaaaaaa");
-				request.setAttribute("error", error);
-				request.setAttribute("success", success);			
+					UserFactory.getInstance().login(email, password) == role){
 				
-				List<Reservation> reservations = ReservationFactory.getInstance().getResevationsByClient(email);
+				request.setAttribute("error", error);
+				request.setAttribute("success", success);
+				
+				List<Reservation> reservations = null;
+				
+				switch(role) {
+				
+				case 1:
+					reservations = ReservationFactory.getInstance().getResevationsByBeachResort(email);
+					break;
+					
+				case 2:
+					reservations = ReservationFactory.getInstance().getResevationsByClient(email);
+					break;
+				default:
+					break;
+				}
 				
 				request.setAttribute("reservationList", reservations);
 				request.setAttribute("role", role);

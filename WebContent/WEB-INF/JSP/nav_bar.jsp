@@ -50,7 +50,7 @@
 			</li></c:otherwise>
 		</c:choose>
 		
-		<c:if test="${not empty role && role == 2}">
+		<c:if test="${not empty role && (role == 2 || role == 1)}">
 			<li>
 				<a href="myreservations.html" class="mynavlink pr-4"> 
 					Prenotazioni
