@@ -68,7 +68,7 @@
 					
 					<div>
 						<label for="description">Descrizione</label> 
-						<textarea name="description" id="description" rows="5" cols="50" class="form-control mb-4" maxlength="2000" style="resize:none">
+						<textarea name="description" id="description" rows="5" cols="50" class="form-control mb-4" maxlength="2000" style="resize:none" required>
 							<c:if test= "${not empty beachResort}">${beachResort.description}</c:if>
 						</textarea> 
 		

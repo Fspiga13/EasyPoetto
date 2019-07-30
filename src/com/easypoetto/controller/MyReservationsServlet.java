@@ -12,20 +12,21 @@ import javax.servlet.http.HttpSession;
 
 import com.easypoetto.model.ClientFactory;
 import com.easypoetto.model.Package;
+import com.easypoetto.model.Reservation;
 import com.easypoetto.model.ReservationFactory;
 import com.easypoetto.model.UserFactory;
 
 /**
  * Servlet implementation class PackageListServlet
  */
-@WebServlet("/packagemanager.html")
-public class PackageManagerServlet extends HttpServlet {
+@WebServlet("/myreservations.html")
+public class MyReservationsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PackageManagerServlet() {
+    public MyReservationsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -57,37 +58,16 @@ public class PackageManagerServlet extends HttpServlet {
 			
 			if (email!= null && password != null && role != null &&
 					!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
-					UserFactory.getInstance().login(email, password) == role && role==1){
+					UserFactory.getInstance().login(email, password) == role && role==2){
 				
 				request.setAttribute("error", error);
-				request.setAttribute("success", success);
+				request.setAttribute("success", success);			
 				
-				// Gestisco creazione nuovo pacchetto
-				if(request.getParameter("newPackage") != null) {
-
-					if (ReservationFactory.getInstance().addPackage(email)) {
-
-						request.setAttribute("success", "Nuovo pacchetto creato!");
-					}else {
-						request.setAttribute("error", "Errore nella creazione del pacchetto");
-					}			
-				}else {
-					if( (request.getParameter("idPackage") != null)) {
-						
-						if(ReservationFactory.getInstance().deletePackage(Integer.parseInt(request.getParameter("idPackage")))) {
-	
-							request.setAttribute("success", "Pacchetto eliminato!");
-						}else {
-							request.setAttribute("error", "Errore nell'eliminazione del pacchetto");
-						}
-					}
-				}
+				List<Reservation> reservations = ReservationFactory.getInstance().getResevationsByUser(email);
 				
-				List<Package> packages = ReservationFactory.getInstance().getPackages(email);
-				
-				request.setAttribute("packageList", packages);
+				request.setAttribute("reservationList", reservations);
 				request.setAttribute("role", role);
-				request.getRequestDispatcher("WEB-INF/JSP/package_manager.jsp").forward(request, response);			
+				request.getRequestDispatcher("WEB-INF/JSP/myreservations.jsp").forward(request, response);			
 			}else {
 				response.sendRedirect("login.html");
 			}
@@ -119,24 +99,23 @@ public class PackageManagerServlet extends HttpServlet {
 					UserFactory.getInstance().login(email, password) == role && role==1){
 				
 				// Recuperiamo i parametri dal form
-				String newName = request.getParameter("name");
-				Integer newIncludedUmbrellas = Integer.parseInt(request.getParameter("num_umbrellas"));
-				Integer newIncludedBeachLoungers = Integer.parseInt(request.getParameter("num_beach_loungers"));
-				Double newPrice = Double.parseDouble(request.getParameter("price"));
-				Integer idPackage = Integer.parseInt(request.getParameter("idPackage"));
+				String date = (String) request.getParameter("date");
+				Integer umbrellasQty = Integer.parseInt(request.getParameter("num_umbrellas"));
+				Integer beachLoungersQty = Integer.parseInt(request.getParameter("num_beach_loungers"));
+				Double totalPrice = Double.parseDouble(request.getParameter("price"));
+				Integer beachResortId = Integer.parseInt(request.getParameter("beachResortId"));
 
 				
-				// Aggiorno i dettagli pachetto
+				// Aggiungo la prenotazione
 				
-				// Se la modifica non va a buon fine
-				if (!ReservationFactory.getInstance().editPackage(idPackage, newName, newIncludedUmbrellas, newIncludedBeachLoungers, newPrice)) {
-					// Mando l'errore al jsp
-					session.setAttribute("error", "Modifica pacchetto non riuscita");
-				} else {
-					session.setAttribute("success", "Modifica pacchetto avvenuta con successo!");
+				if (ReservationFactory.getInstance().addReservation(email, beachResortId, date, umbrellasQty, beachLoungersQty, totalPrice)) {
+
+					request.setAttribute("success", "Prenotazione avvenuta con successo!");
+				}else {
+					request.setAttribute("error", "Errore nella prenotazione");
 				}
 			
-				response.sendRedirect("packagemanager.html");
+				response.sendRedirect("myreservations.html");
 
 			}else {
 				response.sendRedirect("login.html");

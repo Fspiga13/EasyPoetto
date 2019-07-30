@@ -53,7 +53,7 @@
 		<c:if test="${not empty role && role == 2}">
 			<li>
 				<a href="myreservations.html" class="mynavlink pr-4"> 
-					Le mie prenotazioni
+					Prenotazioni
 				</a>
 			</li>
 		</c:if>

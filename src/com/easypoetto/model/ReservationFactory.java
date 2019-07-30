@@ -30,7 +30,7 @@ public class ReservationFactory {
 	}
 	
 
-	public List<Reservation> getResevationsByUser(String email) {
+	public List<Reservation> getResevationsByClient(String email) {
 		
 		List<Reservation> reservations = new ArrayList<Reservation>();
 		
@@ -58,23 +58,31 @@ public class ReservationFactory {
 		return null;
 	}
 
-	public boolean addReservation(String email) {
+	public boolean addReservation(String email, int beachResortId, String date, int umbrellasQty, int beachLoungersQty, double totalPrice) {
 		
-		BeachResort br= BeachResortFactory.getInstance().getBeachResort(email);
+		
+		//va effettuato ulteriore controllo in transazione per prenotazioni multiple
+		
+		Client client = ClientFactory.getInstance().getClient(email);
 				
-		if (br != null) { // deve per forza trovare un beach resort
+		if (client != null) { // deve per forza trovare un client
 			
-			String sqlNewPackage = " insert into beach_packages(id, beach_resort_id) values (beach_package_id_seq.nextval, ?) ";
+			String sqlNewPackage = " insert into reservations values(reservation_id_seq.nextval, ?, ?, to_date(?, 'yyyy-mm-dd'), ?, ?, 15.5) ";
 			try (Connection conn = DbManager.getInstance().getDbConnection();
 					PreparedStatement stmt = conn.prepareStatement(sqlNewPackage)) {
 				
-				stmt.setInt(1, br.getId());
+				stmt.setInt(1, beachResortId);
+				stmt.setInt(2, client.getId());
+				stmt.setString(3, date);
+				stmt.setInt(4, umbrellasQty);
+				stmt.setInt(5, beachLoungersQty);
+				stmt.setDouble(6, totalPrice);
 	
 				stmt.executeUpdate();
 				return true;
 			} catch (SQLException e) {
 				Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE, null, e);
-				System.out.println("Errore in addPackage di PackageFactory");
+				System.out.println("Errore in addReservation di ReservationFactory");
 			}
 
 		}

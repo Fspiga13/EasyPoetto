@@ -30,34 +30,38 @@ public class ReservationServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Verificare se loggato
-				HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession(false);
+		
+		if(session == null || session.getAttribute("email") == null || session.getAttribute("password") == null 
+				|| session.getAttribute("role") == null) {	
+			
+			response.sendRedirect("login.html");
+			
+		}else {
+		
+			String error = (String) session.getAttribute("error");
+			session.removeAttribute("error");
+			
+			String success = (String) session.getAttribute("success");
+			session.removeAttribute("success");
+			
+			String email = (String) session.getAttribute("email");
+			String password = (String) session.getAttribute("password");
+			Integer role = (Integer) session.getAttribute("role");
+			
+			if (email!= null && password != null && role != null &&
+					!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
+					UserFactory.getInstance().login(email, password) == role && role == 2){
 				
-				if(session == null || session.getAttribute("email") == null || session.getAttribute("password") == null 
-						|| session.getAttribute("role") == null) {	
-					
-					response.sendRedirect("login.html");
-					
-				}else {
+				request.setAttribute("error", error);
+				request.setAttribute("success", success);
+			
+				//mostrare prenotazioni
 				
-					String error = (String) session.getAttribute("error");
-					session.removeAttribute("error");
-					
-					String success = (String) session.getAttribute("success");
-					session.removeAttribute("success");
-					
-					String email = (String) session.getAttribute("email");
-					String password = (String) session.getAttribute("password");
-					Integer role = (Integer) session.getAttribute("role");
-					
-					if (email!= null && password != null && role != null &&
-							!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
-							UserFactory.getInstance().login(email, password) == role){
-						
-						request.setAttribute("error", error);
-						request.setAttribute("success", success);
-					}
-				}
-
+			}else {
+				response.sendRedirect("login.html");
+			}	
+		}
 	}
 
 	/**

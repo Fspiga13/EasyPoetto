@@ -41,15 +41,15 @@
 					<form action="signup.html" method="post"style="display:inline">
 						<div>
 					  		<label for="email">Email</label>
-					  		<input type="email" id="email" name="email" class="form-control mb-4" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" /> 
+					  		<input type="email" id="email" name="email" class="form-control mb-4" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" required /> 
 					  	</div>
 					  	<div>
 					  		<label for="password">Password</label>
-					  		<input type="password" id="password" name="password" class="form-control mb-4"/>
+					  		<input type="password" id="password" name="password" class="form-control mb-4" required />
 					  	</div>
 					  	<div>
 					  		<label for="confirm_password">Conferma Password</label>
-					  		<input type="password" id="confirm_password" name="confirm_password" class="form-control mb-4"/>
+					  		<input type="password" id="confirm_password" name="confirm_password" class="form-control mb-4" required />
 					  	</div>
 					  	<div class="text-center">
 					  		
