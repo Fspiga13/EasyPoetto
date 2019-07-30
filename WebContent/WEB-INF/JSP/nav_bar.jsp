@@ -50,10 +50,10 @@
 			</li></c:otherwise>
 		</c:choose>
 		
-		<c:if test="${not empty role && role == 1}">
+		<c:if test="${not empty role && role == 2}">
 			<li>
-				<a href="packagemanager.html" class="mynavlink pr-4"> 
-					I miei pacchetti
+				<a href="myreservations.html" class="mynavlink pr-4"> 
+					Le mie prenotazioni
 				</a>
 			</li>
 		</c:if>

@@ -113,11 +113,10 @@ public class BeachResortFactory {
 		
 		String sql = "select beach_resorts.id, name, address, logo, "
 				+ "parking, pedalo, shower, toilette, restaurant, "
-				+ "disabled_facilities, children_area, dog_area from beach_resorts, users where user_id=users.id and status=0 and date= to_date(?, 'yyyy-mm-dd' )";
+				+ "disabled_facilities, children_area, dog_area from beach_resorts, users where user_id=users.id and status=0";
 			
 		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql))  {
 
-			stmt.setString(1, date);
 
 			ResultSet result = stmt.executeQuery(sql);
 
@@ -148,7 +147,7 @@ public class BeachResortFactory {
 		
 		String sql = "select id, name, address, logo, "
 				+ "parking, pedalo, shower, toilette, restaurant, "
-				+ "disabled_facilities, children_area, dog_area from beach_resorts where date= to_date(?,'yyyy-mm-dd') and ";
+				+ "disabled_facilities, children_area, dog_area from beach_resorts where ";
 		
 		for (String service : services) {
 			sql += service + "= 'Y' and ";
@@ -159,7 +158,6 @@ public class BeachResortFactory {
 			
 		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql))  {
 			
-			stmt.setString(1, date);
 
 			ResultSet result = stmt.executeQuery(sql);
 
