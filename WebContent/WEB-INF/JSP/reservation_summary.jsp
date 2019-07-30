@@ -37,7 +37,7 @@
 					</c:if>
 	
 						<h1 class="mr-5 pr-5">Prenota e paga</h1>
-	
+							<form action="reservation_summary.html" method="get">	
 								
 					 	<div class="rounded border p-3">
 					 		<h5>Riepilogo</h5>
@@ -57,9 +57,10 @@
 									class="form-control mb-4" id="total_price" name="total_price" required value="${totalPrice}" />
 							</div>
 						</div>	
-					<div class="col-auto">		  
-					   <button type="submit" id="prenota" class="btn btn-info rounded">Prenota e paga</button>
-					</div>
+						<div class="col-auto">		  
+						   <button type="submit" id="prenota" class="btn btn-info rounded">Prenota e paga</button>
+						</div>
+					</form>
 				</div>			
 			</div>
 		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div>

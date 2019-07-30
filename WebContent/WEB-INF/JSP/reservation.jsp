@@ -37,8 +37,7 @@
 					</c:if>
 	
 						<h1 class="mr-5 pr-5">Prenotazione</h1>
-	
-								
+						<form action="reservation.html" method="post">									
 					 	<div class="rounded border p-3">
 					 		<h5>Ombrellone</h5>
 								
@@ -73,10 +72,12 @@
 									</c:forEach>
 								</select>		
 							</div>
-						</div>	
-					<div class="col-auto">		  
-					   <button type="submit" id="prenota" class="btn btn-info rounded">Prenota</button>
-					</div>
+						</div>
+						
+						<div class="col-auto">	  
+					   		<button type="submit" id="prenota" class="btn btn-info rounded">Prenota</button>
+		   				</div>
+					</form>	
 				</div>			
 			</div>
 		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div>
