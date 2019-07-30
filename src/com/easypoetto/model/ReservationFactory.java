@@ -63,7 +63,7 @@ public class ReservationFactory {
 		
 		List<Reservation> reservations = new ArrayList<Reservation>();
 		
-		String sql = "select r.id, r.reservation_date, r.umbrellas_qty, r.beach_loungers_qty, r.tolal_price " + 
+		String sql = "select r.id, r.reservation_date, r.umbrellas_qty, r.beach_loungers_qty, r.total_price " + 
 				"from reservations r, users u, clients c, beach_resorts br " + 
 				"where u.id = br.user_id and r.client_id = c.id and r.beach_resort_id = br.id and " + 
 				"u.email = ?" ;
