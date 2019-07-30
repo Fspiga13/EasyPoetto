@@ -158,7 +158,9 @@ public class ProfileServlet extends HttpServlet {
 				String newAddress = request.getParameter("address");
 				String newTelephone = request.getParameter("telephone");
 				Integer newNumUmbrellas = Integer.parseInt(request.getParameter("num_umbrellas"));
+				Double newPriceUmbrella = Double.parseDouble(request.getParameter("price_umbrella"));
 				Integer newNumBeachLoungers = Integer.parseInt(request.getParameter("num_beach_loungers"));
+				Double newPriceBeachLounger = Double.parseDouble(request.getParameter("price_beach_lounger"));
 				String[] servicesStrings = request.getParameterValues("service");
 				List<String> services = null;
 				
@@ -180,7 +182,7 @@ public class ProfileServlet extends HttpServlet {
 				
 				// Se la modifica non va a buon fine
 				if (!BeachResortFactory.getInstance().editDetails(newName, newDescription, newEmail, newPassword,
-						newImage, newLogo, newAddress, newTelephone, newNumUmbrellas, newNumBeachLoungers, services, email)) {
+						newImage, newLogo, newAddress, newTelephone, newNumUmbrellas, newPriceUmbrella, newNumBeachLoungers, newPriceBeachLounger, services, email)) {
 					// Mando l'errore al jsp
 					session.setAttribute("error", "Email non disponibile");
 					response.sendRedirect("profile.html");
