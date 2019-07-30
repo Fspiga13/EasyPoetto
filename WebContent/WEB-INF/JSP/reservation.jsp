@@ -26,7 +26,7 @@
 	<div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
 		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">		
 		</div>
-			<div id="main" class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">		
+			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">		
 				<div id="main" class="shadow-lg border border-light p-5 rounded">
 					<c:if test="${not empty error}">
 						<div class="alert alert-danger" role="alert">${error}</div>
@@ -74,8 +74,8 @@
 							</div>
 						</div>
 						
-						<div class="col-auto">	  
-					   		<button type="submit" id="prenota" class="btn btn-info rounded">Prenota</button>
+						<div class="col-auto float-right m-3">	  
+					   		<button type="submit" id="prenota" class="btn btn-info btn-lg rounded">Prenota</button>
 		   				</div>
 					</form>	
 				</div>			

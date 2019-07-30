@@ -163,13 +163,20 @@
 					</c:if>
 				</div>
 				
+				<c:if test="${logged==false}">
+					<div class="alert alert-warning" role="alert">
+	  					Per effettuare una prenotazione devi essere loggato!
+					</div>
+				</c:if>
+				
 					<form action="reservation.html" method="get">
-						<button type="submit" class="btn btn-outline-info btn-lg btn-block mt-2 ">
+						<input type="hidden" name="beach_resort_id" value="${beachResort.id}">
+						<input type="hidden" name="reservation_date" value="${reservation_date}">
+					
+						<button type="submit" class="btn btn-outline-info btn-lg btn-block mt-2" <c:if test="${logged==false}">disabled</c:if>>
 						Scegli la tua offerta!</button>
 					</form>
 				</div>
-			</div>
-
 
 
       <%--Se l'utente è loggato vede il bottone e sceglie la sua offerta --%>

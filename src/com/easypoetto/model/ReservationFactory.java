@@ -33,8 +33,9 @@ public class ReservationFactory {
 	public List<Reservation> getResevationsByClient(String email) {
 		
 		List<Reservation> reservations = new ArrayList<Reservation>();
-		System.out.println("QQQQQQQQ " + email);
-		String sql = "select r.id, r.reservation_date, r.umbrellas_qty, r.beach_loungers_qty, r.total_price from reservations r, users u, clients c, beach_resorts br where u.id = c.user_id and r.client_id = c.id and r.beach_resort_id = br.id and u.email = ?" ;
+		
+		String sql = "select r.id, br.name, r.reservation_date, r.umbrellas_qty, r.beach_loungers_qty, r.total_price from reservations r, users u, "
+				+ "clients c, beach_resorts br where u.id = c.user_id and r.client_id = c.id and r.beach_resort_id = br.id and u.email = ? order by r.reservation_date DESC" ;
 		
 		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql))  {
 			
@@ -43,8 +44,8 @@ public class ReservationFactory {
 			ResultSet result = stmt.executeQuery();
 
 			while (result.next()) {
-				System.out.println(result.getInt("id"));
-				reservations.add(new Reservation(result.getInt("id"), reservationDateManager(result.getString("reservation_date")), result.getInt("umbrellas_qty"), 
+
+				reservations.add(new Reservation(result.getInt("id"), result.getString("name"), reservationDateManager(result.getString("reservation_date")), result.getInt("umbrellas_qty"), 
 						result.getInt("beach_loungers_qty"), result.getDouble("total_price")));
 			}
 			
@@ -63,10 +64,10 @@ public class ReservationFactory {
 		
 		List<Reservation> reservations = new ArrayList<Reservation>();
 		
-		String sql = "select r.id, r.reservation_date, r.umbrellas_qty, r.beach_loungers_qty, r.total_price " + 
+		String sql = "select r.id, c.name, c.surname, r.reservation_date, r.umbrellas_qty, r.beach_loungers_qty, r.total_price " + 
 				"from reservations r, users u, clients c, beach_resorts br " + 
 				"where u.id = br.user_id and r.client_id = c.id and r.beach_resort_id = br.id and " + 
-				"u.email = ?" ;
+				"u.email = ? order by r.reservation_date DESC" ;
 		
 		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql))  {
 			
@@ -75,7 +76,8 @@ public class ReservationFactory {
 			ResultSet result = stmt.executeQuery();
 
 			while (result.next()) {
-				reservations.add(new Reservation(result.getInt("id"), reservationDateManager(result.getString("date")), result.getInt("umbrellas_qty"), 
+				reservations.add(new Reservation(result.getInt("id"), result.getString("name"), result.getString("surname"), 
+						reservationDateManager(result.getString("date")), result.getInt("umbrellas_qty"), 
 						result.getInt("beach_loungers_qty"), result.getDouble("total_price")));
 			}
 			

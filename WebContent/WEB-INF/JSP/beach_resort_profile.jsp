@@ -68,9 +68,8 @@
 					
 					<div>
 						<label for="description">Descrizione</label> 
-						<textarea name="description" id="description" rows="5" cols="50" class="form-control mb-4" maxlength="2000" style="resize:none" required>
-							<c:if test= "${not empty beachResort}">${beachResort.description}</c:if>
-						</textarea> 
+						<textarea name="description" id="description" rows="5" cols="50" class="form-control mb-4"
+						maxlength="2000" style="resize:none" required><c:if test= "${not empty beachResort}">${beachResort.description}</c:if></textarea> 
 		
 					</div>
 
@@ -144,7 +143,7 @@
 					</div>
 					
 				</div>	
-					<div class = "form-row mt-3">
+					<div class = "form-row mt-4">
 						<div class="col">
 							<label class="form-check-label" for="num_umbrellas">Numero di ombrelloni </label>
 							<c:choose>
@@ -168,7 +167,7 @@
 						</div>
 					</div>
 					
-					<div class = "form-row mt-3 mb-4">
+					<div class = "form-row mt-4 mb-5">
 						<div class="col">
 							<label for="num_beach_loungers">Numero di lettini </label>
 							<c:choose>
