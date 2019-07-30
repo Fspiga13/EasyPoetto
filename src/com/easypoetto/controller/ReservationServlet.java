@@ -16,56 +16,81 @@ import com.easypoetto.model.UserFactory;
 @WebServlet("/reservation.html")
 public class ReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ReservationServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//Verificare se loggato
-				HttpSession session = request.getSession(false);
+	public ReservationServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// Verificare se loggato
+		HttpSession session = request.getSession(false);
+
+		if (session == null || session.getAttribute("email") == null || session.getAttribute("password") == null
+				|| session.getAttribute("role") == null) {
+
+			response.sendRedirect("login.html");
+
+		} else {
+
+			String error = (String) session.getAttribute("error");
+			session.removeAttribute("error");
+
+			String success = (String) session.getAttribute("success");
+			session.removeAttribute("success");
+
+			String email = (String) session.getAttribute("email");
+			String password = (String) session.getAttribute("password");
+			Integer role = (Integer) session.getAttribute("role");
+			
+			Integer idBeachResort = Integer.parseInt(request.getParameter("beach_resort_id"));
+			String reservationDate = request.getParameter("date");
+
+			if (email != null && password != null && role != null && !email.isEmpty() && !password.isEmpty()
+					&& role >= 0 && role <= 2 && UserFactory.getInstance().login(email, password) == role
+					&& role == 2) {
+
+				request.setAttribute("error", error);
+				request.setAttribute("success", success);
+				request.setAttribute("beach_resort_id", idBeachResort);
+				request.setAttribute("reservation_date", reservationDate);
 				
-				if(session == null || session.getAttribute("email") == null || session.getAttribute("password") == null 
-						|| session.getAttribute("role") == null) {	
-					
-					response.sendRedirect("login.html");
-					
-				}else {
 				
-					String error = (String) session.getAttribute("error");
-					session.removeAttribute("error");
-					
-					String success = (String) session.getAttribute("success");
-					session.removeAttribute("success");
-					
-					String email = (String) session.getAttribute("email");
-					String password = (String) session.getAttribute("password");
-					Integer role = (Integer) session.getAttribute("role");
-					
-					if (email!= null && password != null && role != null &&
-							!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
-							UserFactory.getInstance().login(email, password) == role){
-						
-						request.setAttribute("error", error);
-						request.setAttribute("success", success);
-					}
-				}
+				response.sendRedirect("reservation_summary.html");
+				
+
+			} else {
+
+				response.sendRedirect("login.html");
+
+			}
+		}
 
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		
+		// Recuperiamo i parametri dal form
+		String newName = request.getParameter("name");
+		String newSurname = request.getParameter("surname");
+		String newEmail = request.getParameter("email");
+		String newPassword = request.getParameter("password");
+		String newBirthday = request.getParameter("birthday");
 	}
 
 }

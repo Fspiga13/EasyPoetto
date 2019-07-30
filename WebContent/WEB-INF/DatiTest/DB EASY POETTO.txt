@@ -128,3 +128,4 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,6,
 'Viale Lungo Mare Poetto, Quinta Fermata, 09126 Cagliari CA, Italia',
 '327 359 1280',80,9.5,240,5.5,'N','N','Y','Y','Y','Y','Y','Y');
 
+
