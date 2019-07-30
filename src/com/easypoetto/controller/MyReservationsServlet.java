@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.easypoetto.model.ClientFactory;
-import com.easypoetto.model.Package;
 import com.easypoetto.model.Reservation;
 import com.easypoetto.model.ReservationFactory;
 import com.easypoetto.model.UserFactory;
@@ -63,7 +61,7 @@ public class MyReservationsServlet extends HttpServlet {
 				request.setAttribute("error", error);
 				request.setAttribute("success", success);			
 				
-				List<Reservation> reservations = ReservationFactory.getInstance().getResevationsByUser(email);
+				List<Reservation> reservations = ReservationFactory.getInstance().getResevationsByClient(email);
 				
 				request.setAttribute("reservationList", reservations);
 				request.setAttribute("role", role);

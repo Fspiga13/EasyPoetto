@@ -34,7 +34,10 @@ public class ReservationFactory {
 		
 		List<Reservation> reservations = new ArrayList<Reservation>();
 		
-		String sql = "select bp.id, bp.name, bp.included_umbrellas, bp.included_beach_loungers, bp.price from users u, beach_resorts br, beach_packages bp where u.id=br.user_id and br.id=bp.beach_resort_id and email= ?" ;
+		String sql = "select r.id, r.reservation_date, r.umbrellas_qty, r.beach_loungers_qty, r.tolal_price " + 
+				"from reservations r, users u, clients c, beach_resorts br " + 
+				"where u.id = c.user_id and r.client_id = c.id and r.beach_resort_id = br.id and " + 
+				"u.email = ?" ;
 		
 		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql))  {
 			
@@ -51,12 +54,44 @@ public class ReservationFactory {
 					
 		} catch (SQLException e) {
 			Logger.getLogger(ClientFactory.class.getName()).log(Level.SEVERE, null, e);
-			System.out.println("errore in getResevationsByUser dentro ReservationFactory");
+			System.out.println("errore in getResevationsByClient dentro ReservationFactory");
 		}	
 		
 		
 		return null;
 	}
+	
+	public List<Reservation> getResevationsByBeachResort(String email) {
+		
+		List<Reservation> reservations = new ArrayList<Reservation>();
+		
+		String sql = "select r.id, r.reservation_date, r.umbrellas_qty, r.beach_loungers_qty, r.tolal_price " + 
+				"from reservations r, users u, clients c, beach_resorts br " + 
+				"where u.id = br.user_id and r.client_id = c.id and r.beach_resort_id = br.id and " + 
+				"u.email = ?" ;
+		
+		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql))  {
+			
+			stmt.setString(1, email);
+
+			ResultSet result = stmt.executeQuery();
+
+			while (result.next()) {
+				reservations.add(new Reservation(result.getInt("id"), reservationDateManager(result.getString("date")), result.getInt("umbrellas_qty"), 
+						result.getInt("beach_loungers_qty"), result.getDouble("total_price")));
+			}
+			
+			return reservations;
+					
+		} catch (SQLException e) {
+			Logger.getLogger(ClientFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("errore in getResevationsByBeachResort dentro ReservationFactory");
+		}	
+		
+		
+		return null;
+	}
+	
 
 	public boolean addReservation(String email, int beachResortId, String date, int umbrellasQty, int beachLoungersQty, double totalPrice) {
 		
