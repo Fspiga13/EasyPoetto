@@ -130,7 +130,7 @@ public class ClientFactory {
 
 	public Client getClient(String email) {
 		
-		String sql = "select name, surname, birthday from users, clients where users.id=user_id and email= ?";
+		String sql = "select clients.id, name, surname, birthday from users, clients where users.id=user_id and email= ?";
 
 		try (Connection conn = DbManager.getInstance().getDbConnection();
 			PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -138,10 +138,11 @@ public class ClientFactory {
 			ResultSet result = stmt.executeQuery();
 
 			while (result.next()) {
+				int id = result.getInt("id");
 				String name = result.getString("name");
 				String surname = result.getString("surname");
 				GregorianCalendar birthday = clientBirthdayManager(result.getString("birthday"));
-				Client client = new Client(email, name, surname, birthday);
+				Client client = new Client(id, email, name, surname, birthday);
 				return client;
 			}
 

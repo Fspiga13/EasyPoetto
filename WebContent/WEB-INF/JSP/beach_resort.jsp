@@ -163,11 +163,10 @@
 					</c:if>
 				</div>
 				
-								<form action="reservation.html" method="get">
-					<button type="submit"
-						class="btn btn-outline-info btn-lg btn-block shadow mt-2 ">Scegli
-						la tua offerta!</button>
-				</form>
+					<form action="reservation.html" method="get">
+						<button type="submit" class="btn btn-outline-info btn-lg btn-block mt-2 ">
+						Scegli la tua offerta!</button>
+					</form>
 				</div>
 			</div>
 

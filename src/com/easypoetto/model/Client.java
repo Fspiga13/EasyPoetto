@@ -5,6 +5,7 @@ import java.util.GregorianCalendar;
 
 public class Client{
 
+	private int id;
 	private String email;
 	private String name;
 	private String surname;
@@ -16,13 +17,21 @@ public class Client{
 	 * @param surname
 	 * @param birthday
 	 */
-	public Client(String email, String name, String surname, GregorianCalendar birthday) {
+	public Client(Integer id, String email, String name, String surname, GregorianCalendar birthday) {
+		this.id = id;
 		this.email = email;
 		this.name = name;
 		this.surname = surname;
 		this.birthday = birthday;
 	}
 
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+	
 	/**
 	 * @return the email
 	 */
