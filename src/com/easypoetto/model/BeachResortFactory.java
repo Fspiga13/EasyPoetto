@@ -107,15 +107,17 @@ public class BeachResortFactory {
 
 	// Restituisce lista con informazioni essenziali dei resort
 	
-	public List<BeachResort> getBeachResorts() {
+	public List<BeachResort> getBeachResorts(String date) {
 		
 		List<BeachResort> beachResorts = new ArrayList<BeachResort>();
+		
+		String sql = "select beach_resorts.id, name, address, logo, "
+				+ "parking, pedalo, shower, toilette, restaurant, "
+				+ "disabled_facilities, children_area, dog_area from beach_resorts, users where user_id=users.id and status=0 and date= to_date(?, 'yyyy-mm-dd' )";
 			
-		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
+		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql))  {
 
-			String sql = "select beach_resorts.id, name, address, logo, "
-					+ "parking, pedalo, shower, toilette, restaurant, "
-					+ "disabled_facilities, children_area, dog_area from beach_resorts, users where user_id=users.id and status=0";
+			stmt.setString(1, date);
 
 			ResultSet result = stmt.executeQuery(sql);
 
@@ -140,21 +142,24 @@ public class BeachResortFactory {
 	
 	// Restituisce lista dei resort filtrati per servizi
 	
-	public List<BeachResort> getFilteredBeachResorts(List<String> services) {
+	public List<BeachResort> getFilteredBeachResorts(List<String> services, String date) {
 		
 		List<BeachResort> beachResorts = new ArrayList<BeachResort>();
+		
+		String sql = "select id, name, address, logo, "
+				+ "parking, pedalo, shower, toilette, restaurant, "
+				+ "disabled_facilities, children_area, dog_area from beach_resorts where date= to_date(?,'yyyy-mm-dd') and ";
+		
+		for (String service : services) {
+			sql += service + "= 'Y' and ";
+		}
+		
+		sql = sql.substring(0, sql.length() - 4);
+		 
 			
-		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
-
-			String sql = "select id, name, address, logo, "
-					+ "parking, pedalo, shower, toilette, restaurant, "
-					+ "disabled_facilities, children_area, dog_area from beach_resorts where ";
+		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql))  {
 			
-			for (String service : services) {
-				sql += service + "= 'Y' and ";
-			}
-			
-			sql = sql.substring(0, sql.length() - 4);
+			stmt.setString(1, date);
 
 			ResultSet result = stmt.executeQuery(sql);
 

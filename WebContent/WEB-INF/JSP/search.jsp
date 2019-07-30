@@ -71,7 +71,12 @@
 		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
 		
 		<div id="main" class="rounded border shadow p-3 mr-5">
-				<h3>Servizi</h3>
+				<h4>Data </h4>
+					<div class="col-auto ol-cover-search">
+							<input type="date" name="date" id="search-date" class="date" value="${date}" >
+					</div>
+		
+				<h4>Servizi</h4>
 				<form action="search.html" method="get">
 					<div class="row align-middle">
 						<div class=" px-4 py-2">

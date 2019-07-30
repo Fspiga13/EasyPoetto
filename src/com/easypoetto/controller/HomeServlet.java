@@ -1,6 +1,8 @@
 package com.easypoetto.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +33,18 @@ public class HomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(false);
+		
+		String date = (String) request.getAttribute("date");
+		
+		//imposta la data odierna
+		if(date == null) {
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Calendar cal = Calendar.getInstance();
+			date = formatter.format(cal.getTime());
+		}
 
+		request.setAttribute("date", date);
+		
 		if(session == null || session.getAttribute("email") == null || session.getAttribute("password") == null 
 				|| session.getAttribute("role") == null) {
 			

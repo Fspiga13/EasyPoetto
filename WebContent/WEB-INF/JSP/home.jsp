@@ -23,61 +23,60 @@
 			
 			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">
 			
-			
-			<div class="yb-cover">
-	
-					<p>Vivi la tua giornata in spiaggia senza stress!</p>
-				<form action="search.html" method="get">	  
-			<div class="form-row align-items-center text-center">
-			  
+				
+				<div class="yb-cover">
 		
-					<div class="col-auto">
-						<p>Scegli la data</p>
-					</div>
-					
-					<div class="col-auto ol-cover-search">
-							<input type="date" name="date" id="search-date" class="date" value="2019-07-28">
-					</div>
-											
-					<div class="col-auto">		  
-					   <button type="submit" id="trova" class="btn btn-info rounded">Trova lo stabilimento</button>
-					</div>
-										     
+						<p>Vivi la tua giornata in spiaggia senza stress!</p>
+					<form action="search.html" method="get">	  
+						<div class="form-row align-items-center text-center">
+			
+							<div class="col-auto">
+								<p>Scegli la data</p>
+							</div>
+							
+							<div class="col-auto ol-cover-search">
+									<input type="date" name="date" id="search-date" class="date" value="${date}">
+							</div>
+													
+							<div class="col-auto">		  
+							   <button type="submit" id="trova" class="btn btn-info rounded">Trova lo stabilimento</button>
+							</div>
+											     
+						</div>
+					</form>	
+	
 				</div>
-				</form>	
-
+			
+				
+				<div  id="main" class="align-middle mt-5 rounded p-3">
+		    		<img id="homePoetto" src="view/Resources/home-poetto.jpg" class="img-fluid pb-5"> 
+	
+					<div class="text-justify">
+					<p>	Situata nella costa centro-meridionale della Sardegna, la spiaggia del Poetto ancora oggi e' considerata 
+						una delle piu' belle spiagge dell'Isola ed e' la meta preferita di ogni cagliaritano, ma non solo.
+						Il Poetto (o Puettu in sardo) e'  infatti uno dei luoghi piu' frequentati e amati, non solo in estate. Si estende per 7 chilometri di arenile, 
+						dalle pendici della Sella del Diavolo, dove si trova il porticciolo di Marina Piccola, 
+						fino al Margine Rosso (in territorio di Quartu Sant'Elena) separano il mare dall'area umida delle Saline e 
+						degli stagni di Molentargius.
+					</p>
+					
+					<p>
+						Oltre che per un bagno di sole e per una nuotata, il Poetto e' una location ideale anche per praticare un po' di sport 
+						all'aria aperta: un'isola pedonale va dalla prima fermata fino alla quarta ed e' possibile, unendo anche la passeggiata 
+						di Marina Piccola e la pista ciclabile che inizia nei pressi dell'Ospedale Marino, fare una pedalata, un po' di jogging 
+						o semplicemente una passeggiata fuori dal traffico e dai pericoli.
+					</p>
+					<p>
+						Ma il Poetto non e' frequentato solo di giorno: baretti sulla spiaggia, ristoranti, pizzerie e discoteche movimentano
+						 la zona nei mesi da aprile a ottobre e ne fanno il centro di un'intensa movida notturna che richiama giovani  
+						di tutto l'hinterland. 
+					</p>
+					</div>
+	
+	
+	
+				</div>
 			</div>
-			
-			
-			<div  id="main" class="align-middle mt-5 rounded p-3">
-	    	<img id="homePoetto" src="view/Resources/home-poetto.jpg" class="img-fluid pb-5"> 
-
-			<div class="text-justify">
-			<p>	Situata nella costa centro-meridionale della Sardegna, la spiaggia del Poetto ancora oggi e' considerata 
-				una delle piu' belle spiagge dell'Isola ed e' la meta preferita di ogni cagliaritano, ma non solo.
-				Il Poetto (o Puettu in sardo) e'  infatti uno dei luoghi piu' frequentati e amati, non solo in estate. Si estende per 7 chilometri di arenile, 
-				dalle pendici della Sella del Diavolo, dove si trova il porticciolo di Marina Piccola, 
-				fino al Margine Rosso (in territorio di Quartu Sant'Elena) separano il mare dall'area umida delle Saline e 
-				degli stagni di Molentargius.
-			</p>
-			
-			<p>
-				Oltre che per un bagno di sole e per una nuotata, il Poetto e' una location ideale anche per praticare un po' di sport 
-				all'aria aperta: un'isola pedonale va dalla prima fermata fino alla quarta ed e' possibile, unendo anche la passeggiata 
-				di Marina Piccola e la pista ciclabile che inizia nei pressi dell'Ospedale Marino, fare una pedalata, un po' di jogging 
-				o semplicemente una passeggiata fuori dal traffico e dai pericoli.
-			</p>
-			<p>
-				Ma il Poetto non e' frequentato solo di giorno: baretti sulla spiaggia, ristoranti, pizzerie e discoteche movimentano
-				 la zona nei mesi da aprile a ottobre e ne fanno il centro di un'intensa movida notturna che richiama giovani  
-				di tutto l'hinterland. 
-			</p>
-			</div>
-
-
-
-			</div>
-			
 			
 			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
 			</div>

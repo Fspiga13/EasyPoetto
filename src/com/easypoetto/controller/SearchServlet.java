@@ -1,8 +1,10 @@
 package com.easypoetto.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +42,17 @@ public class SearchServlet extends HttpServlet {
 		
 		String[] servicesStrings = request.getParameterValues("service");
 		
+		String date = request.getParameter("date");
+		
+		//imposta la data odierna
+		if(date == null) {
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Calendar cal = Calendar.getInstance();
+			date = formatter.format(cal.getTime());
+		}
+		
+		request.setAttribute("date", date);
+		
 		if(servicesStrings != null) {
 		
 			List<String> services = new ArrayList<String>(Arrays.asList(servicesStrings));	
@@ -51,10 +64,10 @@ public class SearchServlet extends HttpServlet {
 			}
 			
 			request.setAttribute("servicesMap", servicesMap);
-			request.setAttribute("beachResorts", BeachResortFactory.getInstance().getFilteredBeachResorts(services));
+			request.setAttribute("beachResorts", BeachResortFactory.getInstance().getFilteredBeachResorts(services, date));
 			
 		}else {			
-			request.setAttribute("beachResorts", BeachResortFactory.getInstance().getBeachResorts());
+			request.setAttribute("beachResorts", BeachResortFactory.getInstance().getBeachResorts(date));
 		}
 		
 		HttpSession session = request.getSession(false);
