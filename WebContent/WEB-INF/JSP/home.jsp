@@ -30,25 +30,23 @@
 			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">
 			
 				
-				<div class="yb-cover">
+				<div class="yb-cover mt-5 pt-3">
 		
-					<p>Vivi la tua giornata in spiaggia senza stress!</p>
+					<p >Vivi la tua giornata in spiaggia senza stress!</p>
 						
 					<form action="search.html" method="get">	  
-						<div class="form-row align-items-center text-center">
+						<div class="form-row d-flex justify-content-center align-items-center mt-4 pb-3">
 			
 							<div class="col-auto">
 								<p>Scegli la data</p>
 							</div>
 							
 							<div class="form-group col-auto ol-cover-search">
-
-               				 	<input type="date" class="form-control" id="search_date" name="search_date" value="${today_date}" min="${today_date}"/>
-	
+               				 	<input type="date" class="form-control" id="search_date" name="search_date" value="${today_date}" min="${today_date}"/>	
 							</div>
 													
 							<div class="col-auto">		  
-							   <button type="submit" id="trova" class="btn btn-info rounded" >Trova lo stabilimento</button>
+							   <button type="submit" id="trova" class="btn btn-info rounded mb-2" >Trova lo stabilimento</button>
 							</div>
 											     
 						</div>
