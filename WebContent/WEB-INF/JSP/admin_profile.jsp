@@ -48,10 +48,24 @@
 		 			           <form action="profile.html" method="post">
 			 			           
 			 			           <div class="form-row align-items-center mt-3">
-				 			           	<div class="col">
-				 			           		<label for="email">${beachResort.email}</label>
+				 			        
+					 			        <div class="col">
+				 			           		<span>${beachResort.email}</span>
 				 			           		<input type="hidden" name="email" value="${beachResort.email}">
-			 			           		</div>
+				 			           	</div>
+				 			           	
+				 			           		
+				 			           	<div class="col">
+			 			           	   		<c:choose>
+		  		 				 			    <c:when test="${beachResort.status == 1}">
+				 			           				<span style="color:red"> Bloccato</span>
+			 			           				</c:when>
+			 			           				<c:otherwise>
+			 			           					<span style="color:green"> Attivo</span>
+			 			           				</c:otherwise>
+			 			           			</c:choose>
+		 			           	   		</div>
+			 			           		
 			 			           		<c:choose>
     		 				 			    <c:when test="${beachResort.status == 1}">
     		 				 			     	<div class="col">
@@ -83,10 +97,22 @@
    		 			            
 		 			           	<div class="form-row align-items-center mt-3">
 		 			           
-		 			           	<div class="col">
-		 			           		<label for="email">${client.email}</label>
-		 			           		<input type="hidden" name="email" value="${client.email}">
-	 			           	   	</div>
+			 			           	<div class="col">
+			 			           		<span>${client.email}</span>
+			 			           		<input type="hidden" name="email" value="${client.email}">
+		 			           	   	</div>
+
+		 			           	   	<div class="col">
+		 			           	   		<c:choose>
+	  		 				 			    <c:when test="${client.status == 1}">
+			 			           				<span style="color:red"> Bloccato</span>
+		 			           				</c:when>
+		 			           				<c:otherwise>
+		 			           					<span style="color:green"> Attivo</span>
+		 			           				</c:otherwise>
+	 			           				</c:choose>
+		 			           	   	</div>
+	 			           	   	
 		 			           		 	
  			           		 		<c:choose>
   		 				 			    <c:when test="${client.status == 1}">
