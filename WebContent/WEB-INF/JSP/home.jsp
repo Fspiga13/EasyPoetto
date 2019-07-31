@@ -19,6 +19,7 @@
 
 <title>EasyPoetto - Home</title>
 
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -35,17 +36,15 @@
 			class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">
 
 
-			<div class="yb-cover mt-5">
+			<div class="yb-cover mt-3">
 
-				<p id="slogan">Vivi la tua giornata in spiaggia senza stress!</p>
+				<p id="slogan">Goditi la giornata al Poetto!</p>
 
 				<form action="search.html" method="get">
 					<div
 						class="form-row d-flex justify-content-center align-items-center mt-4 pb-3">
 
-						<div class="col-auto">
-							<p id="choose">Scegli la data</p>
-						</div>
+						
 
 						<div class="form-group col-auto ol-cover-search">
 							<input type="date" class="form-control" id="search_date"

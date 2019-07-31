@@ -37,6 +37,12 @@ body{
 }
 
 
+#bt1, #bt2, #bt3, #bt4{
+	width: 80px;
+}
+
+/* ICONS */
+
 .clearfix:before, .clearfix:after {
   content: " ";
   display: table;
@@ -91,19 +97,10 @@ body{
     color:white;
     font-size: 40px;
    	font-weight: bold;
-   	text-shadow: 2px 2px black;
+   	text-shadow: 3px 3px black;
+   	font-family: 'Kaushan Script', cursive;
 			
 }
-
-.yb-cover #choose{
-    text-align: center;
-    color:white;
-    font-size: 25px;
-   	font-weight: bold;
-   	text-shadow: 2px 2px black;
-			
-}
-
 
 
 .yb-cover.home {
@@ -112,7 +109,6 @@ body{
 
 
 .ol-cover-search input {
-
 
     height: 38px;
     border: 1px solid #408080;
@@ -130,19 +126,5 @@ body{
 .ol-cover-search {
     padding-top: 5px;
     text-align : center;
-}
-
-#bt1{
-	width: 80px;
-}
-
-#bt2{
-	width: 80px;
-}
-#bt3{
-	width: 80px;
-}
-#bt4{
-	width: 80px;
 }
 
