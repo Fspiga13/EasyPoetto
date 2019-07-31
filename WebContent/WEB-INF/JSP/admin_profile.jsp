@@ -70,13 +70,13 @@
     		 				 			    <c:when test="${beachResort.status == 1}">
     		 				 			     	<div class="col">
 			       					           		<input type="hidden" name="status" value="0">
-						 			           		<button type="submit" class="btn btn-outline-info btn-sm">Ripristina</button> 
+						 			           		<button type="submit" id="bt1" class="btn btn-outline-info btn-sm">Ripristina</button> 
     		 				 			    	</div>
     		 				 			    </c:when>
 			 			           			<c:otherwise>
 			 			           					<div class="col">
 		       					           		<input type="hidden" name="status" value="1">
-					 			           		<button type="submit" class="btn btn-outline-info btn-sm">Blocca</button>
+					 			           		<button type="submit" id="bt2" class="btn btn-outline-info btn-sm">Blocca</button>
 			 			           					</div>
 			 			           			</c:otherwise>
 		 			           			</c:choose>	
@@ -102,7 +102,7 @@
 			 			           		<input type="hidden" name="email" value="${client.email}">
 		 			           	   	</div>
 
-		 			           	   	<div class="col">
+		 			           	   	<div  class="col">
 		 			           	   		<c:choose>
 	  		 				 			    <c:when test="${client.status == 1}">
 			 			           				<span style="color:red"> Bloccato</span>
@@ -118,13 +118,13 @@
   		 				 			    <c:when test="${client.status == 1}">
   		 				 			    <div class="col">
        					           			<input type="hidden" name="status" value="0">
-			 			           			<button type="submit" class="btn btn-outline-info btn-sm">Ripristina</button> 
+			 			           			<button type="submit" id="bt3" class="btn btn-outline-info btn-sm">Ripristina</button> 
   		 				 			    </div>
   		 				 			    </c:when>
 	 			           			<c:otherwise>
 	 			           				<div class="col">
        					           		<input type="hidden" name="status" value="1">
-			 			           		<button type="submit" class="btn btn-outline-info btn-sm">Blocca</button>
+			 			           		<button type="submit" id="bt4" class="btn btn-outline-info btn-sm">Blocca</button>
 	 			           				</div>
 	 			           			</c:otherwise>
  			           			</c:choose>
