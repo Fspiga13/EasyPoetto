@@ -35,7 +35,7 @@ public class UserFactory {
 		try (Connection conn = DbManager.getInstance().getDbConnection();
 				PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.setString(1, email);
-			stmt.setString(2, password);
+			stmt.setString(2, PasswordEncryption.generateSecurePassword(password));
 
 			ResultSet result = stmt.executeQuery();
 
@@ -65,7 +65,7 @@ public class UserFactory {
 			String sqlUpdateUserDetails = " update users set email = ?, password= ? where id = ? ";
 			try (PreparedStatement stmt = conn.prepareStatement(sqlUpdateUserDetails)) {
 				stmt.setString(1, newEmail);
-				stmt.setString(2, newPassword);
+				stmt.setString(2, PasswordEncryption.generateSecurePassword(newPassword));
 				stmt.setInt(3, idUser);
 				stmt.executeUpdate();
 				conn.commit(); //committo le modifiche, tutto � andato a buon fine
@@ -95,7 +95,7 @@ public class UserFactory {
 				
 
 				stmt.setString(1, email);
-				stmt.setString(2, password);
+				stmt.setString(2, PasswordEncryption.generateSecurePassword(password));
 				stmt.setInt(3, role);
 	
 				stmt.executeUpdate();

@@ -75,20 +75,20 @@ CONSTRAINT fk_res_beach_resort_id FOREIGN KEY (beach_resort_id) REFERENCES beach
 CONSTRAINT fk_res_client_id FOREIGN KEY (client_id) REFERENCES clients(id) 
 ); 
 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'admin@poetto.it','poetto',0, 0); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@lepalmette.it','palmette',1, 0); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@illido.it','lido',1, 0); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@dacquila.it','daquila',1, 0); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@emerson.it','emerson',1, 0); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@palmbeach.it','palmbeach',1, 0); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'federico@tiscali.it','federico',2, 0); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'giulia@tiscali.it','giulia',2, 0); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'omar@tiscali.it','omar',2 ,0);
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@jinnybeach.it','jinny',1, 0); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@lamarinella.it','marinella',1, 0); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@ottagono.it','ottagono',1, 0); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@lidomediterraneo.it','lido',1, 0); 
-INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@beerbeach.it','beer',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'admin@poetto.it','uKnKBs6WwhdCOO4KI+PPtLqV5UWlaZuKvF12hKmlne4=',0, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@lepalmette.it','c0rg+1bQNAAJLFIBmyWZ9HT/ISbuv2sbvvaP47SaIqc=',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@illido.it','IvIKmRd6TiKKEvvRYpAeposlB+V5mpF3LDq5uChCiuA=',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@dacquila.it','xxnlPrCltCuDWxfRXGLCSdYHanBbuGF5JdEYlGykeyY=',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@emerson.it','1yjKqzAlSOWgMEHn5/97fAEEMqw1J+9BjypUX/629gA=',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@palmbeach.it','3nCkqg+LJct9rEIC3WpXGortiQTC8kOsAf83QjTQ3/A=',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'federico@tiscali.it','HT4n7VpMSVj/e8GA/CIv945IwvSZuV9e838Xb9ru9o8=',2, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'giulia@tiscali.it','dQYK6oek9DUv3iEo1fEJU3wKmWO5WT8CZJPx/8MaB5U=',2, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'omar@tiscali.it','jDNOYP9q3OzwjNoHcsVVIuPz9yJuNiAVVHKktwOzXgM=',2 ,0);
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@jinnybeach.it','DDp0o0s7/sPrE0CkxnBBPdrWdrf1qfXTFoql+yh8tWM=',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@lamarinella.it','gMzibWAgZnfk4/FocOQN2GYAfau76ioH6K7Ik6AgCbk=',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@ottagono.it','KKXkAMX7dXtIu+3I0/rnwg2JEM/Q4N5N+rlvRFt9BkY=',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@lidomediterraneo.it','IvIKmRd6TiKKEvvRYpAeposlB+V5mpF3LDq5uChCiuA=',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@beerbeach.it','Qtq1KxAVojmsqRYkLsPmcsuhITdLioxxGyl35vFdtYY=',1, 0); 
 
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,2,'Le Palmette Beach Club',
@@ -141,7 +141,7 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,10,
 '340 245 7283',50,8,150,5,'Y','Y','N','N','Y','N','N','N');
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,11,
-'La Marinella','La Marinella Beach Club si trova sulla splendida spiaggia del Poetto di Quartu S.E., in una zona servita dai bus di linea, dotata di ampio parcheggio e a un passo dalla citta'' di Quartu. La fine sabbia della spiaggia cittadina piu'' lunga d’Italia accoglie i nostri visitatori prima e dopo aver fruito dei nostri servizi di bar, ristorazione, e animazione',
+'La Marinella','La Marinella Beach Club si trova sulla splendida spiaggia del Poetto di Quartu S.E., in una zona servita dai bus di linea, dotata di ampio parcheggio e a un passo dalla citta'' di Quartu. La fine sabbia della spiaggia cittadina piu'' lunga dï¿½Italia accoglie i nostri visitatori prima e dopo aver fruito dei nostri servizi di bar, ristorazione, e animazione',
 'https://www.bookyourbeach.net/img/slider/img-01.jpg',
 'https://www.lamarinellasorrento.com/themes/marinella/images/la-marinella-logo.jpg',
 'Viale del Golfo di Quartu 47, 09045, Quartu Sant''Elena ,CA, Italia',
