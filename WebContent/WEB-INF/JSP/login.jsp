@@ -58,5 +58,7 @@
 			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
 			</div>
 		</div>
+		
+		<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

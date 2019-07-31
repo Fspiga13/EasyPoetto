@@ -19,6 +19,7 @@
 	<body>
 		<%-- <c:set var="logged" scope="request" value="${true}"/> Se siamo nella pagina di Home, siamo già loggati quindi per forza true --%>
 		<jsp:include page="nav_bar.jsp"></jsp:include>
+		
 		<div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
 			
 			
@@ -90,6 +91,7 @@
 			</div>
 		</div>
 		
+		<jsp:include page="footer.jsp"></jsp:include>
 		
 	</body>
 </html>

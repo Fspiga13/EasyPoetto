@@ -227,6 +227,8 @@
 
 		<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1"></div>
 	</div>
+	
+	<jsp:include page="footer.jsp"></jsp:include>
 
 
 </body>
