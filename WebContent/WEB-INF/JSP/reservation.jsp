@@ -39,7 +39,9 @@
 	
 						<h1>Prenotazione per il ${reservation_date}</h1>
 						
-						<form action="reservation.html" method="post">	
+						<form action="reservation.html" method="post">
+						
+						<input type="hidden" name="reservation_date" value="${reservation_date }">
 						
 						<div class="my-3">
 							<h3>Stabilimento: ${beachResort.name}</h3> 
@@ -91,6 +93,7 @@
 						</div>
 						
 						<div class="col-auto m-3">	
+						
 							<input type="hidden" name="beach_resort_id" value="${beachResort.id}">  
 					   		<button type="submit" id="prenota" class="btn btn-info btn-lg btn-block rounded">Prenota</button>
 		   				</div>

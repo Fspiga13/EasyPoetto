@@ -121,9 +121,9 @@ public class MyReservationsServlet extends HttpServlet {
 				
 				if (ReservationFactory.getInstance().addReservation(email, beachResortId, reservationDate, umbrellasQty, beachLoungersQty, totalPrice)) {
 
-					request.setAttribute("success", "Prenotazione avvenuta con successo!");
+					session.setAttribute("success", "Prenotazione avvenuta con successo!");
 				}else {
-					request.setAttribute("error", "Errore nella prenotazione");
+					session.setAttribute("error", "Errore nella prenotazione");
 				}
 			
 				response.sendRedirect("myreservations.html");

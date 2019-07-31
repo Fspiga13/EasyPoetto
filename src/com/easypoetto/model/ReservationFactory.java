@@ -102,7 +102,7 @@ public class ReservationFactory {
 				
 		if (client != null) { // deve per forza trovare un client
 			
-			String sqlNewPackage = " insert into reservations values(reservation_id_seq.nextval, ?, ?, to_date(?, 'yyyy-mm-dd'), ?, ?, 15.5) ";
+			String sqlNewPackage = " insert into reservations values(reservation_id_seq.nextval, ?, ?, to_date(?, 'yyyy-mm-dd'), ?, ?, ?) ";
 			try (Connection conn = DbManager.getInstance().getDbConnection();
 					PreparedStatement stmt = conn.prepareStatement(sqlNewPackage)) {
 				
