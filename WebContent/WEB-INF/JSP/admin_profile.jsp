@@ -49,7 +49,7 @@
 			 			           
 			 			           <div class="form-row align-items-center mt-3">
 				 			        
-					 			        <div class="col">
+					 			        <div class="col-6">
 				 			           		<span>${beachResort.email}</span>
 				 			           		<input type="hidden" name="email" value="${beachResort.email}">
 				 			           	</div>
@@ -97,7 +97,7 @@
    		 			            
 		 			           	<div class="form-row align-items-center mt-3">
 		 			           
-			 			           	<div class="col">
+			 			           	<div class="col-6">
 			 			           		<span>${client.email}</span>
 			 			           		<input type="hidden" name="email" value="${client.email}">
 		 			           	   	</div>
