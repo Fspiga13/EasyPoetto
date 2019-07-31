@@ -14,7 +14,10 @@ body{
 
 
 
-
+#beach_resort_title{
+	font-family: 'Raleway', sans-serif;
+	font-size:3em;
+}
 
 
 .clearfix:before, .clearfix:after {

@@ -4,17 +4,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="view/css/page_style.css">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-	crossorigin="anonymous"></script>
-<script type="text/javascript" src="../../jQuery/jquery-3.4.1.min.js"></script>
-<title>EasyPoetto - Beach Resort</title>
+	<link rel="stylesheet" type="text/css" href="view/css/page_style.css">
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+		crossorigin="anonymous">
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../../jQuery/jquery-3.4.1.min.js"></script>
+	
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+	<title>EasyPoetto - Beach Resort</title>
 </head>
 <body>
 
@@ -84,12 +87,12 @@
 
 		<div id="main" class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">
 			
-			<h1>
-				<u>${beachResort.name}</u>
-			</h1>
+			
+				<p id="beach_resort_title">
+						${beachResort.name}</p>
 			
 			<div class="row" >
-				<img src="${beachResort.logo}" height="130" width="130" class="float-left m-3">
+				<img src="${beachResort.logo}" height="130" width="130" class="float-left mx-3 my-2 rounded border">
 				<div class="float-left m-3" >
 					<div class="row" >
 	                    <svg class="icon icon-position"><use xlink:href="#icon-position"></use></svg>
