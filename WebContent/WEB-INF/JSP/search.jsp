@@ -71,13 +71,14 @@
 		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
 		
 		<div id="main" class="rounded border shadow p-3 mr-5">
+			<form action="search.html" method="get">
 				<h4>Data </h4>
 					<div class="col-auto ol-cover-search">
-							<input type="date" name="date" id="search-date" class="date" value="${date}" >
+							<input type="date" name="search_date" id="search_date" class="date" value="${search_date}" >
 					</div>
 		
 				<h4>Servizi</h4>
-				<form action="search.html" method="get">
+
 					<div class="row align-middle">
 						<div class=" px-4 py-2">
 					      <div class="glyph fs1">
@@ -176,7 +177,7 @@
 	
 							<div class="m-1 p-1">
 								<div>
-									<img src="${beachResort.logo}" height="130" width="130" class="float-left m-1 rounded">
+									<img src="${beachResort.logo}" height="130" width="130" class="float-left m-1 rounded border">
 								</div>
 												
 								<div class="p-1" style="display: inline-block">
@@ -216,7 +217,8 @@
 							</div>
 							
 						</button>
-						 <input type="hidden" name="beachResortId" value="${beachResort.id}"/>
+						 <input type="hidden" name="beachResortId" value="${beachResort.id}"/> 
+						 <input type="hidden" name="reservation_date" value="${reservation_date}"/>
 					</form>
 				</div>
 			</c:forEach>

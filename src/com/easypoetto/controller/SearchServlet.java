@@ -42,7 +42,7 @@ public class SearchServlet extends HttpServlet {
 		
 		String[] servicesStrings = request.getParameterValues("service");
 		
-		String date = request.getParameter("date");
+		String date = request.getParameter("search_date");
 		
 		//imposta la data odierna
 		if(date == null) {
@@ -51,7 +51,8 @@ public class SearchServlet extends HttpServlet {
 			date = formatter.format(cal.getTime());
 		}
 		
-		request.setAttribute("date", date);
+		request.setAttribute("reservation_date", date);
+		request.setAttribute("search_date", date);
 		
 		if(servicesStrings != null) {
 		
@@ -125,13 +126,18 @@ public class SearchServlet extends HttpServlet {
 					!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
 					UserFactory.getInstance().login(email, password) == role){
 				
+				String date = request.getParameter("reservation_date");
+				request.setAttribute("reservation_date", date);
+				
+				request.setAttribute("role", role);
 				request.setAttribute("logged", true);
 			}else {
 				request.setAttribute("logged", false);
 			}
 			
 		}	
-		
+
+
 		request.setAttribute("beachResort", 
 				BeachResortFactory.getInstance().getBeachResortById(Integer.parseInt(request.getParameter("beachResortId"))));
 		request.getRequestDispatcher("WEB-INF/JSP/beach_resort.jsp").forward(request, response);

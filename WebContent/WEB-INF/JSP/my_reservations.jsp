@@ -16,7 +16,7 @@
 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 	crossorigin="anonymous"></script>
 <script type="text/javascript" src="../../jQuery/jquery-3.4.1.min.js"></script>
-<title>Easy Poetto - I miei Pacchetti</title>
+<title>Easy Poetto - Le mie Prenotazioni</title>
 </head>
 <body>
 	<%-- Imposto le variabili che servono alla navbar per essere visualizzata nel modo corretto --%>
@@ -41,18 +41,25 @@
 					<div class="alert alert-success" role="alert">${success}</div>
 				</c:if>
 
-				<div class="form-row align-items-center">
-					<h1 class="mr-5 pr-5">I miei Pacchetti</h1>
-						<form action="packagemanager.html" method="get">
-						<input type="hidden" name="newPackage" value="yes">
-						<button type="submit" class="btn btn-outline-info btn-lg ml-5">Crea Nuovo</button>
-				</form>
-				</div>
+				<h1 class="mr-5 pr-5">Prenotazioni</h1>
 				
 				<div class="form-row px-4 mt-3 align-items-center">
     				<div class="col">
+     					<h6>Data</h6>
+    				</div>
+    				<c:if test="${role == 2 }">
+    				<div class="col">
+     					<h6>Stabilimento</h6>
+    				</div>
+    				</c:if>
+    				<c:if test="${role == 1 }">
+    				<div class="col">
      					<h6>Nome</h6>
     				</div>
+    				<div class="col">
+     					<h6>Cognome</h6>
+    				</div>
+    				</c:if>
     				<div class="col">
       					<h6>Ombrelloni</h6>
     				</div>
@@ -62,66 +69,44 @@
 					<div class="col">
       					<h6>Prezzo</h6>
    					</div>
-   					<div class="col">
-      					<h6>Azioni</h6>
-   					</div>
 				</div>
 				
-				 <c:forEach var="beach_package" items="${packageList}">
-				
-				<div class = "form-row px-2 mt-2 align-items-center">
-					<form action="packagemanager.html" method="post">
-									<div class = "form-row px-3 mt-3 align-items-center">
-					
-						<div class="col">
-						<input type="text" class="form-control" id="name" name="name" placeholder="Nome" required
-							<c:if test= "${not empty beach_package}">value="${beach_package.name}"</c:if> />
-						</div>
-					
-					
-					<div class="col">											
-						<select name = "num_umbrellas">
-							<option <c:if test="${empty beach_package}">selected</c:if>>Num Ombrelloni</option>
+				<ul class="list-group list-group-flush">
+					 <c:forEach var="reservation" items="${reservationList}">
+						<li class="list-group-item">
+							<div class = "form-row px-3 mt-3 align-items-center">
 							
-							<c:forEach begin = "${0}" end="${5}" step="1" var="index">							
-								<option value="${index}" <c:if test="${beach_package.includedUmbrellas == index}">selected</c:if>>${index}</option>
-							</c:forEach>
-						</select>					
-					</div>
-				
-					<div class="col">
-									
-							<select name = "num_beach_loungers">
-								<option <c:if test="${empty beach_package}">selected</c:if>>Num Lettini</option>
-				
-								<c:forEach begin = "${0}" end="${15}" step="1" var="index">
-									<option value="${index}"  <c:if test="${beach_package.includedBeachLoungers == index}">selected</c:if> >${index}</option>
-								</c:forEach>
-							</select>
-							
-					</div>	
-				
-						<div class="col">
-							 <input type="number" class="form-control" id="price"name="price" placeholder="Prezzo"
-							<c:if test= "${not empty beach_package}">value="${beach_package.price}"</c:if> />
-						</div>
-					
-						<div class="col">
-							<input type="hidden" name="idPackage" value="${beach_package.id}">
-							<button type="submit" class="btn btn-outline-info btn-sm">Salva</button>
-						</div>
-						</div>
-				</form>
-				<form action="packagemanager.html" action="get">
-
-								<input type="hidden" name="idPackage" value="${beach_package.id}">
+								<div class="col">
+									${reservation.dateString}
+								</div>
+			    				<c:if test="${role == 2 }">
+								<div class="col">											
+									${reservation.beachResortName}			
+								</div>
+								</c:if>
+								<c:if test="${role == 1 }">
+								<div class="col">											
+									${reservation.clientName}			
+								</div>
+								<div class="col">											
+									${reservation.clientSurname}			
+								</div>
+								</c:if>
+								<div class="col">
+									${reservation.umbrellasQty}					
+								</div>	
 						
-							<button type="submit" class="float-right btn btn-outline-info btn-sm">Elimina</button>
-
-				</form>
-				</div>
-
-				</c:forEach>
+								<div class="col">
+									${reservation.beachLoungersQty}	
+								</div>
+								<div class="col">
+									${reservation.totalPrice}	
+								</div>	
+								
+							</div>
+						</li>
+					</c:forEach>
+				</ul>
 			</div>
 			
 		</div>

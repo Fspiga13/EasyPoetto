@@ -27,6 +27,7 @@
 		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">		
 		</div>
 			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">		
+				
 				<div id="main" class="shadow-lg border border-light p-5 rounded">
 					<c:if test="${not empty error}">
 						<div class="alert alert-danger" role="alert">${error}</div>
@@ -36,46 +37,53 @@
 						<div class="alert alert-success" role="alert">${success}</div>
 					</c:if>
 	
-						<h1 class="mr-5 pr-5">Prenotazione</h1>
-						<form action="reservation.html" method="post">									
-					 	<div class="rounded border p-3">
+						<h1>Prenotazione per il ${reservation_date}</h1>
+						
+						<form action="reservation.html" method="post">			
+									 				 								
+					 	<div class="rounded border p-3 mb-4">
+					 	
 					 		<h5>Ombrellone</h5>
 								
-						 	<div>
-								<label for="price_umbrella">Prezzo per unità:</label> <input type="number" readonly
-									class="form-control mb-4" id="price_umbrella" name="price_umbrella" required value="${beachResort.priceUmbrella}" />
-							</div>
+							<div class="row">
+							 	<div class="col">
+									<label for="price_umbrella">Prezzo per unità:</label> ${beachResort.priceUmbrella} €
+								</div>
 							
-							<div class = "row align-middle px-3">
-								<label for="num_umbrellas">Quantità: </label>
-								<select name = "num_umbrellas">									
-									<c:forEach begin = "${0}" end="${3}" step="1" var="index">									
-										<option value="${index}">${index}</option>
-									</c:forEach>
-								</select>		
+								<div class = "col align-middle px-3">
+									<label for="num_umbrellas">Quantità: </label>
+									<select name = "num_umbrellas">									
+										<c:forEach begin = "${0}" end="${3}" step="1" var="index">									
+											<option value="${index}">${index}</option>
+										</c:forEach>
+									</select>		
+								</div>
 							</div>
 						</div>
 						
-						<div class="rounded border p-3">
+						<div class="rounded border p-3 mb-5">
+						
 					 		<h5>Lettino</h5>
 								
-						 	<div>
-								<label for="price_beach_lounger">Prezzo per unità:</label> <input type="number" readonly
-									class="form-control mb-4" id="price_beach_lounger" name="price_beach_lounger" required value="${beachResort.priceBeachLounger}" />
-							</div>
-							
-							<div class = "row align-middle px-3">
-								<label for="num_beach_lounger">Quantità: </label>
-								<select name = "num_beach_lounger">									
-									<c:forEach begin = "${0}" end="${9}" step="1" var="index">									
-										<option value="${index}">${index}</option>
-									</c:forEach>
-								</select>		
+							<div class="row">
+								
+							 	<div class="col">
+									<label for="price_beach_lounger">Prezzo per unità:</label> ${beachResort.priceBeachLounger} €
+								</div>
+								
+								<div class = "col align-middle px-3">
+									<label for="num_beach_lounger">Quantità: </label>
+									<select name = "num_beach_lounger">									
+										<c:forEach begin = "${0}" end="${9}" step="1" var="index">									
+											<option value="${index}">${index}</option>
+										</c:forEach>
+									</select>		
+								</div>
 							</div>
 						</div>
 						
-						<div class="col-auto float-right m-3">	  
-					   		<button type="submit" id="prenota" class="btn btn-info btn-lg rounded">Prenota</button>
+						<div class="col-auto m-3">	  
+					   		<button type="submit" id="prenota" class="btn btn-info btn-lg btn-block rounded">Prenota</button>
 		   				</div>
 					</form>	
 				</div>			

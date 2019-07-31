@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.easypoetto.model.BeachResort;
+import com.easypoetto.model.BeachResortFactory;
 import com.easypoetto.model.UserFactory;
 
 /**
@@ -48,12 +50,14 @@ public class ReservationServlet extends HttpServlet {
 					&& role == 2) {
 				
 				Integer idBeachResort = Integer.parseInt(request.getParameter("beach_resort_id"));
-				String reservationDate = request.getParameter("date");
+				String reservationDate = request.getParameter("reservation_date");
 				
 				request.setAttribute("error", error);
 				request.setAttribute("success", success);
 
-				request.setAttribute("beach_resort_id", idBeachResort);
+				BeachResort beachResort = BeachResortFactory.getInstance().getBeachResortForReservation(idBeachResort);
+				
+				request.setAttribute("beachResort", beachResort);
 				request.setAttribute("reservation_date", reservationDate);
 
 				request.getRequestDispatcher("WEB-INF/JSP/reservation.jsp").forward(request, response);

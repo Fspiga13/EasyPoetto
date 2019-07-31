@@ -9,6 +9,14 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="../../jQuery/jquery-3.4.1.min.js"></script>
 		<title>EasyPoetto - Home</title>
+		
+		<script>
+		$(function () {
+
+            $('#datetimepicker').datetimepicker({  minDate:new Date()});
+      });
+		</script>
+		
 	</head>
 	
 	<body>
@@ -35,7 +43,8 @@
 							</div>
 							
 							<div class="col-auto ol-cover-search">
-									<input type="date" name="date" id="search-date" class="date" value="${date}">
+									<input type="date" name="search_date" id="date" class="date" data-provide="datepicker">
+			
 							</div>
 													
 							<div class="col-auto">		  

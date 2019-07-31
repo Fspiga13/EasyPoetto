@@ -34,7 +34,7 @@ public class HomeServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		
-		String date = (String) request.getAttribute("date");
+		String date = (String) request.getAttribute("search_date");
 		
 		//imposta la data odierna
 		if(date == null) {
@@ -43,7 +43,7 @@ public class HomeServlet extends HttpServlet {
 			date = formatter.format(cal.getTime());
 		}
 
-		request.setAttribute("date", date);
+		request.setAttribute("search_date", date);
 		
 		if(session == null || session.getAttribute("email") == null || session.getAttribute("password") == null 
 				|| session.getAttribute("role") == null) {
