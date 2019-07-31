@@ -32,13 +32,13 @@
 				
 				<div class="yb-cover mt-5 pt-3">
 		
-					<p >Vivi la tua giornata in spiaggia senza stress!</p>
+					<p id="slogan">Vivi la tua giornata in spiaggia senza stress!</p>
 						
 					<form action="search.html" method="get">	  
 						<div class="form-row d-flex justify-content-center align-items-center mt-4 pb-3">
 			
 							<div class="col-auto">
-								<p>Scegli la data</p>
+								<p id="choose">Scegli la data</p>
 							</div>
 							
 							<div class="form-group col-auto ol-cover-search">
