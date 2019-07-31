@@ -31,27 +31,35 @@ public class SingUpServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(false);
+		
+		if(session == null || session.getAttribute("email") == null 
+				|| session.getAttribute("password") == null || session.getAttribute("role") == null) {
 
-		String email = (String) session.getAttribute("email");
-		String password = (String) session.getAttribute("password");
-		Integer role = (Integer) session.getAttribute("role");
-		
-		String error = (String) session.getAttribute("error");
-		session.removeAttribute("error");
-		
-		String success = (String) session.getAttribute("success");
-		session.removeAttribute("success");
-		
-		//Se loggato
-		if (email!= null && password != null && role != null &&
-				!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
-				UserFactory.getInstance().login(email, password) == role){
+			request.getRequestDispatcher("WEB-INF/JSP/login.jsp").forward(request, response);
 			
-			response.sendRedirect("profile.html");
 		}else {
+
+			String email = (String) session.getAttribute("email");
+			String password = (String) session.getAttribute("password");
+			Integer role = (Integer) session.getAttribute("role");
 			
-			request.setAttribute("error", error);
-			request.getRequestDispatcher("WEB-INF/JSP/sign_up.jsp").forward(request, response);
+			String error = (String) session.getAttribute("error");
+			session.removeAttribute("error");
+			
+			String success = (String) session.getAttribute("success");
+			session.removeAttribute("success");
+			
+			//Se loggato
+			if (email!= null && password != null && role != null &&
+					!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
+					UserFactory.getInstance().login(email, password) == role){
+				
+				response.sendRedirect("profile.html");
+			}else {
+				
+				request.setAttribute("error", error);
+				request.getRequestDispatcher("WEB-INF/JSP/sign_up.jsp").forward(request, response);
+			}
 		}
 	}
 

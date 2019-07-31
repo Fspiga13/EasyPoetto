@@ -8,7 +8,6 @@
 /*** Adding Styles to Company Details ***/
 
 footer{
-	font-weight: bold;
 	margin-top: 0px;
 	padding-top: 0px;
 }
@@ -16,6 +15,7 @@ footer{
     overflow: hidden; 
     padding: 1em 1em; 
     background: #E3F0F7; 
+    opacity: 0.8;
     text-align: center; 
     margin-top:0em; 
 } 
