@@ -118,8 +118,8 @@
 				</ul>
 				
 				<c:if test="${ role == 1}">
-					<div class="row m-2 align-middle">
-						<h5>Incasso totale:</h5> <c:out value="${cash_collection}"/> €
+					<div class="mt-3 mr-3 text-right align-items-center">
+						<h5>Incasso totale</h5><c:out value="${cash_collection}"/> €
 					</div>
 				</c:if>
 			</div>
