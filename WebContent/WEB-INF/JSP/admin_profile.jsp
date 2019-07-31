@@ -41,25 +41,33 @@
 		 			<h1 class="pb-3">Amministra account</h1>
 		 			<div class="p-3">
 		 			   <h3>Stabilimenti</h3>
-		 			       <div class="rounded border p-3">
+		 			       <div class=" rounded border p-3">
 		 			           <c:forEach var="beachResort" items="${usersList}">
 		 			           <c:if test="${beachResort.role==1}">
-		 			           <div class="row mx-3">
-			 			           <form action="profile.html" method="post">
-			 			           		<label for="email">${beachResort.email}</label>
-			 			           		<input type="hidden" name="email" value="${beachResort.email}">
+		 			           
+		 			           <form action="profile.html" method="post">
+			 			           
+			 			           <div class="form-row align-items-center mt-3">
+				 			           	<div class="col">
+				 			           		<label for="email">${beachResort.email}</label>
+				 			           		<input type="hidden" name="email" value="${beachResort.email}">
+			 			           		</div>
 			 			           		<c:choose>
     		 				 			    <c:when test="${beachResort.status == 1}">
-		       					           		<input type="hidden" name="status" value="0">
-					 			           		<button type="submit" class="btn btn-outline-info btn-sm mt-5">Ripristina</button> 
+    		 				 			     	<div class="col">
+			       					           		<input type="hidden" name="status" value="0">
+						 			           		<button type="submit" class="btn btn-outline-info btn-sm">Ripristina</button> 
+    		 				 			    	</div>
     		 				 			    </c:when>
 			 			           			<c:otherwise>
+			 			           					<div class="col">
 		       					           		<input type="hidden" name="status" value="1">
-					 			           		<button type="submit" class="btn btn-outline-info btn-sm mt-5">Blocca</button>
+					 			           		<button type="submit" class="btn btn-outline-info btn-sm">Blocca</button>
+			 			           					</div>
 			 			           			</c:otherwise>
 		 			           			</c:choose>	
+			 			           	</div>
 			 			           </form>	
-		 			           </div>	
 		 			           </c:if>           		 			           
 		 			           </c:forEach>	 			
 		 			       </div>
@@ -70,22 +78,33 @@
 		 			       <div class="rounded border p-3">
 		 			           <c:forEach var="client" items="${usersList}">
    		 			           <c:if test="${client.role==2}">
-		 			           <div class="row mx-3">
+   		 			           
+   		 			            <form action="profile.html" method="post">
+   		 			            
+		 			           	<div class="form-row align-items-center mt-3">
+		 			           
+		 			           	<div class="col">
 		 			           		<label for="email">${client.email}</label>
-		 			           		 <form action="profile.html" method="post">
-		 			           		 	<input type="hidden" name="email" value="${client.email}">
-		 			           		 	<c:choose>
-    		 				 			    <c:when test="${client.status == 1}">
-		       					           		<input type="hidden" name="status" value="0">
-					 			           		<button type="submit" class="btn btn-outline-info btn-sm mt-5">Ripristina</button> 
-    		 				 			    </c:when>
-			 			           			<c:otherwise>
-		       					           		<input type="hidden" name="status" value="1">
-					 			           		<button type="submit" class="btn btn-outline-info btn-sm mt-5">Blocca</button>
-			 			           			</c:otherwise>
-		 			           			</c:choose>
-			 			           	</form>	
+		 			           		<input type="hidden" name="email" value="${client.email}">
+	 			           	   	</div>
+		 			           		 	
+ 			           		 		<c:choose>
+  		 				 			    <c:when test="${client.status == 1}">
+  		 				 			    <div class="col">
+       					           			<input type="hidden" name="status" value="0">
+			 			           			<button type="submit" class="btn btn-outline-info btn-sm">Ripristina</button> 
+  		 				 			    </div>
+  		 				 			    </c:when>
+	 			           			<c:otherwise>
+	 			           				<div class="col">
+       					           		<input type="hidden" name="status" value="1">
+			 			           		<button type="submit" class="btn btn-outline-info btn-sm">Blocca</button>
+	 			           				</div>
+	 			           			</c:otherwise>
+ 			           			</c:choose>
+			 			           
 		 			           	</div>	
+ 			           			</form>	
 	 			               </c:if>	           		 			           
 		 			           </c:forEach>	 			
 		 			       </div>
