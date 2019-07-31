@@ -16,7 +16,7 @@
 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 	crossorigin="anonymous"></script>
 <script type="text/javascript" src="../../jQuery/jquery-3.4.1.min.js"></script>
-<title>Easy Poetto - Le mie Prenotazioni</title>
+<title>Easy Poetto - Prenotazioni</title>
 </head>
 <body>
 	<%-- Imposto le variabili che servono alla navbar per essere visualizzata nel modo corretto --%>
@@ -31,6 +31,9 @@
 
 		<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle">
 
+		<c:if test="${role ==1}">
+			<c:set var="cash_collection" scope="request" value="${0}" />
+		</c:if>
 
 			<div id="main" class="shadow-lg border border-light p-5 rounded">
 			
@@ -104,12 +107,21 @@
 								</div>
 								<div class="col">
 									${reservation.totalPrice}	
+									<c:if test="${role ==1}">
+										<c:set var="cash_collection" scope="request" value="${cash_collection + reservation.totalPrice}" />
+									</c:if>
 								</div>	
 								
 							</div>
 						</li>
 					</c:forEach>
 				</ul>
+				
+				<c:if test="${ role == 1}">
+					<div class="row m-2 align-middle">
+						<h5>Incasso totale:</h5> <c:out value="${cash_collection}"/> €
+					</div>
+				</c:if>
 			</div>
 			
 		</div>
