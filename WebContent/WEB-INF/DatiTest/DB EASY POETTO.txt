@@ -134,7 +134,7 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,6,
 '327 359 1280',80,9.5,240,5.5,'N','N','Y','Y','Y','Y','Y','Y');
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,10,
-'Jinny Beach', 'A pochi minuti di auto dal centro di Cagliari, si trova sul lungomare del Poetto dove recentemente abbiamo aperto il Jinny beach. Dall''arredamento elegante con uno stile minimal, immerso in un fresco colore bianco dagli interni e circondato da palme esotiche.',
+'Jinny Beach', 'A pochi minuti di auto dal centro di Cagliari, si trova sul lungomare del Poetto il Jinny beach. Dall''arredamento elegante con uno stile minimal, immerso in un fresco colore bianco dagli interni e circondato da palme esotiche.',
 'https://jinnybeach.it/images/beach-m-3.jpg', 
 'https://jinnybeach.it/images/logo.png',
 'Viale Lungomare del Golfo, 09045 Quartu Sant''Elena CA, Italia',
