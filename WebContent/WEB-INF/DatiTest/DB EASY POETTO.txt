@@ -84,6 +84,11 @@ INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@palmbeach','palm
 INSERT INTO USERS VALUES(user_id_seq.nextval, 'federico@tiscali.it','federico',2, 0); 
 INSERT INTO USERS VALUES(user_id_seq.nextval, 'giulia@tiscali.it','giulia',2, 0); 
 INSERT INTO USERS VALUES(user_id_seq.nextval, 'omar@tiscali.it','omar',2 ,0);
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@jinnybeach.it','jinny',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@lamarinella.it','marinella',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@ottagono.it','ottagono',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@lidomediterraneo.it','lido',1, 0); 
+INSERT INTO USERS VALUES(user_id_seq.nextval, 'beachreservation@beerbeach.it','beer',1, 0); 
 
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,2,'Le Palmette Beach Club',
@@ -127,5 +132,42 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,6,
 'https://image.freepik.com/free-vector/palm-beach-logo-design-inspiration_57043-208.jpg',
 'Viale Lungo Mare Poetto, Quinta Fermata, 09126 Cagliari CA, Italia',
 '327 359 1280',80,9.5,240,5.5,'N','N','Y','Y','Y','Y','Y','Y');
+
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,10,
+'Jinny Beach', 'A pochi minuti di auto dal centro di Cagliari, si trova sul lungomare del Poetto dove recentemente abbiamo aperto il Jinny beach. Dall''arredamento elegante con uno stile minimal, immerso in un fresco colore bianco dagli interni e circondato da palme esotiche.',
+'https://jinnybeach.it/images/beach-m-3.jpg', 
+'https://jinnybeach.it/images/logo.png',
+'Viale Lungomare del Golfo, 09045 Quartu Sant''Elena CA, Italia',
+'340 245 7283',50,8,150,5,'Y','Y','N','N','Y','N','N','N');
+
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,11,
+'La Marinella','La Marinella Beach Club si trova sulla splendida spiaggia del Poetto di Quartu S.E., in una zona servita dai bus di linea, dotata di ampio parcheggio e a un passo dalla citta'' di Quartu. La fine sabbia della spiaggia cittadina piu'' lunga d’Italia accoglie i nostri visitatori prima e dopo aver fruito dei nostri servizi di bar, ristorazione, e animazione',
+'https://img.grouponcdn.com/deal/m3sjfZXSHh8fc6wjj99A/Ku-700x420/v1/c700x420.jpg',
+'https://www.lamarinellasorrento.com/themes/marinella/images/la-marinella-logo.jpg',
+'Viale del Golfo di Quartu 47 Lungomare Poetto, 09045, Quartu Sant''Elena , Sardegna, Italia',
+'070 810126',100,9,300,6.5,'Y','Y','Y','Y','Y','Y','Y','N');
+
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,12,
+'L''Ottagono','Spiaggia attrezzata con ristobar, babyparking e veranda con servizio ai tavoli. Massima cura viene dedicata al servizio di pulizie e livellamento della spiaggia con un occhio di riguardo alla sicurezza dei bagnanti garantito dal costante servizio di salvataggio.',
+'http://www.bagnoriviera.it/images/spiaggia/spiaggia1.jpg',
+'https://www.ottagono.net/wp-content/uploads/2019/04/LOGO-OTTAGONO-h.png',
+'Viale Poetto SNC, 09126, Cagliari, Sardegna, Italia',
+'070 371468',80,5,240,3,'N','Y','Y','Y','Y','N','Y','N');
+
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,13,
+'Lido Mediterraneo','Battuto dal vento e dal sole, l''aria tersa; poche bracciate ed ecco acque profonde verde smeraldo. Una sosta per rifocillarvi nei due bar ricchi di stuzzicanti invenzioni e gelati artigianali.',
+'http://www.lidomediterraneo.eu/images/logo-1495734552.jpg',
+'https://media-cdn.tripadvisor.com/media/photo-s/12/90/e7/50/lido-mediterraneo-ristorante.jpg',
+'Viale del Golfo di Quartu 15/21, 09045, Quartu Sant''Elena, Italia',
+'070 753 8452',60,6,180,5,'Y','Y','Y','Y','Y','N','Y','N');
+
+INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,14,
+'Beer Beach','Il nostro stabilimento e'' sole, nuoto, mare, comfort, ombrelloni, lettini, sdraio, cabine, docce, spuntini sfiziosi, attenzioni e un moderno albergo che fa parlare di se nel mondo. Tutto questo grazie a oltre 120 anni d''esperienza nel soddisfare le esigenze di chi ha il diritto di stare in vacanza.',
+'https://www.vistanet.it/cagliari/wp-content/uploads/sites/2/2016/06/13418427_475450429324257_513518504425530761_o.jpg',
+'https://music-club-test.s3-eu-west-1.amazonaws.com/thumbnails/2016/05/27/57486e47cec20.jpg',
+'Viale Golfo di Quartu, 09045, Quartu Sant''Elena, Italia',
+'392 764 3118',90,18,270,15,'Y','Y','Y','Y','Y','N','Y','Y');
+
+
 
 
