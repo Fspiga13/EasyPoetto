@@ -34,16 +34,13 @@ public class HomeServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		
-		String date = (String) request.getAttribute("search_date");
-		
 		//imposta la data odierna
-		if(date == null) {
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			Calendar cal = Calendar.getInstance();
-			date = formatter.format(cal.getTime());
-		}
 
-		request.setAttribute("search_date", date);
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal = Calendar.getInstance();
+		String date = formatter.format(cal.getTime());
+
+		request.setAttribute("today_date", date);
 		
 		if(session == null || session.getAttribute("email") == null || session.getAttribute("password") == null 
 				|| session.getAttribute("role") == null) {

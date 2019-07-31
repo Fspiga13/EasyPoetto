@@ -7,15 +7,12 @@
 		<link rel="stylesheet" type="text/css" href="view/css/page_style.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="../../jQuery/jquery-3.4.1.min.js"></script>
+		<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  
 		<title>EasyPoetto - Home</title>
-		
-		<script>
-		$(function () {
-
-            $('#datetimepicker').datetimepicker({  minDate:new Date()});
-      });
-		</script>
 		
 	</head>
 	
@@ -34,7 +31,8 @@
 				
 				<div class="yb-cover">
 		
-						<p>Vivi la tua giornata in spiaggia senza stress!</p>
+					<p>Vivi la tua giornata in spiaggia senza stress!</p>
+						
 					<form action="search.html" method="get">	  
 						<div class="form-row align-items-center text-center">
 			
@@ -42,13 +40,14 @@
 								<p>Scegli la data</p>
 							</div>
 							
-							<div class="col-auto ol-cover-search">
-									<input type="date" name="search_date" id="date" class="date" data-provide="datepicker">
-			
+							<div class="form-group col-auto ol-cover-search">
+
+               				 	<input type="date" class="form-control" id="search_date" name="search_date" value="${today_date}" min="${today_date}"/>
+	
 							</div>
 													
 							<div class="col-auto">		  
-							   <button type="submit" id="trova" class="btn btn-info rounded">Trova lo stabilimento</button>
+							   <button type="submit" id="trova" class="btn btn-info rounded" >Trova lo stabilimento</button>
 							</div>
 											     
 						</div>

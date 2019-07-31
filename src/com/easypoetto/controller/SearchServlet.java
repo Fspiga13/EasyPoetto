@@ -42,17 +42,20 @@ public class SearchServlet extends HttpServlet {
 		
 		String[] servicesStrings = request.getParameterValues("service");
 		
-		String date = request.getParameter("search_date");
+		String searchDate = request.getParameter("search_date");
 		
 		//imposta la data odierna
-		if(date == null) {
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			Calendar cal = Calendar.getInstance();
-			date = formatter.format(cal.getTime());
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal = Calendar.getInstance();
+		String today = formatter.format(cal.getTime());
+		
+		if(searchDate == null) {
+			searchDate = today;
 		}
 		
-		request.setAttribute("reservation_date", date);
-		request.setAttribute("search_date", date);
+		request.setAttribute("today_date", today);
+		request.setAttribute("reservation_date", searchDate);
+		request.setAttribute("search_date", searchDate);
 		
 		if(servicesStrings != null) {
 		
@@ -65,10 +68,10 @@ public class SearchServlet extends HttpServlet {
 			}
 			
 			request.setAttribute("servicesMap", servicesMap);
-			request.setAttribute("beachResorts", BeachResortFactory.getInstance().getFilteredBeachResorts(services, date));
+			request.setAttribute("beachResorts", BeachResortFactory.getInstance().getFilteredBeachResorts(services, searchDate));
 			
 		}else {			
-			request.setAttribute("beachResorts", BeachResortFactory.getInstance().getBeachResorts(date));
+			request.setAttribute("beachResorts", BeachResortFactory.getInstance().getBeachResorts(searchDate));
 		}
 		
 		HttpSession session = request.getSession(false);
