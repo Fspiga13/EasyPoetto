@@ -144,20 +144,20 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,11,
 'La Marinella','La Marinella Beach Club si trova sulla splendida spiaggia del Poetto di Quartu S.E., in una zona servita dai bus di linea, dotata di ampio parcheggio e a un passo dalla citta'' di Quartu. La fine sabbia della spiaggia cittadina piu'' lunga d’Italia accoglie i nostri visitatori prima e dopo aver fruito dei nostri servizi di bar, ristorazione, e animazione',
 'https://img.grouponcdn.com/deal/m3sjfZXSHh8fc6wjj99A/Ku-700x420/v1/c700x420.jpg',
 'https://www.lamarinellasorrento.com/themes/marinella/images/la-marinella-logo.jpg',
-'Viale del Golfo di Quartu 47 Lungomare Poetto, 09045, Quartu Sant''Elena , Sardegna, Italia',
+'Viale del Golfo di Quartu 47, 09045, Quartu Sant''Elena ,CA, Italia',
 '070 810126',100,9,300,6.5,'Y','Y','Y','Y','Y','Y','Y','N');
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,12,
 'L''Ottagono','Spiaggia attrezzata con ristobar, babyparking e veranda con servizio ai tavoli. Massima cura viene dedicata al servizio di pulizie e livellamento della spiaggia con un occhio di riguardo alla sicurezza dei bagnanti garantito dal costante servizio di salvataggio.',
 'http://www.bagnoriviera.it/images/spiaggia/spiaggia1.jpg',
-'https://www.ottagono.net/wp-content/uploads/2019/04/LOGO-OTTAGONO-h.png',
+'https://pbs.twimg.com/profile_images/602059386723409920/34c5kmiJ_400x400.jpg',
 'Viale Poetto SNC, 09126, Cagliari, Sardegna, Italia',
 '070 371468',80,5,240,3,'N','Y','Y','Y','Y','N','Y','N');
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,13,
 'Lido Mediterraneo','Battuto dal vento e dal sole, l''aria tersa; poche bracciate ed ecco acque profonde verde smeraldo. Una sosta per rifocillarvi nei due bar ricchi di stuzzicanti invenzioni e gelati artigianali.',
-'http://www.lidomediterraneo.eu/images/logo-1495734552.jpg',
 'https://media-cdn.tripadvisor.com/media/photo-s/12/90/e7/50/lido-mediterraneo-ristorante.jpg',
+'http://www.lidomediterraneo.eu/images/logo-1495734552.jpg',
 'Viale del Golfo di Quartu 15/21, 09045, Quartu Sant''Elena, Italia',
 '070 753 8452',60,6,180,5,'Y','Y','Y','Y','Y','N','Y','N');
 
