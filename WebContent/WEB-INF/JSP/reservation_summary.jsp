@@ -62,7 +62,8 @@
 							</div>
 							
 						</div>	
-						<div class="m-3">		  
+						<div class="m-3">
+							<input type="hidden" id="beach_resort_id" name="beach_resort_id" value="${beach_resort_id}" />		  
 						   <button type="submit" id="prenota" class="btn btn-info btn-lg rounded">Prenota e paga</button>
 						</div>
 					</form>

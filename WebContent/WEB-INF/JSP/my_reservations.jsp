@@ -33,6 +33,9 @@
 
 
 			<div id="main" class="shadow-lg border border-light p-5 rounded">
+			
+				<h1 class="mr-5 pr-5">Prenotazioni</h1>
+			
 				<c:if test="${not empty error}">
 					<div class="alert alert-danger" role="alert">${error}</div>
 				</c:if>
@@ -41,7 +44,7 @@
 					<div class="alert alert-success" role="alert">${success}</div>
 				</c:if>
 
-				<h1 class="mr-5 pr-5">Prenotazioni</h1>
+				
 				
 				<div class="form-row px-4 mt-3 align-items-center">
     				<div class="col">
