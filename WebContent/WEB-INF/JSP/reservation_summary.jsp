@@ -24,46 +24,51 @@
 
 	<jsp:include page="nav_bar.jsp"></jsp:include>
 	<div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12">
-		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">		
+		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">		
 		</div>
-			<div id="main" class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">		
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 align-middle mb-5 rounded">		
+			
 				<div id="main" class="shadow-lg border border-light p-5 rounded">
-					<c:if test="${not empty error}">
-						<div class="alert alert-danger" role="alert">${error}</div>
-					</c:if>
 	
-					<c:if test="${not empty success}">
-						<div class="alert alert-success" role="alert">${success}</div>
-					</c:if>
-	
-						<h1 class="mr-5 pr-5">Prenota e paga</h1>
-							<form action="reservation_summary.html" method="get">	
-								
-					 	<div class="rounded border p-3">
-					 		<h5>Riepilogo</h5>
-								
+					<h1>Riepilogo prenotazione</h1>
+					
+					<form action="myreservations.html" method="post">	
+							
+						<div class="rounded border p-3">
+						
+							<div>
+								<label class="font-weight-bold" for="beach_resort_name">Stabilimento:</label> ${beach_resort_name}
+								<input type="hidden" id="beach_resort_name" name="beach_resort_name" value="${beach_resort_name}" />
+							</div>
+						
+							<div>
+								<label class="font-weight-bold" for="reservation_date">Data:</label> ${reservation_date}
+								<input type="hidden" id="reservation_date" name="reservation_date" value="${reservation_date}" />
+							</div>
+						
 						 	<div>
-								<label for="num_umbrella">Numero ombrelloni:</label> <input type="number" readonly
-									class="form-control mb-4" id="num_umbrella" name="num_umbrella" required value="${umbrellasQty}" />
+								<label class="font-weight-bold" for="num_umbrellas">Numero ombrelloni:</label> ${num_umbrellas}
+								<input type="hidden" id="num_umbrellas" name="num_umbrellas" value="${num_umbrellas}" />
 							</div>
 							
 							<div>
-								<label for="num_beach_lounger">Numero lettini:</label> <input type="number" readonly
-									class="form-control mb-4" id="num_beach_lounger" name="num_beach_lounger" required value="${beachLoungersQty}" />
+								<label class="font-weight-bold" for="num_beach_loungers">Numero lettini:</label> ${num_beach_loungers}
+								<input type="hidden" id="num_beach_loungers" name="num_beach_loungers" value="${num_beach_loungers}" />
 							</div>
 							
-						 	<div>
-								<label for="total_price">Prezzo totale:</label> <input type="number" readonly
-									class="form-control mb-4" id="total_price" name="total_price" required value="${totalPrice}" />
+						 	<div> 
+								<label class="font-weight-bold" for="total_price">Prezzo totale:</label> ${total_price} €
+								<input type="hidden" id="total_price" name="total_price" value="${total_price}" />
 							</div>
+							
 						</div>	
-						<div class="col-auto">		  
-						   <button type="submit" id="prenota" class="btn btn-info rounded">Prenota e paga</button>
+						<div class="m-3">		  
+						   <button type="submit" id="prenota" class="btn btn-info btn-lg rounded">Prenota e paga</button>
 						</div>
 					</form>
 				</div>			
 			</div>
-		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div>
+		<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3"></div>
 	</div>
 </body>
 </html>

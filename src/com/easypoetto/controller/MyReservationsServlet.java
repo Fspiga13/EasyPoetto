@@ -107,19 +107,19 @@ public class MyReservationsServlet extends HttpServlet {
 			
 			if (email!= null && password != null && role != null &&
 					!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
-					UserFactory.getInstance().login(email, password) == role && role==1){
+					UserFactory.getInstance().login(email, password) == role && role==2){
 				
 				// Recuperiamo i parametri dal form
-				String date = (String) request.getParameter("date");
+				String reservationDate = (String) request.getParameter("reservation_date");
 				Integer umbrellasQty = Integer.parseInt(request.getParameter("num_umbrellas"));
 				Integer beachLoungersQty = Integer.parseInt(request.getParameter("num_beach_loungers"));
-				Double totalPrice = Double.parseDouble(request.getParameter("price"));
-				Integer beachResortId = Integer.parseInt(request.getParameter("beachResortId"));
+				Double totalPrice = Double.parseDouble(request.getParameter("total_price"));
+				Integer beachResortId = Integer.parseInt(request.getParameter("beach_resort_id"));
 
 				
 				// Aggiungo la prenotazione
 				
-				if (ReservationFactory.getInstance().addReservation(email, beachResortId, date, umbrellasQty, beachLoungersQty, totalPrice)) {
+				if (ReservationFactory.getInstance().addReservation(email, beachResortId, reservationDate, umbrellasQty, beachLoungersQty, totalPrice)) {
 
 					request.setAttribute("success", "Prenotazione avvenuta con successo!");
 				}else {

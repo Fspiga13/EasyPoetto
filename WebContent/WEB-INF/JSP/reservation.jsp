@@ -39,7 +39,12 @@
 	
 						<h1>Prenotazione per il ${reservation_date}</h1>
 						
-						<form action="reservation.html" method="post">			
+						<form action="reservation.html" method="post">	
+						
+						<div class="my-3">
+							<h3>Stabilimento: ${beachResort.name}</h3> 
+							<input type="hidden" name="beach_resort_name" value="${beachResort.name}">
+						</div>	
 									 				 								
 					 	<div class="rounded border p-3 mb-4">
 					 	
@@ -48,6 +53,7 @@
 							<div class="row">
 							 	<div class="col">
 									<label for="price_umbrella">Prezzo per unità:</label> ${beachResort.priceUmbrella} €
+									<input type="hidden" name="price_umbrella" value="${beachResort.priceUmbrella }">
 								</div>
 							
 								<div class = "col align-middle px-3">
@@ -69,11 +75,13 @@
 								
 							 	<div class="col">
 									<label for="price_beach_lounger">Prezzo per unità:</label> ${beachResort.priceBeachLounger} €
+									<input type="hidden" name="price_beach_lounger" value="${beachResort.priceBeachLounger }">
+								
 								</div>
 								
 								<div class = "col align-middle px-3">
-									<label for="num_beach_lounger">Quantità: </label>
-									<select name = "num_beach_lounger">									
+									<label for="num_beach_loungers">Quantità: </label>
+									<select name = "num_beach_loungers">									
 										<c:forEach begin = "${0}" end="${9}" step="1" var="index">									
 											<option value="${index}">${index}</option>
 										</c:forEach>
@@ -82,7 +90,8 @@
 							</div>
 						</div>
 						
-						<div class="col-auto m-3">	  
+						<div class="col-auto m-3">	
+							<input type="hidden" name="beach_resort_id" value="${beachResort.id}">  
 					   		<button type="submit" id="prenota" class="btn btn-info btn-lg btn-block rounded">Prenota</button>
 		   				</div>
 					</form>	

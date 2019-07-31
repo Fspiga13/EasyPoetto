@@ -52,9 +52,6 @@ public class ReservationServlet extends HttpServlet {
 				Integer idBeachResort = Integer.parseInt(request.getParameter("beach_resort_id"));
 				String reservationDate = request.getParameter("reservation_date");
 				
-				request.setAttribute("error", error);
-				request.setAttribute("success", success);
-
 				BeachResort beachResort = BeachResortFactory.getInstance().getBeachResortForReservation(idBeachResort);
 				
 				request.setAttribute("beachResort", beachResort);
@@ -85,12 +82,6 @@ public class ReservationServlet extends HttpServlet {
 
 		} else {
 
-			String error = (String) session.getAttribute("error");
-			session.removeAttribute("error");
-
-			String success = (String) session.getAttribute("success");
-			session.removeAttribute("success");
-
 			String email = (String) session.getAttribute("email");
 			String password = (String) session.getAttribute("password");
 			Integer role = (Integer) session.getAttribute("role");
@@ -100,19 +91,19 @@ public class ReservationServlet extends HttpServlet {
 					&& role == 2) {
 
 				Integer idBeachResort = Integer.parseInt(request.getParameter("beach_resort_id"));
-				String reservationDate = request.getParameter("date");
-
+				String reservationDate = request.getParameter("reservation_date");
+				String beachResortName = request.getParameter("beach_resort_name");
+				
 				Integer numUmbrellas = Integer.parseInt(request.getParameter("num_umbrellas"));
 				Double priceUmbrella = Double.parseDouble(request.getParameter("price_umbrella"));
 				Integer numBeachLoungers = Integer.parseInt(request.getParameter("num_beach_loungers"));
 				Double priceBeachLounger = Double.parseDouble(request.getParameter("price_beach_lounger"));
+				
 				Double totalPrice = getTotalPrice(numUmbrellas, numBeachLoungers, priceUmbrella, priceBeachLounger);
-
-				request.setAttribute("error", error);
-				request.setAttribute("success", success);
 
 				request.setAttribute("beach_resort_id", idBeachResort);
 				request.setAttribute("reservation_date", reservationDate);
+				request.setAttribute("beach_resort_name", beachResortName);
 				
 				request.setAttribute("num_umbrellas", numUmbrellas);
 				request.setAttribute("num_beach_loungers", numBeachLoungers);
