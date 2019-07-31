@@ -92,7 +92,9 @@
 						${beachResort.name}</p>
 			
 			<div class="row" >
-				<img src="${beachResort.logo}" height="130" width="130" class="float-left mx-3 my-2 rounded border">
+				<div class="center-cropped-logo">
+					<img src="${beachResort.logo}" class="float-left mx-3 my-2 rounded border">
+				</div>
 				<div class="float-left m-3" >
 					<div class="row" >
 	                    <svg class="icon icon-position"><use xlink:href="#icon-position"></use></svg>
@@ -108,8 +110,10 @@
 					</div>
 				</div>
 			</div>
-
+			
+			<div class="center-cropped-img">
 			<img src="${beachResort.image}" class="img-fluid py-3">
+			</div>
 			
 			<div class="text-justify">
 				<p>${beachResort.description}</p>

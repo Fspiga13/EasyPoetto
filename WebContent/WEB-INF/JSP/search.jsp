@@ -176,8 +176,8 @@
 							class="btn btn-outline-info btn-lg btn-block shadow">
 	
 							<div class="m-1 p-1">
-								<div>
-									<img src="${beachResort.logo}" height="130" width="130" class="float-left m-1 rounded border">
+								<div class="center-cropped-logo">
+									<img src="${beachResort.logo}" class="float-left m-1 rounded border">
 								</div>
 												
 								<div class="p-1" style="display: inline-block">
