@@ -106,17 +106,29 @@ public class BeachResortFactory {
 	}
 	
 	
-	public BeachResort getBeachResortForReservation(int id) {		
+	public BeachResort getBeachResortForReservation(int id, String date) {		
 		
-		try (Connection conn = DbManager.getInstance().getDbConnection(); Statement stmt = conn.createStatement())  {
+		String sql = "select name, price_umbrella, price_beach_lounger, (br.num_umbrellas - numero_ombrelloni) as available_umbrellas, (br.num_beach_loungers - numero_lettini) as available_beach_loungers " + 
+				"from users u, beach_resorts br left outer join ( " + 
+				"    select  sum(r.umbrellas_qty) as numero_ombrelloni, sum(r.beach_loungers_qty) as numero_lettini " + 
+				"    from  beach_resorts br2 left outer join reservations r on r.beach_resort_id=br2.id " + 
+				"    where r.reservation_date = to_date(?, 'yyyy-MM-dd') and br2.id = ? " + 
+				") on br.id=? " + 
+				"where br.user_id=u.id and u.status=0 and br.id = ? ";
+		
+		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql))  {
 
-			String sql = "select name, price_umbrella, price_beach_lounger from beach_resorts, users where user_id = users.id and beach_resorts.id= " + id;
-
-			ResultSet result = stmt.executeQuery(sql);
+			stmt.setString(1, date);
+			stmt.setInt(2, id);
+			stmt.setInt(3, id);
+			stmt.setInt(4, id);
+			
+			ResultSet result = stmt.executeQuery();
 
 			while (result.next()) {
 				
-				return new BeachResort(id, result.getString("name"), result.getDouble("price_umbrella"), result.getDouble("price_beach_lounger"));
+				return new BeachResort(id, result.getString("name"), result.getDouble("price_umbrella"), 
+						result.getDouble("price_beach_lounger"), result.getInt("available_umbrellas"),result.getInt("available_beach_loungers"));
 			}
 					
 		} catch (SQLException e) {
@@ -134,14 +146,23 @@ public class BeachResortFactory {
 		
 		List<BeachResort> beachResorts = new ArrayList<BeachResort>();
 		
-		String sql = "select beach_resorts.id, name, address, logo, "
-				+ "parking, pedalo, shower, toilette, restaurant, "
-				+ "disabled_facilities, children_area, dog_area from beach_resorts, users where user_id=users.id and status=0";
+		String sql = "select br.id, br.name, address, logo, parking, pedalo, shower, " + 
+				"toilette, restaurant, disabled_facilities, children_area, dog_area, br.num_umbrellas, (br.num_umbrellas - numero) as available_umbrellas " + 
+				"from users u, beach_resorts br left outer join ( " + 
+				"    select  sum(r.umbrellas_qty) as numero, br2.id as id2 " + 
+				"    from beach_resorts br2 left outer join reservations r " + 
+				"    on r.beach_resort_id = br2.id " + 
+				"    where r.reservation_date = to_date(?, 'yyyy-MM-dd') " + 
+				"    group by br2.id " + 
+				") on br.id=id2 " + 
+				"where br.user_id=u.id and u.status=0 and (numero IS NULL or br.num_umbrellas > numero) " + 
+				"order by available_umbrellas, br.num_umbrellas ASC";
 			
 		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql))  {
 
+			stmt.setString(1, date);
 
-			ResultSet result = stmt.executeQuery(sql);
+			ResultSet result = stmt.executeQuery();
 
 			while (result.next()) {
 				
@@ -168,9 +189,16 @@ public class BeachResortFactory {
 		
 		List<BeachResort> beachResorts = new ArrayList<BeachResort>();
 		
-		String sql = "select id, name, address, logo, "
-				+ "parking, pedalo, shower, toilette, restaurant, "
-				+ "disabled_facilities, children_area, dog_area from beach_resorts where ";
+		String sql = "select br.id, br.name, address, logo, parking, pedalo, shower, " + 
+				"toilette, restaurant, disabled_facilities, children_area, dog_area, br.num_umbrellas, (br.num_umbrellas - numero) as available_umbrellas " + 
+				"from users u, beach_resorts br left outer join ( " + 
+				"    select  sum(r.umbrellas_qty) as numero, br2.id as id2 " + 
+				"    from beach_resorts br2 left outer join reservations r " + 
+				"    on r.beach_resort_id = br2.id " + 
+				"    where r.reservation_date = to_date(?, 'yyyy-MM-dd') " + 
+				"    group by br2.id " + 
+				") on br.id=id2 " + 
+				"where br.user_id=u.id and u.status=0 and (numero IS NULL or br.num_umbrellas > numero) and ";
 		
 		for (String service : services) {
 			sql += service + "= 'Y' and ";
@@ -179,10 +207,13 @@ public class BeachResortFactory {
 		sql = sql.substring(0, sql.length() - 4);
 		 
 			
+		sql = sql + "order by available_umbrellas, br.num_umbrellas ASC";
+				
 		try (Connection conn = DbManager.getInstance().getDbConnection(); PreparedStatement stmt = conn.prepareStatement(sql))  {
 			
-
-			ResultSet result = stmt.executeQuery(sql);
+			stmt.setString(1, date);
+			
+			ResultSet result = stmt.executeQuery();
 
 			while (result.next()) {
 				

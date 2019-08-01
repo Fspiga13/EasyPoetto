@@ -61,8 +61,10 @@
 								<div class = "col align-middle px-3">
 									<label for="num_umbrellas">Quantità: </label>
 									<select name = "num_umbrellas">									
-										<c:forEach begin = "${0}" end="${3}" step="1" var="index">									
-											<option value="${index}">${index}</option>
+										<c:forEach begin = "1" end="3" step="1" var="index">							
+											<c:if test="${beachResort.availableUmbrellas == 0 || index <= beachResort.availableUmbrellas}"> 									
+												<option value="${index}">${index}</option>
+											</c:if>
 										</c:forEach>
 									</select>		
 								</div>
@@ -84,8 +86,10 @@
 								<div class = "col align-middle px-3">
 									<label for="num_beach_loungers">Quantità: </label>
 									<select name = "num_beach_loungers">									
-										<c:forEach begin = "${0}" end="${9}" step="1" var="index">									
-											<option value="${index}">${index}</option>
+										<c:forEach begin = "0" end="9" step="1" var="index">									
+											<c:if test="${beachResort.availableBeachLoungers == 0 || index <= beachResort.availableBeachLoungers}"> 
+												<option value="${index}">${index}</option>
+											</c:if>
 										</c:forEach>
 									</select>		
 								</div>

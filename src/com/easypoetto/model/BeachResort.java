@@ -22,6 +22,9 @@ public class BeachResort {
 	private boolean disabledFacilities;
 	private boolean childrenArea;
 	private boolean dogArea;
+	
+	private int availableUmbrellas;
+	private int availableBeachLoungers;
 
 	/**
 	 * @param id
@@ -101,7 +104,8 @@ public class BeachResort {
 		this.disabledFacilities = disabledFacilities;
 		this.childrenArea = childrenArea;
 		this.dogArea = dogArea;
-	}
+	}	
+	
 
 	/**
 	 * @param id
@@ -109,11 +113,13 @@ public class BeachResort {
 	 * @param priceUmbrella
 	 * @param priceBeachLounger
 	 */
-	public BeachResort(int id, String name, double priceUmbrella, double priceBeachLounger) {
+	public BeachResort(int id, String name, double priceUmbrella, double priceBeachLounger, int availableUmbrellas, int availableBeachLoungers) {
 		this.id = id;
 		this.name = name;
 		this.priceUmbrella = priceUmbrella;
 		this.priceBeachLounger = priceBeachLounger;
+		this.availableUmbrellas = availableUmbrellas;
+		this.availableBeachLoungers = availableBeachLoungers;
 	}
 
 	/**
@@ -257,5 +263,21 @@ public class BeachResort {
 	public double getPriceBeachLounger() {
 		return priceBeachLounger;
 	}
+
+	/**
+	 * @return the availableUmbrellas
+	 */
+	public int getAvailableUmbrellas() {
+		return availableUmbrellas;
+	}
+
+
+	/**
+	 * @return the availableBeachLoungers
+	 */
+	public int getAvailableBeachLoungers() {
+		return availableBeachLoungers;
+	}
+
 
 }

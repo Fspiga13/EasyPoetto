@@ -125,7 +125,7 @@ public class MyReservationsServlet extends HttpServlet {
 
 					session.setAttribute("success", "Prenotazione avvenuta con successo!");
 				}else {
-					session.setAttribute("error", "Errore nella prenotazione");
+					session.setAttribute("error", "Errore nella prenotazione: posto non più disponibile");
 				}
 			
 				response.sendRedirect("myreservations.html");

@@ -94,34 +94,88 @@ public class ReservationFactory {
 	
 
 	public boolean addReservation(String email, int beachResortId, String date, int umbrellasQty, int beachLoungersQty, double totalPrice) {
-		
-		
+			
 		//va effettuato ulteriore controllo in transazione per prenotazioni multiple
 		
-		Client client = ClientFactory.getInstance().getClient(email);
-				
-		if (client != null) { // deve per forza trovare un client
+		
+		try (Connection conn = DbManager.getInstance().getDbConnection()) {
+		
+			conn.setAutoCommit(false); //Inizia la transazione perch� se due persone entrano in concorrenza in questo metodo potrebbero superare il successivo controllo e impostare assieme la stessa mail
+		
+			Integer availableUmbrellas = null;
+			Integer availableBeachLoungers = null;
+
+			// controllo se ci sono gli ombrelloni e le spiaggine richieste
+		
+			String available = 
+				"select (br.num_umbrellas - numero_ombrelloni) as available_umbrellas, (br.num_beach_loungers - numero_lettini) as available_beach_loungers " + 
+				"from users u, beach_resorts br left outer join ( " + 
+				"    select  sum(r.umbrellas_qty) as numero_ombrelloni, sum(r.beach_loungers_qty) as numero_lettini " + 
+				"    from reservations r " + 
+				"    where r.reservation_date = to_date(?, 'yyyy-MM-dd') and r.beach_resort_id = ? " + 
+				") on br.id= ? " + 
+				"where br.user_id=u.id and u.status=0 and br.id= ? ";	
 			
-			String sqlNewPackage = " insert into reservations values(reservation_id_seq.nextval, ?, ?, to_date(?, 'yyyy-mm-dd'), ?, ?, ?) ";
-			try (Connection conn = DbManager.getInstance().getDbConnection();
-					PreparedStatement stmt = conn.prepareStatement(sqlNewPackage)) {
+			try (PreparedStatement stmt = conn.prepareStatement(available)) {
 				
-				stmt.setInt(1, beachResortId);
-				stmt.setInt(2, client.getId());
-				stmt.setString(3, date);
-				stmt.setInt(4, umbrellasQty);
-				stmt.setInt(5, beachLoungersQty);
-				stmt.setDouble(6, totalPrice);
-	
-				stmt.executeUpdate();
-				return true;
+				stmt.setString(1, date);
+				stmt.setInt(2, beachResortId);
+				stmt.setInt(3, beachResortId);
+				stmt.setInt(4, beachResortId);
+				
+				ResultSet result = stmt.executeQuery();
+				if (result.next()) {
+					availableUmbrellas = result.getInt("available_umbrellas");
+					availableBeachLoungers = result.getInt("available_beach_loungers");
+				}
+				
+
 			} catch (SQLException e) {
-				Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE, null, e);
+				conn.rollback();// elimino le modifiche effettuate in transazione
+				Logger.getLogger(ReservationFactory.class.getName()).log(Level.SEVERE, null, e);
 				System.out.println("Errore in addReservation di ReservationFactory");
 			}
+		
+			if((availableUmbrellas == null && availableBeachLoungers == null) || 
+				(availableUmbrellas >= umbrellasQty && availableBeachLoungers >= beachLoungersQty)) {
+			
+				Client client = ClientFactory.getInstance().getClient(email);
+				
+				if (client != null) { // deve per forza trovare un client
+					
+					String sqlNewReservation = " insert into reservations values(reservation_id_seq.nextval, ?, ?, to_date(?, 'yyyy-mm-dd'), ?, ?, ?) ";
+					try (PreparedStatement stmt = conn.prepareStatement(sqlNewReservation)) {
+						
+						stmt.setInt(1, beachResortId);
+						stmt.setInt(2, client.getId());
+						stmt.setString(3, date);
+						stmt.setInt(4, umbrellasQty);
+						stmt.setInt(5, beachLoungersQty);
+						stmt.setDouble(6, totalPrice);
+			
+						stmt.executeUpdate();
+						return true;
+					} catch (SQLException e) {
+						conn.rollback();//elimino le modifiche effettuate in transazione
+						Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE, null, e);
+						System.out.println("Errore in addReservation di ReservationFactory");
+					}
+				}
+				
+				conn.commit(); //committo le modifiche, tutto � andato a buon fine
+				//UPDATE tabella users
+				return true;
+				
+			}
 
+		conn.rollback();
+			
+		} catch (SQLException e) {
+			Logger.getLogger(BeachResortFactory.class.getName()).log(Level.SEVERE, null, e);
+			System.out.println("Errore in addReservation");
 		}
-		return false;
+
+		return false; // se sono arrivato a questo punto qualche metodo ha lanciato un'eccezione	
 		
 	}
 	

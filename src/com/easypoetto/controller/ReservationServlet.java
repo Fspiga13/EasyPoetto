@@ -52,8 +52,8 @@ public class ReservationServlet extends HttpServlet {
 				Integer idBeachResort = Integer.parseInt(request.getParameter("beach_resort_id"));
 				String reservationDate = request.getParameter("reservation_date");
 				
-				BeachResort beachResort = BeachResortFactory.getInstance().getBeachResortForReservation(idBeachResort);
-				
+				BeachResort beachResort = BeachResortFactory.getInstance().getBeachResortForReservation(idBeachResort, reservationDate);
+	
 				request.setAttribute("beachResort", beachResort);
 				request.setAttribute("reservation_date", reservationDate);
 
