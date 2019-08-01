@@ -49,20 +49,20 @@
 
 				
 				
-				<div class="form-row px-4 mt-3 align-items-center">
-    				<div class="col">
+				<div class="form-row mt-3 align-items-center">
+    				<div class="col-2">
      					<h6>Data</h6>
     				</div>
     				<c:if test="${role == 2 }">
-    				<div class="col">
+    				<div class="col-4">
      					<h6>Stabilimento</h6>
     				</div>
     				</c:if>
     				<c:if test="${role == 1 }">
-    				<div class="col">
+    				<div class="col-2">
      					<h6>Nome</h6>
     				</div>
-    				<div class="col">
+    				<div class="col-2">
      					<h6>Cognome</h6>
     				</div>
     				</c:if>
@@ -80,21 +80,21 @@
 				<ul class="list-group list-group-flush">
 					 <c:forEach var="reservation" items="${reservationList}">
 						<li class="list-group-item">
-							<div class = "form-row px-3 mt-3 align-items-center">
+							<div class = "form-row align-items-center">
 							
 								<div class="col">
 									${reservation.dateString}
 								</div>
 			    				<c:if test="${role == 2 }">
-								<div class="col">											
+								<div class="col-4">											
 									${reservation.beachResortName}			
 								</div>
 								</c:if>
 								<c:if test="${role == 1 }">
-								<div class="col">											
+								<div class="col-2">											
 									${reservation.clientName}			
 								</div>
-								<div class="col">											
+								<div class="col-2">											
 									${reservation.clientSurname}			
 								</div>
 								</c:if>

@@ -12,9 +12,10 @@
 	<style>
 		#title{
 			font-family: 'Amatic SC', cursive;
-			font-size: 35px;
+			font-size: 38px;
 			font-weight: bold;
 			color:white!important;
+			text-shadow: 1px 1px black;
 		}
 	</style>
 	

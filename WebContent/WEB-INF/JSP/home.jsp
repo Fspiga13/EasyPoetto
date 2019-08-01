@@ -36,13 +36,13 @@
 			class="col-xl-8 col-lg-8 col-md-8 col-sm-8 align-middle mb-5 rounded">
 
 
-			<div class="yb-cover mt-3">
+			<div class="yb-cover">
 
 				<p id="slogan">Goditi la giornata al Poetto!</p>
 
 				<form action="search.html" method="get">
 					<div
-						class="form-row d-flex justify-content-center align-items-center mt-4 pb-3">
+						class="form-row d-flex justify-content-center align-items-center mt-4 pb-1">
 
 						
 

@@ -59,7 +59,7 @@
 
 				<div id="col2" class= "col">
 					<svg class="icon icon-phone gi-2x mb-3"><use xlink:href="#icon-phone"></use></svg>				
-					<div><small>Telephone: 070 100522 </small></div>
+					<div><small>Telefono: 070 100522</small></div>
 				</div>
 
 				<div id="col3" class= "col">

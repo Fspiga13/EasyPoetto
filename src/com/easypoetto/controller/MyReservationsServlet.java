@@ -73,6 +73,7 @@ public class MyReservationsServlet extends HttpServlet {
 					reservations = ReservationFactory.getInstance().getResevationsByClient(email);
 					break;
 				default:
+					response.sendRedirect("login.html");
 					break;
 				}
 				

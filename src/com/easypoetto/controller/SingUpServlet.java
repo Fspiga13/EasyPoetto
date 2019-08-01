@@ -35,7 +35,7 @@ public class SingUpServlet extends HttpServlet {
 		if(session == null || session.getAttribute("email") == null 
 				|| session.getAttribute("password") == null || session.getAttribute("role") == null) {
 
-			request.getRequestDispatcher("WEB-INF/JSP/login.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/JSP/sign_up.jsp").forward(request, response);
 			
 		}else {
 
