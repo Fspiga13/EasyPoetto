@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.easypoetto.model.PasswordEncryption;
 import com.easypoetto.model.UserFactory;
 
 /**
@@ -42,25 +43,25 @@ public class LoginServlet extends HttpServlet {
 				session.removeAttribute("success");
 				request.setAttribute("success", success);
 			}
+			//sessione errata, mostro login
 			request.getRequestDispatcher("WEB-INF/JSP/login.jsp").forward(request, response);
 			
 		}else {
-			
 			String email = (String) session.getAttribute("email");
 			String password = (String) session.getAttribute("password");
 			Integer role = (Integer) session.getAttribute("role");
 			session.removeAttribute("success");
 			
+			
 			if (email!= null && password != null && role != null &&
 				!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
 				UserFactory.getInstance().login(email, password) == role){
-				String logout = request.getParameter("logout");
-				if (logout != null) {
-					session.invalidate();
-					request.getRequestDispatcher("WEB-INF/JSP/login.jsp").forward(request, response);
-				} else {
-					response.sendRedirect("home.html");
-				}
+
+				response.sendRedirect("home.html");
+			}else {
+			
+			session.invalidate();
+			request.getRequestDispatcher("WEB-INF/JSP/login.jsp").forward(request, response);
 			}
 		}
 		
@@ -72,9 +73,13 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		request.setCharacterEncoding("UTF-8");
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		
+		password = PasswordEncryption.generateSecurePassword(password);
 		
 		Integer role = null;
 
@@ -89,7 +94,6 @@ public class LoginServlet extends HttpServlet {
 		if(role == null) {
 			//System.out.println("login senza successo");
 
-			System.out.println("Errate");
 			request.setAttribute("error", "Credenziali errate");
 			request.setAttribute("logged", false);
 			request.getRequestDispatcher("WEB-INF/JSP/login.jsp").forward(request, response);
@@ -101,7 +105,6 @@ public class LoginServlet extends HttpServlet {
 		
 			//Utente bloccato dall'amministratore
 			case -1:
-				System.out.println("Account bannato dall'amministratore");
 				request.setAttribute("error", "Account bannato dall'amministratore");
 				request.setAttribute("logged", false);
 				request.getRequestDispatcher("WEB-INF/JSP/login.jsp").forward(request, response);
