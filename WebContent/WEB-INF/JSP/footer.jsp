@@ -2,20 +2,19 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="view/css/footer.css">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
-<script type="text/javascript" src="../../jQuery/jquery-3.4.1.min.js"></script>
-
-<link
-	href='https://fonts.googleapis.com/css?family=Amatic+SC&display=swap'
-	rel='stylesheet'>
-<title></title>
-</head>
+	<head>
+		<meta charset="ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="view/css/footer.css">
+		<link rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+			crossorigin="anonymous">
+		<script type="text/javascript" src="../../jQuery/jquery-3.4.1.min.js"></script>
+			
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+		
+	<title></title>
+	</head>
 <body>
 
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -72,7 +71,7 @@
 		<!-- Copyright Section -->
 		<div class="copyright">
 			<small>2019 Copyright © All rights reserved | EasyPoetto.</small>
-			</div>
+		</div>
 	</footer>
 
 </body>

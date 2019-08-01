@@ -87,15 +87,19 @@
 
 					<div>
 						<label for="address">Indirizzo</label> <input type="text"
-							class="form-control mb-4" id="address" name="address"
-							<c:if test= "${not empty beachResort}">value="${beachResort.address}"</c:if> />
+							class="form-control mb-4" id="address" name="address" <c:choose>
+							<c:when test= "${not empty beachResort}">value="${beachResort.address}"</c:when>
+															<c:otherwise>required</c:otherwise>
+															</c:choose> >
 					</div>
 
 					<div>
 						<label for="telephone">Numero di telefono</label> <input
 							type="text" class="form-control mb-4" id="telephone"
-							name="telephone"
-							<c:if test= "${not empty beachResort}">value="${beachResort.telephone}"</c:if> />
+							name="telephone" <c:choose>
+							<c:when test= "${not empty beachResort}">value="${beachResort.telephone}"</c:when>
+															<c:otherwise>required</c:otherwise>
+															</c:choose> >
 					</div>
 
 
@@ -163,7 +167,11 @@
 						</div>
 						<div class="col">					
 							<label class="form-check-label" for="price_umbrella">Prezzo per ombrellone </label>
-							<input type="number" class="form-control" name="price_umbrella" <c:if test= "${not empty beachResort}">value="${beachResort.priceUmbrella}"</c:if>>
+							<input type="number" class="form-control" name="price_umbrella" step='0.1' placeholder='0.0' 
+										<c:choose>
+										<c:when test= "${not empty beachResort}">value="${beachResort.priceUmbrella}"</c:when>
+										<c:otherwise>required</c:otherwise>
+										</c:choose> >
 						</div>
 					</div>
 					
@@ -186,7 +194,11 @@
 						</div>
 						<div class="col">
 							<label for="price_beach_lounger">Prezzo per lettino </label>
-							<input type="number" class="form-control" name="price_beach_lounger" <c:if test= "${not empty beachResort}">value="${beachResort.priceBeachLounger}"</c:if>>
+							<input type="number" class="form-control" name="price_beach_lounger" step='0.1' placeholder='0.0'  
+									<c:choose> 
+									<c:when test= "${not empty beachResort}">value="${beachResort.priceBeachLounger}"</c:when>
+									<c:otherwise>required</c:otherwise>
+									</c:choose> >
 						</div>
 					</div>
 					

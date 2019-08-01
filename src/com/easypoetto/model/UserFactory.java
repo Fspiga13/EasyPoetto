@@ -35,7 +35,7 @@ public class UserFactory {
 		try (Connection conn = DbManager.getInstance().getDbConnection();
 				PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.setString(1, email);
-			stmt.setString(2, PasswordEncryption.generateSecurePassword(password));
+			stmt.setString(2, password);
 
 			ResultSet result = stmt.executeQuery();
 

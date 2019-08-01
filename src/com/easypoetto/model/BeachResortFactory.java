@@ -312,17 +312,23 @@ public class BeachResortFactory {
 				
 				String sql1 = "INSERT INTO BEACH_RESORTS (id, user_id, name, description, image, logo, address, telephone, num_umbrellas, price_umbrella, num_beach_loungers, price_beach_lounger ";
 				String sql2= " VALUES(beach_resort_id_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ";
-				for(String service : services) {
-					sql1 = sql1 + service +", ";
-					sql2 = sql2 + "'Y', ";
+				
+				String sqlInsertBeachResortDetails;
+				
+				if(services != null) {
+					for(String service : services) {
+						sql1 = sql1 + service +", ";
+						sql2 = sql2 + "'Y', ";
+					}
+				
+					sql1 = sql1.substring(0, sql1.length() -2) + ")";
+					sql2 = sql2.substring(0, sql2.length() -2) + ")";
+					
+					
+					sqlInsertBeachResortDetails = sql1 + sql2;
+				}else {
+					sqlInsertBeachResortDetails = sql1 + ")" + sql2 + ")";
 				}
-				
-				sql1 = sql1.substring(0, sql1.length() -2) + ")";
-				sql2 = sql2.substring(0, sql2.length() -2) + ")";
-				
-				String sqlInsertBeachResortDetails = sql1 + sql2;
-				
-				System.out.println(sqlInsertBeachResortDetails);
 				
 				try (PreparedStatement stmt = conn.prepareStatement(sqlInsertBeachResortDetails)) {
 					stmt.setInt(1, idUser);

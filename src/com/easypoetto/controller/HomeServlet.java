@@ -66,21 +66,19 @@ public class HomeServlet extends HttpServlet {
 				//risolvere problema logout
 				
 				String logout = request.getParameter("logout");
-				if (logout != null) {
-					
-					//System.out.println("utente richiede logout");
-					
+				
+				if (logout == null) {
+					request.setAttribute("logged", true);
+					request.getRequestDispatcher("WEB-INF/JSP/home.jsp").forward(request, response);
+				}else {
 					session.invalidate();
 					request.setAttribute("logged", false);
 					request.getRequestDispatcher("WEB-INF/JSP/home.jsp").forward(request, response);
-				} else {
-				
-				//System.out.println("utente loggato accede a home");
-				
-				request.setAttribute("role", role);
-				request.setAttribute("logged", true);
-				request.getRequestDispatcher("WEB-INF/JSP/home.jsp").forward(request, response);
 				}
+			}else {
+				session.invalidate();
+				request.setAttribute("logged", false);
+				request.getRequestDispatcher("WEB-INF/JSP/home.jsp").forward(request, response);
 			}
 		}
 	}

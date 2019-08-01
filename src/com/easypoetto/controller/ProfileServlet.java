@@ -16,6 +16,7 @@ import com.easypoetto.model.BeachResort;
 import com.easypoetto.model.BeachResortFactory;
 import com.easypoetto.model.Client;
 import com.easypoetto.model.ClientFactory;
+import com.easypoetto.model.PasswordEncryption;
 import com.easypoetto.model.User;
 import com.easypoetto.model.UserFactory;
 
@@ -193,7 +194,7 @@ public class ProfileServlet extends HttpServlet {
 					session.removeAttribute("password");
 
 					session.setAttribute("email", newEmail);
-					session.setAttribute("password", newPassword);
+					session.setAttribute("password", PasswordEncryption.generateSecurePassword(newPassword));
 					
 					session.setAttribute("success", "Modifica avvenuta con successo!");
 
@@ -262,7 +263,7 @@ public class ProfileServlet extends HttpServlet {
 			session.removeAttribute("password");
 
 			session.setAttribute("email", newEmail);
-			session.setAttribute("password", newPassword);
+			session.setAttribute("password", PasswordEncryption.generateSecurePassword(newPassword));
 			
 			session.setAttribute("success", "Modifica avvenuta con successo!");
 
