@@ -156,7 +156,7 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,12,
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,13,
 'Lido Mediterraneo','Battuto dal vento e dal sole, l''aria tersa; poche bracciate ed ecco acque profonde verde smeraldo. Una sosta per rifocillarvi nei due bar ricchi di stuzzicanti invenzioni e gelati artigianali.',
-'https://media-cdn.tripadvisor.com/media/photo-s/12/90/e7/50/lido-mediterraneo-ristorante.jpg',
+'http://www.lidoathena.it/imgs/Spiaggia&Bar_sfondo_1920x1200pixel.jpg',
 'http://www.lidomediterraneo.eu/images/logo-1495734552.jpg',
 'Viale del Golfo di Quartu 15/21, 09045, Quartu Sant''Elena, Italia',
 '070 753 8452',60,6,180,5,'Y','Y','Y','Y','Y','N','Y','N');
