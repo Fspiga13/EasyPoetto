@@ -152,8 +152,6 @@ public class ReservationFactory {
 			if((availableUmbrellas == null && availableBeachLoungers == null) || 
 				(availableUmbrellas >= umbrellasQty && availableBeachLoungers >= beachLoungersQty)) {
 				
-				System.out.println("ciao");
-				
 				Client client = ClientFactory.getInstance().getClient(email);
 				
 				if (client != null) { // deve per forza trovare un client
@@ -183,7 +181,6 @@ public class ReservationFactory {
 				return true;
 				
 			}
-		System.out.println("miao");
 		conn.rollback();
 			
 		} catch (SQLException e) {
