@@ -102,15 +102,18 @@ public class ReservationFactory {
 		
 			conn.setAutoCommit(false); //Inizia la transazione perch� se due persone entrano in concorrenza in questo metodo potrebbero superare il successivo controllo e impostare assieme la stessa mail
 		
-			Integer availableUmbrellas = null;
-			Integer availableBeachLoungers = null;
+			int reservatedUmbrellas = 0;
+			int reservatedBeachLoungers = 0;
+			int numUmbrellas = 0;
+			int numBeachLoungers = 0;
+			
 
 			// controllo se ci sono gli ombrelloni e le spiaggine richieste
 		
 			String available = 
-				"select (br.num_umbrellas - numero_ombrelloni) as available_umbrellas, (br.num_beach_loungers - numero_lettini) as available_beach_loungers " + 
+				"select num_umbrellas, num_beach_loungers, reservated_umbrellas, reservated_beach_loungers " + 
 				"from users u, beach_resorts br left outer join ( " + 
-				"    select  sum(r.umbrellas_qty) as numero_ombrelloni, sum(r.beach_loungers_qty) as numero_lettini " + 
+				"    select  sum(r.umbrellas_qty) as reservated_umbrellas, sum(r.beach_loungers_qty) as reservated_beach_loungers " + 
 				"    from reservations r " + 
 				"    where r.reservation_date = to_date(?, 'yyyy-MM-dd') and r.beach_resort_id = ? " + 
 				") on br.id= ? " + 
@@ -125,20 +128,32 @@ public class ReservationFactory {
 				
 				ResultSet result = stmt.executeQuery();
 				if (result.next()) {
-					availableUmbrellas = result.getInt("available_umbrellas");
-					availableBeachLoungers = result.getInt("available_beach_loungers");
+					reservatedUmbrellas = result.getInt("reservated_umbrellas");
+					reservatedBeachLoungers = result.getInt("reservated_beach_loungers");
+
+					numUmbrellas = result.getInt("num_umbrellas");
+					numBeachLoungers = result.getInt("num_beach_loungers");
 				}
-				
 
 			} catch (SQLException e) {
 				conn.rollback();// elimino le modifiche effettuate in transazione
 				Logger.getLogger(ReservationFactory.class.getName()).log(Level.SEVERE, null, e);
 				System.out.println("Errore in addReservation di ReservationFactory");
 			}
-		
+			
+			Integer availableUmbrellas = null;
+			Integer availableBeachLoungers = null;
+			
+			if(reservatedUmbrellas > 0 || reservatedBeachLoungers > 0) {
+				availableUmbrellas = numUmbrellas - reservatedUmbrellas; 
+				availableBeachLoungers = numBeachLoungers - reservatedBeachLoungers;
+			}
+			
 			if((availableUmbrellas == null && availableBeachLoungers == null) || 
 				(availableUmbrellas >= umbrellasQty && availableBeachLoungers >= beachLoungersQty)) {
-			
+				
+				System.out.println("ciao");
+				
 				Client client = ClientFactory.getInstance().getClient(email);
 				
 				if (client != null) { // deve per forza trovare un client
@@ -162,12 +177,13 @@ public class ReservationFactory {
 					}
 				}
 				
+				System.out.println();
 				conn.commit(); //committo le modifiche, tutto � andato a buon fine
 				//UPDATE tabella users
 				return true;
 				
 			}
-
+		System.out.println("miao");
 		conn.rollback();
 			
 		} catch (SQLException e) {
