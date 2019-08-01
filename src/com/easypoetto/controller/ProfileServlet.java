@@ -177,6 +177,8 @@ public class ProfileServlet extends HttpServlet {
 				
 				if (newPassword == null || newPassword.isEmpty()) {
 					newPassword = password;
+				}else {
+					newPassword = PasswordEncryption.generateSecurePassword(newPassword);
 				}
 				
 				// Aggiorno i dettagli dello stabilimento 
@@ -194,7 +196,7 @@ public class ProfileServlet extends HttpServlet {
 					session.removeAttribute("password");
 
 					session.setAttribute("email", newEmail);
-					session.setAttribute("password", PasswordEncryption.generateSecurePassword(newPassword));
+					session.setAttribute("password", newPassword);
 					
 					session.setAttribute("success", "Modifica avvenuta con successo!");
 
@@ -246,6 +248,8 @@ public class ProfileServlet extends HttpServlet {
 		
 		if (newPassword == null || newPassword.isEmpty()) {
 			newPassword = password;
+		}else {
+			newPassword = PasswordEncryption.generateSecurePassword(newPassword);
 		}
 		
 		// Aggiorno i dettagli client 
@@ -263,7 +267,7 @@ public class ProfileServlet extends HttpServlet {
 			session.removeAttribute("password");
 
 			session.setAttribute("email", newEmail);
-			session.setAttribute("password", PasswordEncryption.generateSecurePassword(newPassword));
+			session.setAttribute("password", newPassword);
 			
 			session.setAttribute("success", "Modifica avvenuta con successo!");
 

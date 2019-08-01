@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.easypoetto.model.PasswordEncryption;
 import com.easypoetto.model.UserFactory;
 
 /**
@@ -108,6 +109,7 @@ public class SingUpServlet extends HttpServlet {
 				response.sendRedirect("signup.html");
 			}else {
 			
+				newPassword = PasswordEncryption.generateSecurePassword(newPassword);
 				// Se la creazione non va a buon fine
 				if(UserFactory.getInstance().addUser(newEmail, newPassword, newRole) == false) {
 					
