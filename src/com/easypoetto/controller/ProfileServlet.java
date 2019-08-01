@@ -114,7 +114,8 @@ public class ProfileServlet extends HttpServlet {
 			response.sendRedirect("login.html");
 			
 		}else {
-		
+			request.setCharacterEncoding("UTF-8");
+			
 			String email = (String) session.getAttribute("email");
 			String password = (String) session.getAttribute("password");
 			Integer role = (Integer) session.getAttribute("role");

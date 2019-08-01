@@ -70,6 +70,8 @@ public class SingUpServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(false);
+		
+		request.setCharacterEncoding("UTF-8");
 
 		String email = (String) session.getAttribute("email");
 		String password = (String) session.getAttribute("password");

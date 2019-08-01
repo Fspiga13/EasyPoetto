@@ -67,24 +67,25 @@ public class MyReservationsServlet extends HttpServlet {
 				
 				case 1:
 					reservations = ReservationFactory.getInstance().getResevationsByBeachResort(email);
+					request.setAttribute("reservationList", reservations);
+					request.setAttribute("role", role);
+					request.getRequestDispatcher("WEB-INF/JSP/my_reservations.jsp").forward(request, response);	
 					break;
 					
 				case 2:
 					reservations = ReservationFactory.getInstance().getResevationsByClient(email);
+					request.setAttribute("reservationList", reservations);
+					request.setAttribute("role", role);
+					request.getRequestDispatcher("WEB-INF/JSP/my_reservations.jsp").forward(request, response);	
 					break;
 				default:
-					response.sendRedirect("login.html");
+					response.sendRedirect("profile.html");
 					break;
-				}
-				
-				request.setAttribute("reservationList", reservations);
-				request.setAttribute("role", role);
-				request.getRequestDispatcher("WEB-INF/JSP/my_reservations.jsp").forward(request, response);			
+				}	
 			}else {
 				response.sendRedirect("login.html");
 			}
-		}
-		
+		}		
 	}
 
 	/**

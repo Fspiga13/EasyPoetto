@@ -42,7 +42,7 @@
 				<h1 class="pb-3">Profilo</h1>
 				
 
-				<form action="profile.html" method="post">
+				<form action="profile.html" method="post" accept-charset="utf-8">
 
 	
 					<div>

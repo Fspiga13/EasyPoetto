@@ -175,12 +175,11 @@
 	  					Per effettuare una prenotazione devi essere loggato!
 					</div>
 				</c:if>
-				
 					<form action="reservation.html" method="get">
 						<input type="hidden" name="beach_resort_id" value="${beachResort.id}">
 						<input type="hidden" name="reservation_date" value="${reservation_date}">
 					
-						<button type="submit" class="btn btn-outline-info btn-lg btn-block mt-2" <c:if test="${logged==false}">disabled</c:if>>
+						<button type="submit" class="btn btn-outline-info btn-lg btn-block mt-2" <c:if test="${logged==false || role != 2}">disabled</c:if>>
 						Scegli la tua offerta!</button>
 					</form>
 				</div>

@@ -38,7 +38,7 @@
 		 				</div>
  					</c:if>
 		 			
-					<form action="signup.html" method="post"style="display:inline">
+					<form action="signup.html" method="post" accept-charset="utf-8" style="display:inline">
 						<div>
 					  		<label for="email">Email</label>
 					  		<input type="email" id="email" name="email" class="form-control mb-4" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" required /> 
