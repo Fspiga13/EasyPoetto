@@ -39,8 +39,12 @@ public class HomeServlet extends HttpServlet {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
 		String date = formatter.format(cal.getTime());
+		
+		String year = date.substring(0,4);
 
+		request.setAttribute("year", year);
 		request.setAttribute("today_date", date);
+		
 		
 		if(session == null || session.getAttribute("email") == null || session.getAttribute("password") == null 
 				|| session.getAttribute("role") == null) {

@@ -55,6 +55,8 @@ public class SearchServlet extends HttpServlet {
 			searchDate = today;
 		}
 		
+		String year = today.substring(0,4);
+		request.setAttribute("year", year);
 		request.setAttribute("today_date", today);
 		request.setAttribute("reservation_date", searchDate);
 		request.setAttribute("search_date", searchDate);

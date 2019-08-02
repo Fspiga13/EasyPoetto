@@ -66,7 +66,7 @@
 					  	</div>
 					    <div>
 					  	<label for="birthday">Data di nascita</label>
-					  	<input type="date" class="form-control mb-4" id="birthday" name="birthday" required <c:if test= "${not empty client}">value="${client.birthdayString}"</c:if>/> 
+					  	<input type="date" class="form-control mb-4" id="birthday" name="birthday" max="${today}" required <c:if test= "${not empty client}">value="${client.birthdayString}"</c:if>/> 
 						</div>
 					
 			 		

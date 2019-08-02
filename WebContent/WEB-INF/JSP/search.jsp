@@ -74,7 +74,7 @@
 			<form action="search.html" method="get">
 				<h4>Data </h4>
 					<div class="col-auto ol-cover-search">
-							<input type="date" name="search_date" id="search_date" class="date" value="${search_date}" min="${today_date}">
+							<input type="date" name="search_date" id="search_date" class="date" value="${search_date}" min="${today_date}" max="${year +1}-12-31">
 					</div>
 		
 				<h4>Servizi</h4>

@@ -1,8 +1,10 @@
 package com.easypoetto.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -60,6 +62,7 @@ public class ProfileServlet extends HttpServlet {
 			String password = (String) session.getAttribute("password");
 			Integer role = (Integer) session.getAttribute("role");
 			
+			
 			if (email!= null && password != null && role != null &&
 					!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
 					UserFactory.getInstance().login(email, password) == role){
@@ -83,6 +86,14 @@ public class ProfileServlet extends HttpServlet {
 						request.getRequestDispatcher("WEB-INF/JSP/beach_resort_profile.jsp").forward(request, response);
 						break;
 					case 2:
+						
+						//imposta la data odierna
+						SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+						Calendar cal = Calendar.getInstance();
+						String today = formatter.format(cal.getTime());
+						
+						request.setAttribute("today", today);
+						
 						Client client = ClientFactory.getInstance().getClient(email);
 						request.setAttribute("client", client);
 						request.setAttribute("email", email);

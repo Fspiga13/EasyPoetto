@@ -48,7 +48,7 @@
 
 						<div class="form-group col-auto ol-cover-search">
 							<input type="date" class="form-control" id="search_date"
-								name="search_date" value="${today_date}" min="${today_date}" />
+								name="search_date" value="${today_date}" min="${today_date}" max="${year +1}-12-31" />
 						</div>
 
 						<div class="col-auto">
