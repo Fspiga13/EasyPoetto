@@ -127,13 +127,13 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		//System.out.println("login con successo");
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("email", email);
-		session.setAttribute("password", password);
-		session.setAttribute("role", role);
-		response.sendRedirect(redirect);
-
+		if(redirect != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("email", email);
+			session.setAttribute("password", password);
+			session.setAttribute("role", role);
+			response.sendRedirect(redirect);
+		}
 	}
 
 }
