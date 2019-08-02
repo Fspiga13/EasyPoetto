@@ -167,7 +167,7 @@
 						</div>
 						<div class="col">					
 							<label class="form-check-label" for="price_umbrella">Prezzo per ombrellone </label>
-							<input type="number" class="form-control" name="price_umbrella" step='0.1' placeholder='0.0' 
+							<input type="number" class="form-control" name="price_umbrella" step="0.1" placeholder="0.0" min="0.0"
 										<c:choose>
 										<c:when test= "${not empty beachResort}">value="${beachResort.priceUmbrella}"</c:when>
 										<c:otherwise>required</c:otherwise>
@@ -194,7 +194,7 @@
 						</div>
 						<div class="col">
 							<label for="price_beach_lounger">Prezzo per lettino </label>
-							<input type="number" class="form-control" name="price_beach_lounger" step='0.1' placeholder='0.0'  
+							<input type="number" class="form-control" name="price_beach_lounger" step='0.1' placeholder='0.0' min="0.0"
 									<c:choose> 
 									<c:when test= "${not empty beachResort}">value="${beachResort.priceBeachLounger}"</c:when>
 									<c:otherwise>required</c:otherwise>
