@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 
 import com.easypoetto.model.BeachResort;
 import com.easypoetto.model.BeachResortFactory;
+import com.easypoetto.model.ClientFactory;
 import com.easypoetto.model.UserFactory;
 
 /**
@@ -140,6 +141,14 @@ public class SearchServlet extends HttpServlet {
 			if (email!= null && password != null && role != null &&
 					!email.isEmpty() && !password.isEmpty() && role >= 0 && role <= 2 &&
 					UserFactory.getInstance().login(email, password) == role){
+				
+				if(role == 2 && ClientFactory.getInstance().getClient(email) == null) {
+									
+					request.setAttribute("complete_profile", true);
+
+				}else{
+					request.setAttribute("complete_profile", false);
+				}
 				
 				String date = request.getParameter("reservation_date");
 				request.setAttribute("reservation_date", date);
