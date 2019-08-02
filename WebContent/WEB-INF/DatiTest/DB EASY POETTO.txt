@@ -120,7 +120,7 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,3,
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,5,
 'Emerson',
 'In un''ampia e accogliente spiaggia con una distesa di lettini color crema, l''Emerson e'' un''elegante struttura balneare con docce, servizi e spogliatoi. Due punti bar e servizi dal tocco giovane e sportivo in questa realta''� made in Cagliari.',
-'http://www.emersoncagliari.it/wp-content/uploads/2017/03/spiaggia5.jpg',
+'https://bookyourbeach.net/album/691/1652/20023936-2032046543698245-7706754686204885140-o.jpg',
 'http://www.cagliariaccommodations.com/wp-content/uploads/2019/04/logo.png',
 'Viale Lungo Mare Poetto, Quarta Fermata, 09126 Cagliari CA, Italia', 
 '348 629 3969',150,7.5,450,4.0,'N','Y','N','N','Y','N','N','N');
@@ -156,7 +156,7 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,12,
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,13,
 'Lido Mediterraneo','Battuto dal vento e dal sole, l''aria tersa; poche bracciate ed ecco acque profonde verde smeraldo. Una sosta per rifocillarvi nei due bar ricchi di stuzzicanti invenzioni e gelati artigianali.',
-'https://media-cdn.tripadvisor.com/media/photo-s/12/90/e7/50/lido-mediterraneo-ristorante.jpg',
+'http://larosadeiventinumana.it/wp-content/uploads/2017/01/12.jpg',
 'http://www.lidomediterraneo.eu/images/logo-1495734552.jpg',
 'Viale del Golfo di Quartu 15/21, 09045, Quartu Sant''Elena, Italia',
 '070 753 8452',60,6,180,5,'Y','Y','Y','Y','Y','N','Y','N');
