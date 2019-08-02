@@ -172,12 +172,17 @@
 				
 				<c:if test="${logged==false}">
 					<div class="alert alert-warning" role="alert">
-	  					Per effettuare una prenotazione devi essere loggato!
+	  					Per effettuare una prenotazione <a href="signup.html">Registrati</a> o effettua il <a href="login.html">Login</a>
 					</div>
 				</c:if>
 				<c:if test="${complete_profile == true}">
 					<div class="alert alert-warning" role="alert">
-	  					Per effettuare la prenotazione devi completare il tuo profilo
+	  					Per effettuare una prenotazione devi completare il tuo <a href="profile.html">Profilo</a>
+					</div>
+				</c:if>
+				<c:if test="${not empty role && role != 2}">
+					<div class="alert alert-warning" role="alert">
+	  					Solo i clienti possono effettuare prenotazioni
 					</div>
 				</c:if>
 				

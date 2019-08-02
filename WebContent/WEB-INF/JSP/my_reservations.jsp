@@ -106,7 +106,7 @@
 									${reservation.beachLoungersQty}	
 								</div>
 								<div class="col">
-									${reservation.totalPrice}	
+									${reservation.totalPrice} €	
 									<c:if test="${role ==1}">
 										<c:set var="cash_collection" scope="request" value="${cash_collection + reservation.totalPrice}" />
 									</c:if>
