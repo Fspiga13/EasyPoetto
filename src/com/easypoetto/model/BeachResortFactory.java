@@ -362,8 +362,6 @@ public class BeachResortFactory {
 					sqlInsertBeachResortDetails = sql1 + ")" + sql2 + ")";
 				}
 				
-				System.out.println(sqlInsertBeachResortDetails);
-				
 				try (PreparedStatement stmt = conn.prepareStatement(sqlInsertBeachResortDetails)) {
 					stmt.setInt(1, idUser);
 					stmt.setString(2, newName);

@@ -43,6 +43,10 @@ public class LoginServlet extends HttpServlet {
 				session.removeAttribute("success");
 				request.setAttribute("success", success);
 			}
+			if(session != null && session.getAttribute("error") != null) {
+				session.removeAttribute("error");
+			}
+			
 			//sessione errata, mostro login
 			request.getRequestDispatcher("WEB-INF/JSP/login.jsp").forward(request, response);
 			

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.easypoetto.model.BeachResort;
 import com.easypoetto.model.BeachResortFactory;
 import com.easypoetto.model.UserFactory;
 
@@ -57,6 +58,8 @@ public class SearchServlet extends HttpServlet {
 		request.setAttribute("reservation_date", searchDate);
 		request.setAttribute("search_date", searchDate);
 		
+		List<BeachResort> beachResorts = null;
+		
 		if(servicesStrings != null) {
 		
 			List<String> services = new ArrayList<String>(Arrays.asList(servicesStrings));	
@@ -67,11 +70,20 @@ public class SearchServlet extends HttpServlet {
 				servicesMap.put(service, true);
 			}
 			
+			beachResorts = BeachResortFactory.getInstance().getFilteredBeachResorts(services, searchDate);
+			
 			request.setAttribute("servicesMap", servicesMap);
-			request.setAttribute("beachResorts", BeachResortFactory.getInstance().getFilteredBeachResorts(services, searchDate));
+			request.setAttribute("beachResorts", beachResorts);
+			
 			
 		}else {			
-			request.setAttribute("beachResorts", BeachResortFactory.getInstance().getBeachResorts(searchDate));
+			
+			beachResorts = BeachResortFactory.getInstance().getBeachResorts(searchDate);
+			request.setAttribute("beachResorts", beachResorts);
+		}
+		
+		if(beachResorts.isEmpty()) {
+			request.setAttribute("error", "Non sono stati trovati stabilimenti");
 		}
 		
 		HttpSession session = request.getSession(false);

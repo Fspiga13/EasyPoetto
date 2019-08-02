@@ -167,8 +167,12 @@
 
 		<div id="main" class="col-xl-7 col-lg-7 col-md-7 col-sm-7 mb-5 rounded" style="overflow:auto">
 
-			
-			
+ 			<c:if test="${not empty error}">
+ 				<div  class="alert alert-warning" role="alert">
+ 					${error}
+ 				</div>
+ 			</c:if>
+ 			
 			<c:forEach var="beachResort" items="${beachResorts}">
 				<div class="pt-4 px-2">
 					<form action="search.html" method="post">
