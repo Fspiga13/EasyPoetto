@@ -156,15 +156,19 @@ INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,12,
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,13,
 'Lido Mediterraneo','Battuto dal vento e dal sole, l''aria tersa; poche bracciate ed ecco acque profonde verde smeraldo. Una sosta per rifocillarvi nei due bar ricchi di stuzzicanti invenzioni e gelati artigianali.',
-'http://www.lidoathena.it/imgs/Spiaggia&Bar_sfondo_1920x1200pixel.jpg',
+'https://media-cdn.tripadvisor.com/media/photo-s/12/90/e7/50/lido-mediterraneo-ristorante.jpg',
 'http://www.lidomediterraneo.eu/images/logo-1495734552.jpg',
 'Viale del Golfo di Quartu 15/21, 09045, Quartu Sant''Elena, Italia',
 '070 753 8452',60,6,180,5,'Y','Y','Y','Y','Y','N','Y','N');
 
 INSERT INTO BEACH_RESORTS VALUES(beach_resort_id_seq.nextval,14,
-'Beer Beach','Il nostro stabilimento e'' sole, nuoto, mare, comfort, ombrelloni, lettini, sdraio, cabine, docce, spuntini sfiziosi, attenzioni e un moderno albergo che fa parlare di se nel mondo. Tutto questo grazie a oltre 120 anni d''esperienza nel soddisfare le esigenze di chi ha il diritto di stare in vacanza.',
+'Beer Beach','Il nostro stabilimento e'' sole, nuoto, mare, comfort, ombrelloni, lettini, sdraio, cabine, docce, spuntini sfiziosi, attenzioni. Se si cerca un luogo riservato per ritemprarsi dal caldo e per garantire ai piu'' piccoli bagni sicuri.',
 'https://www.vistanet.it/cagliari/wp-content/uploads/sites/2/2016/06/13418427_475450429324257_513518504425530761_o.jpg',
 'https://music-club-test.s3-eu-west-1.amazonaws.com/thumbnails/2016/05/27/57486e47cec20.jpg',
 'Viale Golfo di Quartu, 09045, Quartu Sant''Elena, Italia',
-'392 764 3118',90,18,270,15,'Y','Y','Y','Y','Y','N','Y','Y');
+'392 764 3118',10,18,30,15,'Y','Y','Y','Y','Y','N','Y','Y');
 
+
+INSERT INTO CLIENTS VALUES(client_id_seq.nextval,7,'Federico','Spiga', TO_DATE('1995-01-10','YYYY-MM-DD'));
+INSERT INTO CLIENTS VALUES(client_id_seq.nextval,8,'Giulia','Pisano', TO_DATE('1991-04-22','YYYY-MM-DD'));
+INSERT INTO CLIENTS VALUES(client_id_seq.nextval,9,'Omar Stefano','Corda', TO_DATE('1990-01-05','YYYY-MM-DD'));
