@@ -197,7 +197,8 @@ public class ProfileServlet extends HttpServlet {
 				
 				// Se la modifica non va a buon fine
 				if (!BeachResortFactory.getInstance().editDetails(newName, newDescription, newEmail, newPassword,
-						newImage, newLogo, newAddress, newTelephone, newNumUmbrellas, newPriceUmbrella, newNumBeachLoungers, newPriceBeachLounger, services, email)) {
+						newImage, newLogo, newAddress, newTelephone, newNumUmbrellas, newPriceUmbrella, 
+						newNumBeachLoungers, newPriceBeachLounger, services, email)) {
 					// Mando l'errore al jsp
 					session.setAttribute("error", "Email non disponibile");
 					response.sendRedirect("profile.html");

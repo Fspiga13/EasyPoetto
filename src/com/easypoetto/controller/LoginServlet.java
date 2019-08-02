@@ -54,6 +54,7 @@ public class LoginServlet extends HttpServlet {
 			String email = (String) session.getAttribute("email");
 			String password = (String) session.getAttribute("password");
 			Integer role = (Integer) session.getAttribute("role");
+			
 			session.removeAttribute("success");
 			
 			
